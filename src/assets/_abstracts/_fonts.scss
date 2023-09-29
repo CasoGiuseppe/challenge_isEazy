@@ -1,0 +1,18 @@
+// fonts
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap');
+
+:root {
+  --ie-font-weight-light: 300;
+  --ie-font-weight-regular: 400;
+  --ie-font-weight-medium: 500;
+  --ie-font-weight-bold: 700;
+
+  --ie-font-size-big: 1.375rem; // 22;
+  --ie-font-size-medium: 1rem; // 16;
+  --ie-font-size-small: .875rem; // 14;
+  --ie-font-size-xsmall: .75rem; // 12;
+  --ie-font-size-xxsmall: 0.625; // 10;
+
+  --ie-defualt-font-family: 'Quicksand';
+}

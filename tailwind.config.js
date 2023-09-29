@@ -35,6 +35,22 @@ export default {
         negative: 'var(--ie-c-black, #000)'
       }
     },
+    fontFamily: {
+      default: 'var(--ie-defualt-font-family, Arial)'
+    },
+    fontWeight: {
+      light: 'var(--ie-font-weight-light, 300)', // 300
+      regular: 'var(--ie-font-weight-regular, 400)', // 400
+      medium: 'var(--ie-font-weight-medium, 500)', // 500
+      bold: 'var(--ie-font-weight-bold, 700)' // 700
+    },
+    fontSize: {
+      base: ['var(--sm-font-size-medium)', { lineHeight: 'normal' }], // 22
+      lg: ['var(--sm-font-size-big)', { lineHeight: 'normal' }], // 16
+      xlg: ['var(--sm-font-size-xlarge)', { lineHeight: 'normal' }], // 14
+      xxlg: ['var(--sm-font-size-xxlarge)', { lineHeight: 'normal' }], // 12
+      xxxlg: ['var(--sm-font-size-xxxlarge)', { lineHeight: 'normal' }] // 10
+    },
     extend: {}
   },
   plugins: []
