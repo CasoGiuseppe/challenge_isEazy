@@ -18,7 +18,23 @@ export default {
       xlg: '2rem', // 32
       xxlg: '4rem' // 64
     },
-    colors: {},
+    colors: {
+      blue: {
+        400: 'var(--ie-c-blue-400, #000)'
+      },
+      gray: {
+        400: 'var(--ie-c-gray-400, #000)',
+        300: 'var(--ie-c-gray-300, #000)',
+        200: 'var(--ie-c-gray-200, #000)'
+      },
+      red: {
+        100: 'var(--ie-c-red-100, #000)'
+      },
+      default: {
+        positive: 'var(--ie-c-white, #fff)',
+        negative: 'var(--ie-c-black, #000)'
+      }
+    },
     extend: {}
   },
   plugins: []
