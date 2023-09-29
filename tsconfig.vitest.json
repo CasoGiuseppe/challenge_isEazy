@@ -4,6 +4,13 @@
   "compilerOptions": {
     "composite": true,
     "lib": [],
-    "types": ["node", "jsdom"]
+    "types": ["node", "jsdom"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@ui/*": ["./src/app/ui/*"],
+      "@shared/*": ["./src/app/shared/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@domains/*": ["./src/domains/*"],
+    }
   }
 }
