@@ -1,7 +1,9 @@
 import { FieldType, InputType } from '@shared/types'; 
 export interface Props {
+  id?: String,
   type?: FieldType,
   input?: InputType,
+  required?: Boolean,
   modelValue: String
 }
 

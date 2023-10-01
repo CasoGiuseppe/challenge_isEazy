@@ -1,5 +1,11 @@
 .base-user-input {
   $baseuserinput: &;
 
-  @apply flex flex-col
+  @apply flex flex-wrap gap-sm;
+
+  [data-error] {
+    @apply flex-[100%];
+    @apply px-sm;
+    @apply text-xsmall text-red-100;
+  }
 }

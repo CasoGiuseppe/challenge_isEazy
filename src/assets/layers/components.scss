@@ -1,5 +1,6 @@
 @layer components {
   .base-user-field {
+    @apply flex-[2];
     @apply bg-gray-200 border-gray-300 border;
     @apply p-sm rounded-2xl resize-y;
     @apply text-small text-gray-400;
@@ -9,14 +10,9 @@
       @apply border-green-100 outline-none bg-green-50
     }
 
-    [class*="has-error"] & {
+    &[aria-invalid = true] {
       @apply border-red-100 bg-red-50;
       @apply text-default-positive;
-
-      + * {
-        @apply px-sm;
-        @apply text-xsmall text-red-100;
-      }
     }
   }
 }
