@@ -1,10 +1,5 @@
 <template>
-  <fieldset
-    :class="[
-      $slots['error'] ? 'base-user-input--has-error' : null,
-      'base-user-input'
-    ]"
-  >
+  <fieldset class="base-user-input">
     <component
       autocomplete="one-time-code"
       class="base-user-field"
@@ -14,11 +9,11 @@
       :is="type"
       :type="input ?? null"
       :value="modelValue"
-      :aria-invalid="hasErrorSlot"
+      :aria-invalid="hasError"
       :required="required"
       @input="updateValue"
     />
-    <span v-if="hasErrorSlot" data-error id="field-error">
+    <span v-if="hasError" data-error id="field-error">
       <slot name="error"></slot>
     </span>
   </fieldset>
@@ -31,7 +26,7 @@ import { FieldAllowedArray, InputAllowedArray } from './definitions';
 const { id, type, input, required, modelValue } = defineProps({
   id: {
     type: String as PropType<String>,
-    default: 'field'
+    default: 'fieldID'
   },
 
   type: {
@@ -56,7 +51,7 @@ const { id, type, input, required, modelValue } = defineProps({
 });
 
 const getSlots = useSlots();
-const hasErrorSlot = computed(() => !!getSlots['error']);
+const hasError = computed(() => !!getSlots['error']);
 
 const updateEmit = defineEmits(['update:modelValue']);
 const updateValue = ({ target: { value } }: { target: { value: string } }) =>
