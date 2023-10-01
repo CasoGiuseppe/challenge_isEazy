@@ -27,8 +27,13 @@ export default {
         300: 'var(--ie-c-gray-300, #000)',
         200: 'var(--ie-c-gray-200, #000)'
       },
+      green: {
+        100: 'var(--ie-c-green-100)',
+        50: 'var(--ie-c-green-50)'
+      },
       red: {
-        100: 'var(--ie-c-red-100, #000)'
+        100: 'var(--ie-c-red-100, #000)',
+        50: 'var(--ie-c-red-50, #000)'
       },
       default: {
         positive: 'var(--ie-c-white, #fff)',
@@ -45,11 +50,18 @@ export default {
       bold: 'var(--ie-font-weight-bold, 700)' // 700
     },
     fontSize: {
-      base: ['var(--sm-font-size-medium)', { lineHeight: 'normal' }], // 22
-      lg: ['var(--sm-font-size-big)', { lineHeight: 'normal' }], // 16
-      xlg: ['var(--sm-font-size-xlarge)', { lineHeight: 'normal' }], // 14
-      xxlg: ['var(--sm-font-size-xxlarge)', { lineHeight: 'normal' }], // 12
-      xxxlg: ['var(--sm-font-size-xxxlarge)', { lineHeight: 'normal' }] // 10
+      base: ['var(--ie-font-size-medium)', { lineHeight: 'normal' }], // 22
+      lg: ['var(--ie-font-size-big)', { lineHeight: 'normal' }], // 16
+      small: ['var(--ie-font-size-small)', { lineHeight: 'normal' }], // 14
+      xsmall: ['var(--ie-font-size-xsmall)', { lineHeight: 'normal' }], // 12
+      xxsmall: ['var(--ie-font-size-xxsmall)', { lineHeight: 'normal' }] // 10
+    },
+    transitionProperty: {
+      colors: 'color, background-color, border-color, text-decoration-color, fill, stroke',
+      transform: 'transform opacity',
+      size: 'width, min-width, height, min-height',
+      spacing: 'margin, padding',
+      opacity: 'opacity'
     },
     extend: {}
   },

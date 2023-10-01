@@ -1,7 +1,5 @@
 .base-user-input {
   $baseuserinput: &;
 
-  &__field {
-    // @apply bg-gray-200 rounded-md border-gray-300 border;
-  }
+  @apply flex flex-col
 }

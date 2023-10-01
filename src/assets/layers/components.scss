@@ -1,5 +1,22 @@
 @layer components {
-  .user-field {
-    @apply bg-gray-200 rounded-md border-gray-300 border;
+  .base-user-field {
+    @apply bg-gray-200 border-gray-300 border;
+    @apply p-sm rounded-2xl resize-y;
+    @apply text-small text-gray-400;
+    @apply transition-colors duration-1000;
+
+    &:focus {
+      @apply border-green-100 outline-none bg-green-50
+    }
+
+    [class*="has-error"] & {
+      @apply border-red-100 bg-red-50;
+      @apply text-default-positive;
+
+      + * {
+        @apply px-sm;
+        @apply text-xsmall text-red-100;
+      }
+    }
   }
 }
