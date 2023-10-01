@@ -10,5 +10,16 @@
     {
       "path": "./tsconfig.vitest.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@ui/*": ["./src/app/ui/*"],
+      "@router/*": ["./src/app/router/*"],
+      "@shared/*": ["./src/app/shared/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@domains/*": ["./src/domains/*"],
+    },
+    "typeRoots": ["./node_modules/@types", "./src/app/shared/types"]
+  }
 }
