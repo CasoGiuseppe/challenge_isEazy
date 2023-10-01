@@ -1,19 +1,26 @@
 <template>
-  <component :is="type"></component>
+  <fieldset class="base-user-input">
+    <component :is="type" :type="input ?? null" class="user-field" />
+  </fieldset>
 </template>
 <script setup lang="ts">
-import type { PropType } from 'vue';
-import { FieldType } from '@shared/types';
+import type { PropType, computed } from 'vue';
+import { FieldType, InputType } from '@shared/types';
+import { Props, FieldAllowedArray, InputAllowedArray } from './definitions';
 
-export interface Props {
-  type?: FieldType
-}
 
-const { type } = defineProps({
+const { type, input } = defineProps({
   type: {
     type: String as PropType<FieldType>,
-    validator: (prop: FieldType) => [FieldType.INPUT, FieldType.TEXTAREA].includes(prop),
+    validator: (prop: FieldType) => FieldAllowedArray.includes(prop),
     default: FieldType.INPUT
+  },
+
+  input: {
+    type: String as PropType<InputType>,
+    validator: (prop: InputType) => InputAllowedArray.includes(prop),
   }
-})
+});
+
 </script>
+<style lang="scss" src="./BaseUserInput.scss" scoped />
