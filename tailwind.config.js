@@ -25,7 +25,9 @@ export default {
     },
     colors: {
       blue: {
-        400: 'var(--ie-c-blue-400, #000)'
+        400: 'var(--ie-c-blue-400, #000)',
+        300: 'var(--ie-c-blue-300, #000)',
+        200: 'var(--ie-c-blue-200, #000)'
       },
       gray: {
         400: 'var(--ie-c-gray-400, #000)',
@@ -33,8 +35,11 @@ export default {
         200: 'var(--ie-c-gray-200, #000)'
       },
       green: {
-        100: 'var(--ie-c-green-100)',
-        50: 'var(--ie-c-green-50)'
+        100: 'var(--ie-c-green-100, #000)',
+        50: 'var(--ie-c-green-50, #000)'
+      },
+      yellow: {
+        400: 'var(--ie-c-yellow-400, #000)'
       },
       red: {
         100: 'var(--ie-c-red-100, #000)',
@@ -63,7 +68,7 @@ export default {
     },
     transitionProperty: {
       colors:
-        'color, background-color, border-color, text-decoration-color, fill, stroke',
+        'color, background-color, border-color, text-decoration-color, fill, stroke, outline',
       transform: 'transform opacity',
       size: 'width, min-width, height, min-height',
       spacing: 'margin, padding',

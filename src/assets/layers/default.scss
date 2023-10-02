@@ -12,7 +12,7 @@
       }
 
       &:is(button) {
-        @apply cursor-pointer bg-none border-none
+        @apply cursor-pointer bg-none border-none outline-none;
       }
 
       &:is(ul, ol, li, h1, h2, h3, h4, p, form) {

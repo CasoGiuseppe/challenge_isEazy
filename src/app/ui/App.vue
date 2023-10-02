@@ -1,7 +1,7 @@
 <template>
   <header>
     isEazy App {{ message }}
-    <BaseInput :input="InputType.TEXT" v-model="message" />
+    <BaseInput :input="InputType.TEXT" v-model="message" /><br /><br />
     <BaseInput :input="InputType.TEXT" @reset="reset">
       <template #error> error </template>
     </BaseInput>
