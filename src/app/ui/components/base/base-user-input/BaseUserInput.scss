@@ -1,11 +1,19 @@
 .base-user-input {
   $baseuserinput: &;
 
-  @apply flex flex-wrap gap-sm;
+  @apply flex flex-wrap gap-sm items-center;
 
   [data-error] {
     @apply flex-[100%];
     @apply px-sm;
     @apply text-xsmall text-red-100;
+  }
+
+  &__reset {
+    @apply flex max-w-md;
+
+    > svg {
+      @apply w-[100%] text-gray-300
+    }
   }
 }

@@ -2,7 +2,7 @@
   <header>
     isEazy App {{ message }}
     <BaseInput :input="InputType.TEXT" v-model="message" />
-    <BaseInput :input="InputType.TEXT">
+    <BaseInput :input="InputType.TEXT" @reset="reset">
       <template #error> error </template>
     </BaseInput>
     <BaseInput :type="FieldType.TEXTAREA" />
@@ -14,4 +14,5 @@ import { FieldType, InputType } from '@shared/types';
 import { ref } from 'vue';
 
 const message = ref('hello');
+const reset = () => console.log('reset');
 </script>

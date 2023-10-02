@@ -9,6 +9,11 @@ export default {
       desktop: '75rem',
       'large-desktop': '92.5rem'
     },
+    maxWidth: ({ theme }) => ({
+      ...theme('spacing'),
+      full: '100%'
+    }),
+
     spacing: {
       none: '0px',
       xsm: '.25rem', // 4
@@ -57,7 +62,8 @@ export default {
       xxsmall: ['var(--ie-font-size-xxsmall)', { lineHeight: 'normal' }] // 10
     },
     transitionProperty: {
-      colors: 'color, background-color, border-color, text-decoration-color, fill, stroke',
+      colors:
+        'color, background-color, border-color, text-decoration-color, fill, stroke',
       transform: 'transform opacity',
       size: 'width, min-width, height, min-height',
       spacing: 'margin, padding',
@@ -66,4 +72,4 @@ export default {
     extend: {}
   },
   plugins: []
-}
+};

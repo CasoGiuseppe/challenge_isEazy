@@ -13,6 +13,15 @@
       :required="required"
       @input="updateValue"
     />
+    <button
+      v-if="hasError"
+      class="base-user-input__reset"
+      aria-label="Reset input state"
+      @click="resetInputValue"
+    >
+      <TrashIcon class="text-red" />
+    </button>
+
     <span v-if="hasError" data-error id="field-error">
       <slot name="error"></slot>
     </span>
@@ -22,6 +31,7 @@
 import { useSlots, type PropType, computed } from 'vue';
 import { FieldType, InputType } from '@shared/types';
 import { FieldAllowedArray, InputAllowedArray } from './definitions';
+import { TrashIcon } from '@heroicons/vue/24/solid';
 
 const { id, type, input, required, modelValue } = defineProps({
   id: {
@@ -53,8 +63,9 @@ const { id, type, input, required, modelValue } = defineProps({
 const getSlots = useSlots();
 const hasError = computed(() => !!getSlots['error']);
 
-const updateEmit = defineEmits(['update:modelValue']);
+const customEmits = defineEmits(['update:modelValue', 'reset']);
 const updateValue = ({ target: { value } }: { target: { value: string } }) =>
-  updateEmit('update:modelValue', value);
+  customEmits('update:modelValue', value);
+const resetInputValue = () => customEmits('reset');
 </script>
 <style lang="scss" src="./BaseUserInput.scss" scoped />
