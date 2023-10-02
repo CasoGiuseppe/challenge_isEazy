@@ -31,7 +31,7 @@
 </template>
 <script setup lang="ts">
 import { useSlots, type PropType, computed } from 'vue';
-import { FieldType, InputType } from '@shared/types';
+import { FieldType, InputType } from '@shared/types/definitions';
 import { FieldAllowedArray, InputAllowedArray } from './definitions';
 import { TrashIcon } from '@heroicons/vue/24/solid';
 
@@ -71,3 +71,4 @@ const updateValue = ({ target: { value } }: { target: { value: string } }) =>
 const resetInputValue = () => customEmits('reset');
 </script>
 <style lang="scss" src="./BaseUserInput.scss" scoped />
+@/app/shared/types/definitions

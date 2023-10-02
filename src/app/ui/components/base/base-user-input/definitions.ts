@@ -1,4 +1,4 @@
-import { FieldType, InputType } from '@shared/types'; 
+import { FieldType, InputType } from '@shared/types/definitions'; 
 export interface Props {
   id?: String,
   type?: FieldType,

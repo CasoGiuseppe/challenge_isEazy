@@ -10,7 +10,7 @@
 </template>
 <script setup lang="ts">
 import BaseInput from '@ui/components/base/base-user-input/BaseUserInput.vue';
-import { FieldType, InputType } from '@shared/types';
+import { FieldType, InputType } from '@shared/types/definitions';
 import { ref } from 'vue';
 
 const message = ref('hello');

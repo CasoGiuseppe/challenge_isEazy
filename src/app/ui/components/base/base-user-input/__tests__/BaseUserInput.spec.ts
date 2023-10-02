@@ -5,7 +5,7 @@ import {
   $newEmittedValue,
   $errorMessage
 } from './utilities';
-import { FieldType, InputType } from '@shared/types';
+import { FieldType, InputType } from '@shared/types/definitions';
 
 let $wrapper: any;
 describe('BaseUserInput component tests', () => {
