@@ -1,13 +1,13 @@
 @layer components {
   *[class*="user-field"] {
     @apply flex-[2];
-    @apply bg-gray-200 border-gray-300 border;
+    @apply bg-gray-200 border-gray-300 border outline-[transparent];
     @apply p-sm rounded-2xl resize-y;
     @apply text-small text-gray-400;
-    @apply transition-colors duration-1000;
+    @apply transition-colors duration-[600ms];
 
     &:focus {
-      @apply border-green-100 outline-none bg-green-50
+      @apply border-blue-300 bg-blue-200 outline-yellow-400 outline-offset-[3px];
     }
 
     &[aria-invalid = true] {
