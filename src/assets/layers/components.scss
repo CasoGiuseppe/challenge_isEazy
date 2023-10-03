@@ -1,5 +1,5 @@
 @layer components {
-  *[class*="user-field"] {
+  *[class*="ui-field"] {
     @apply flex-[2];
     @apply bg-gray-200 border-gray-300 border outline-[transparent];
     @apply p-sm rounded-2xl resize-y;
@@ -8,11 +8,24 @@
 
     &:focus {
       @apply border-blue-300 bg-blue-200 outline-yellow-400 outline-offset-[3px];
+
+      &::placeholder {
+        @apply text-blue-400
+      }
+    }
+
+    &::placeholder {
+      @apply text-gray-300;
+      @apply transition-colors duration-[600ms];
     }
 
     &[aria-invalid = true] {
       @apply border-red-100 bg-red-50;
       @apply text-default-positive;
+
+      &::placeholder {
+        @apply text-default-positive
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
-.base-user-input {
-  $baseuserinput: &;
+.base-ui-input {
+  $baseuiinput: &;
 
   @apply flex flex-wrap gap-sm items-center;
 

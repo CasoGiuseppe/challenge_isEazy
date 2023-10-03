@@ -1,15 +1,22 @@
 <template>
   <header>
     isEazy App {{ message }}
-    <BaseInput :input="InputType.TEXT" v-model="message" /><br /><br />
-    <BaseInput :input="InputType.TEXT" @reset="reset">
+    <BaseUiInput
+      :input="InputType.TEXT"
+      v-model="message"
+      placeholder="Write your message"
+    /><br />
+    <BaseUiInput :input="InputType.TEXT" @reset="reset">
       <template #error> error </template>
-    </BaseInput>
-    <BaseInput :type="FieldType.TEXTAREA" />
+    </BaseUiInput>
+    <br />
+    <BaseUiInput :type="FieldType.TEXTAREA" />
+    <br />
+    <hr />
   </header>
 </template>
 <script setup lang="ts">
-import BaseInput from '@ui/components/base/base-user-input/BaseUserInput.vue';
+import BaseUiInput from '@ui/components/base/base-ui-input/BaseUiInput.vue';
 import { FieldType, InputType } from '@shared/types/definitions';
 import { ref } from 'vue';
 

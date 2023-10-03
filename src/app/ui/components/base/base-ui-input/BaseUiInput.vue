@@ -1,9 +1,9 @@
 <template>
-  <fieldset class="base-user-input">
+  <fieldset class="base-ui-input">
     <component
       data-testID="user-input"
       autocomplete="one-time-code"
-      class="base-user-field"
+      class="base-ui-field"
       aria-describedby="field-error"
       pattern=".{4,}"
       :id="id"
@@ -12,12 +12,13 @@
       :value="modelValue"
       :aria-invalid="hasError"
       :required="required"
+      :placeholder="placeholder"
       @input="updateValue"
     />
     <button
       data-testID="user-reset"
       v-if="hasError"
-      class="base-user-input__reset"
+      class="base-ui-input__reset"
       aria-label="Reset input state"
       @click="resetInputValue"
     >
@@ -35,7 +36,7 @@ import { FieldType, InputType } from '@shared/types/definitions';
 import { FieldAllowedArray, InputAllowedArray } from './definitions';
 import { TrashIcon } from '@heroicons/vue/24/solid';
 
-const { id, type, input, required, modelValue } = defineProps({
+const { id, type, input, required, modelValue, placeholder } = defineProps({
   id: {
     type: String as PropType<String>,
     default: 'fieldID'
@@ -59,6 +60,11 @@ const { id, type, input, required, modelValue } = defineProps({
 
   modelValue: {
     type: String as PropType<String>
+  },
+
+  placeholder: {
+    type: String as PropType<String>,
+    default: 'Add here your text'
   }
 });
 
@@ -70,5 +76,4 @@ const updateValue = ({ target: { value } }: { target: { value: string } }) =>
   customEmits('update:modelValue', value);
 const resetInputValue = () => customEmits('reset');
 </script>
-<style lang="scss" src="./BaseUserInput.scss" scoped />
-@/app/shared/types/definitions
+<style lang="scss" src="./BaseUiInput.scss" scoped />

@@ -4,7 +4,8 @@ export interface Props {
   type?: FieldType,
   input?: InputType,
   required?: Boolean,
-  modelValue: String
+  modelValue: String,
+  placeholder: String,
 }
 
 export const FieldAllowedArray = [FieldType.INPUT, FieldType.TEXTAREA];
