@@ -1,21 +1,24 @@
 <template>
   <figure
+    data-testID="ui-picture"
+    :id="id"
     :class="[slotPicture ? null : 'base-ui-picture--no-picture', 'base-ui-picture']"
     :data-size="size"
     :aria-label="label"
   >
-    <slot
-      ><img
+    <slot>
+      <img
         src="https://api.dicebear.com/7.x/bottts/svg?seed=Harley"
         aria-description="Default image for user picture"
-    /></slot>
+      />
+    </slot>
   </figure>
 </template>
 <script setup lang="ts">
 import { type PropType, useSlots, computed } from 'vue';
 import { Sizes } from '@shared/types/definitions';
 
-const { id, size } = defineProps({
+const { id, size, label } = defineProps({
   id: {
     type: String as PropType<String>,
     default: 'pictureID'
