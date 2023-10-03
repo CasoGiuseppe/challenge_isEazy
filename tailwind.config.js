@@ -14,6 +14,9 @@ export default {
       full: '100%'
     }),
 
+    boxShadow: {
+      default: '0px 0px 5px 2px hsla(0,0%,70%, .5)'
+    },
     spacing: {
       none: '0px',
       xsm: '.25rem', // 4
@@ -25,6 +28,7 @@ export default {
     },
     colors: {
       blue: {
+        600: 'var(--ie-c-blue-600, #000)',
         400: 'var(--ie-c-blue-400, #000)',
         300: 'var(--ie-c-blue-300, #000)',
         200: 'var(--ie-c-blue-200, #000)'
@@ -46,6 +50,7 @@ export default {
         50: 'var(--ie-c-red-50, #000)'
       },
       default: {
+        none: 'transparent',
         positive: 'var(--ie-c-white, #fff)',
         negative: 'var(--ie-c-black, #000)'
       }
@@ -68,7 +73,7 @@ export default {
     },
     transitionProperty: {
       colors:
-        'color, background-color, border-color, text-decoration-color, fill, stroke, outline',
+        'color, background-color, border-color, text-decoration-color, fill, stroke, outline, box-shadow',
       transform: 'transform opacity',
       size: 'width, min-width, height, min-height',
       spacing: 'margin, padding',

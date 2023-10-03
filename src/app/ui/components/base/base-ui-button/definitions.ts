@@ -1,9 +1,8 @@
-import { ButtonType } from '@shared/types/definitions';
+import { ButtonType, ButtonVariants } from '@shared/types/definitions';
 
 export interface Props {
   id?: String,
   type?: ButtonType,
-  disabled: boolean
+  disabled: boolean,
+  variant: ButtonVariants
 }
-
-export const ButtonAllowedArray = [ButtonType.BUTTON, ButtonType.FILE, ButtonType.SUBMIT];

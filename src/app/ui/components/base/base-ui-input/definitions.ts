@@ -7,6 +7,3 @@ export interface Props {
   modelValue: String,
   placeholder: String,
 }
-
-export const FieldAllowedArray = [FieldType.INPUT, FieldType.TEXTAREA];
-export const InputAllowedArray = [InputType.TEXT]

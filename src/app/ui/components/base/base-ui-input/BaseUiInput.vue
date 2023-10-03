@@ -33,7 +33,6 @@
 <script setup lang="ts">
 import { useSlots, type PropType, computed } from 'vue';
 import { FieldType, InputType } from '@shared/types/definitions';
-import { FieldAllowedArray, InputAllowedArray } from './definitions';
 import { TrashIcon } from '@heroicons/vue/24/solid';
 
 const { id, type, input, required, modelValue, placeholder } = defineProps({
@@ -43,12 +42,12 @@ const { id, type, input, required, modelValue, placeholder } = defineProps({
   },
   type: {
     type: String as PropType<FieldType>,
-    validator: (prop: FieldType) => FieldAllowedArray.includes(prop),
+    validator: (prop: FieldType) => Object.values(FieldType).includes(prop),
     default: FieldType.INPUT
   },
   input: {
     type: String as PropType<InputType>,
-    validator: (prop: InputType) => InputAllowedArray.includes(prop)
+    validator: (prop: InputType) => Object.values(InputType).includes(prop)
   },
   required: {
     type: Boolean as PropType<Boolean>,

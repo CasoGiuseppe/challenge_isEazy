@@ -33,25 +33,45 @@
   // button, submit, file 
   *[class*="ui-button"] {
     @apply p-sm;
-    @apply bg-blue-400 text-default-positive;
+    @apply bg-blue-400 text-default-positive border border-solid border-[transparent];
     @apply rounded-md;
     @apply text-small;
     @apply transition-colors duration-[600ms];
 
     &:not(:disabled) {
-      &:focus {
-        @apply outline-yellow-400 outline-offset-[2px];
-      }
+      &:not([data-variant='is-empty']) {
+        &:focus {
+          @apply outline-yellow-400 outline-offset-[2px];
+        }
 
-      @screen desktop {
-        &:hover {
-          @apply bg-blue-200 text-blue-400;
+        @screen desktop {
+          &:hover {
+            @apply bg-blue-600 border-blue-200;
+            @apply shadow-default
+          }
         }
       }
     }
 
     &:disabled {
       @apply bg-gray-300 text-gray-200
+    }
+
+    &[data-variant='is-circle'] {
+      @apply aspect-square;
+      @apply rounded-[50%]
+    }
+
+    &[data-variant='is-empty'] {
+      @apply bg-default-none;
+
+      > svg {
+        @apply w-xlg text-blue-400;
+      }
+    }
+
+    > svg {
+      @apply w-md text-default-positive;
     }
   }
 }

@@ -16,3 +16,9 @@ export enum ButtonType {
   SUBMIT = 'submit',
   FILE = 'file',
 }
+
+export enum ButtonVariants {
+  DEFAULT = 'default',
+  CIRCLE = 'circle',
+  EMPTY = 'empty',
+}
