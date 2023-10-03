@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { mountComponent, $buttonLabel } from './utilities';
+import { mountComponent, $buttonLabel, $uiSubmitTrigger } from './utilities';
 import { Roles, Sizes } from '@shared/types/definitions';
 import { ButtonVariants } from '../definitions';
 
@@ -49,5 +49,12 @@ describe('BaseUiButton component tests', () => {
     it('Should prop variant have a correct content', async () => {
       expect($wrapper.props('variant')).toEqual(ButtonVariants.DEFAULT);
     })
+  })
+
+  describe('Test emits behaviours', () => {
+    it('Should emit "submit" could have a correct property on reset click', async () => {
+      $wrapper.find(`${$uiSubmitTrigger}`).trigger('click');
+      expect($wrapper.emitted()).toHaveProperty('submit');
+    });
   })
 })
