@@ -11,7 +11,7 @@
     <br />
     <hr />
     <br />
-    <BaseUiButton> ciccio </BaseUiButton>
+    <BaseUiButton @submit="submit"> ciccio </BaseUiButton>
     <br />
     <br />
     <BaseUiButton disabled> ciccio </BaseUiButton>
@@ -37,4 +37,5 @@ import { ref } from 'vue';
 
 const message = ref('hello');
 const reset = () => console.log('reset');
+const submit = () => console.log('submit');
 </script>

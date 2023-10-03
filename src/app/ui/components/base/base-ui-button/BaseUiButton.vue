@@ -11,6 +11,7 @@
     :disabled="disabled"
     :type="role"
     :title="label"
+    @click="sendSubmit"
   >
     <slot />
   </component>
@@ -48,5 +49,8 @@ const { id, role, disabled, variant } = defineProps({
     default: 'Click here to launch your custom action'
   }
 });
+
+const customEmits = defineEmits(['submit']);
+const sendSubmit = () => customEmits('submit');
 </script>
 <style lang="scss" src="./BaseUiButton.scss" scoped />
