@@ -50,6 +50,7 @@ export default {
         50: 'var(--ie-c-red-50, #000)'
       },
       default: {
+        current: 'currentColor',
         none: 'transparent',
         positive: 'var(--ie-c-white, #fff)',
         negative: 'var(--ie-c-black, #000)'

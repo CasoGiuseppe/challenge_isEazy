@@ -17,8 +17,9 @@ export enum ButtonType {
   FILE = 'file',
 }
 
-export enum ButtonVariants {
-  DEFAULT = 'default',
-  CIRCLE = 'circle',
-  EMPTY = 'empty',
+export enum Sizes {
+  MD = 'md',
+  LG = 'lg',
+  XLG = 'xlg',
+  XXLG = 'xxlg',
 }

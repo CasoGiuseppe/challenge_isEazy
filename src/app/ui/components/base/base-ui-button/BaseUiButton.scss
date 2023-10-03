@@ -26,20 +26,34 @@
     @apply bg-gray-300 text-gray-200
   }
 
-  &[data-variant='circle'] {
-    @apply aspect-square;
-    @apply rounded-[50%]
-  }
-
+  &[data-variant='circle'],
   &[data-variant='empty'] {
-    @apply bg-default-none;
+    @apply p-none flex items-center justify-center;
+    @apply aspect-square;
+    
+    &[data-size='lg'] {
+      @apply w-lg
+    }
+
+    &[data-size='xlg'] {
+      @apply w-xlg
+    }
+
+    &[data-size='xxlg'] {
+      @apply w-xxlg
+    }
 
     &::v-deep(svg) {
-      @apply w-xlg text-blue-400;
+      @apply w-[60%] text-default-current;
     }
   }
 
-  &::v-deep(svg) {
-    @apply w-md text-default-positive;
+  &[data-variant='circle'] {
+    @apply rounded-[50%];
+    @apply text-default-positive;
+  }
+
+  &[data-variant='empty'] {
+    @apply bg-default-none text-blue-400;
   }
 }
