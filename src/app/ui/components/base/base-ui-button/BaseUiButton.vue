@@ -1,7 +1,7 @@
 <template>
   <component
     data-testID="ui-button"
-    :data-variant="`is-${variant}`"
+    :data-variant="variant"
     class="base-ui-button"
     :id="id"
     :is="getIsType"

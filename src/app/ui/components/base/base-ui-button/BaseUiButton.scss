@@ -1,3 +1,45 @@
 .base-ui-button {
   $baseuibutton: &;
+
+  @apply p-sm;
+  @apply bg-blue-400 text-default-positive border border-solid border-[transparent];
+  @apply rounded-md;
+  @apply text-small;
+  @apply transition-colors duration-[600ms];
+
+  &:not(:disabled) {
+    &:not([data-variant='empty']) {
+      &:focus {
+        @apply outline-yellow-400 outline-offset-[2px];
+      }
+
+      @screen desktop {
+        &:hover {
+          @apply bg-blue-600 border-blue-200;
+          @apply shadow-default
+        }
+      }
+    }
+  }
+
+  &:disabled {
+    @apply bg-gray-300 text-gray-200
+  }
+
+  &[data-variant='circle'] {
+    @apply aspect-square;
+    @apply rounded-[50%]
+  }
+
+  &[data-variant='empty'] {
+    @apply bg-default-none;
+
+    &::v-deep(svg) {
+      @apply w-xlg text-blue-400;
+    }
+  }
+
+  &::v-deep(svg) {
+    @apply w-md text-default-positive;
+  }
 }

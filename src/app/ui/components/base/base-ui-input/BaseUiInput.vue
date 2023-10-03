@@ -1,10 +1,10 @@
 <template>
-  <fieldset class="base-ui-input">
+  <fieldset class="base-ui-field">
     <component
       data-testID="ui-input"
       autocomplete="one-time-code"
-      class="base-ui-field"
-      aria-describedby="field-error"
+      class="base-ui-field__user-input"
+      aria-describedby="ui-error"
       pattern=".{4,}"
       :id="id"
       :is="type"
@@ -18,14 +18,14 @@
     <button
       data-testID="ui-reset"
       v-if="hasError"
-      class="base-ui-input__reset"
+      class="base-ui-field__reset"
       aria-label="Reset input state"
       @click="resetInputValue"
     >
       <TrashIcon class="text-red" />
     </button>
 
-    <span v-if="hasError" data-error id="field-error">
+    <span v-if="hasError" class="base-ui-field__display-error" id="ui-error">
       <slot name="error"></slot>
     </span>
   </fieldset>

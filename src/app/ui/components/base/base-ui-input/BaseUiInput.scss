@@ -1,9 +1,39 @@
-.base-ui-input {
-  $baseuiinput: &;
+.base-ui-field {
+  $baseuifield: &;
 
   @apply flex flex-wrap gap-sm items-center;
 
-  [data-error] {
+  &__user-input {
+    @apply flex-[2];
+    @apply bg-gray-200 border-gray-300 border outline-[transparent];
+    @apply p-sm rounded-2xl resize-y;
+    @apply text-small text-gray-400;
+    @apply transition-colors duration-[600ms];
+
+    &:focus {
+      @apply border-blue-300 bg-blue-200 outline-yellow-400 outline-offset-[3px];
+
+      &::placeholder {
+        @apply text-blue-400
+      }
+    }
+
+    &::placeholder {
+      @apply text-gray-300 text-xsmall;
+      @apply transition-colors duration-[600ms];
+    }
+
+    &[aria-invalid = true] {
+      @apply border-red-100 bg-red-50;
+      @apply text-default-positive;
+
+      &::placeholder {
+        @apply text-default-positive
+      }
+    }
+  }
+
+  &__display-error {
     @apply flex-[100%];
     @apply px-sm;
     @apply text-xsmall text-red-100;
