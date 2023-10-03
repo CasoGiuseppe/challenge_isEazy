@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils'
-import BaseUserInput from '../BaseUiInput.vue';
+import BaseUiInput from '../BaseUiInput.vue';
 
 export const mountComponent = async (props?: Record<string, any>) => {
-  return  await mount(BaseUserInput, props)
+  return  await mount(BaseUiInput, props)
 }
 
 export const $initEmittedValue = 'init emitted value';

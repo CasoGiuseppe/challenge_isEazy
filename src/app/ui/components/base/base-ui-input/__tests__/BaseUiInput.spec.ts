@@ -10,7 +10,7 @@ import {
 import { Fields, Types } from '@shared/types/definitions';
 
 let $wrapper: any;
-describe('BaseUserInput component tests', () => {
+describe('BaseUiInput component tests', () => {
   describe('Test slost behaviours', () => {
     beforeEach(async () => {
       $wrapper = await mountComponent({
@@ -20,7 +20,7 @@ describe('BaseUserInput component tests', () => {
       });
     });
 
-    it('Should error slot have a correct text', () => {
+    it('Should error slot have a correct text content', () => {
       expect($wrapper.html()).toContain($errorMessage);
     });
 
