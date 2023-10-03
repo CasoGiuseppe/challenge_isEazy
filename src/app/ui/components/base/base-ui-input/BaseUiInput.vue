@@ -4,8 +4,10 @@
       data-testID="ui-input"
       autocomplete="one-time-code"
       class="base-ui-field__user-input"
-      aria-describedby="ui-error"
       pattern=".{4,}"
+      aria-describedby="ui-error"
+      :aria-placeholder="placeholder"
+      :aria-required="required"
       :id="id"
       :is="type"
       :type="input ?? null"
@@ -32,7 +34,7 @@
 </template>
 <script setup lang="ts">
 import { useSlots, type PropType, computed } from 'vue';
-import { FieldType, InputType } from '@shared/types/definitions';
+import { Fields, Types } from '@shared/types/definitions';
 import { TrashIcon } from '@heroicons/vue/24/solid';
 
 const { id, type, input, required, modelValue, placeholder } = defineProps({
@@ -41,13 +43,13 @@ const { id, type, input, required, modelValue, placeholder } = defineProps({
     default: 'fieldID'
   },
   type: {
-    type: String as PropType<FieldType>,
-    validator: (prop: FieldType) => Object.values(FieldType).includes(prop),
-    default: FieldType.INPUT
+    type: String as PropType<Fields>,
+    validator: (prop: Fields) => Object.values(Fields).includes(prop),
+    default: Fields.INPUT
   },
   input: {
-    type: String as PropType<InputType>,
-    validator: (prop: InputType) => Object.values(InputType).includes(prop)
+    type: String as PropType<Types>,
+    validator: (prop: Types) => Object.values(Types).includes(prop)
   },
   required: {
     type: Boolean as PropType<Boolean>,

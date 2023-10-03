@@ -1,31 +1,31 @@
 <template>
   <component
     data-testID="ui-button"
+    class="base-ui-button"
+    :aria-disabled="disabled"
     :data-variant="variant"
     :data-size="size"
-    class="base-ui-button"
     :id="id"
-    :is="getIsType"
-    :type="getInputType ? type : null"
+    :is="Types.BUTTON"
     :disabled="disabled"
+    :type="role"
   >
     <slot />
   </component>
 </template>
 <script setup lang="ts">
-import { computed, type PropType } from 'vue';
-import { ButtonType, Sizes } from '@shared/types/definitions';
+import { type PropType } from 'vue';
+import { Roles, Sizes, Types } from '@shared/types/definitions';
 import { ButtonVariants } from './definitions';
 
-const { id, type, disabled, variant } = defineProps({
+const { id, role, disabled, variant } = defineProps({
   id: {
     type: String as PropType<String>,
     default: 'buttonID'
   },
-  type: {
-    type: String as PropType<ButtonType>,
-    validator: (prop: ButtonType) => Object.values(ButtonType).includes(prop),
-    default: ButtonType.BUTTON
+  role: {
+    type: String as PropType<Roles>,
+    validator: (prop: Roles) => Object.values(Roles).includes(prop)
   },
   disabled: {
     type: Boolean as PropType<Boolean>,
@@ -33,8 +33,7 @@ const { id, type, disabled, variant } = defineProps({
   },
   variant: {
     type: String as PropType<ButtonVariants>,
-    validator: (prop: ButtonVariants) =>
-      Object.values(ButtonVariants).includes(prop),
+    validator: (prop: ButtonVariants) => Object.values(ButtonVariants).includes(prop),
     default: ButtonVariants.DEFAULT
   },
   size: {
@@ -42,11 +41,6 @@ const { id, type, disabled, variant } = defineProps({
     default: Sizes.LG,
     validator: (prop: Sizes) => Object.values(Sizes).includes(prop)
   }
-});
-
-const getInputType = computed(() => ['submit', 'file'].includes(type));
-const getIsType = computed(() => {
-  return getInputType.value ? 'input' : type;
 });
 </script>
 <style lang="scss" src="./BaseUiButton.scss" scoped />

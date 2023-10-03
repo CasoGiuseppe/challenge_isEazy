@@ -1,20 +1,22 @@
-export enum FieldType {
+export enum Fields {
   INPUT = 'input',
   TEXTAREA = 'textarea',
 }
 
-export enum InputType {
+export enum Types {
   EMAIL = 'email',
   FILE = 'file',
   PASSWORD = 'password',
   SUBMIT = 'submit',
-  TEXT = 'text'
+  TEXT = 'text',
+  BUTTON = 'button'
 }
 
-export enum ButtonType {
+export enum Roles {
   BUTTON = 'button',
   SUBMIT = 'submit',
   FILE = 'file',
+  RESET = 'reset'
 }
 
 export enum Sizes {

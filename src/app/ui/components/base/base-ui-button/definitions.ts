@@ -1,4 +1,4 @@
-import { ButtonType, Sizes } from '@shared/types/definitions';
+import { Roles, Sizes } from '@shared/types/definitions';
 
 export enum ButtonVariants {
   DEFAULT = 'default',
@@ -7,7 +7,7 @@ export enum ButtonVariants {
 }
 export interface Props {
   id?: String,
-  type?: ButtonType,
+  role?: Roles,
   disabled: boolean,
   variant: ButtonVariants,
   size?: Sizes

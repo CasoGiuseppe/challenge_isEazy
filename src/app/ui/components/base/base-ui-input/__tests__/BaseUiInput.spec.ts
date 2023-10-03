@@ -7,7 +7,7 @@ import {
   $uiInputTrigger,
   $uiResetTrigger
 } from './utilities';
-import { FieldType, InputType } from '@shared/types/definitions';
+import { Fields, Types } from '@shared/types/definitions';
 
 let $wrapper: any;
 describe('BaseUserInput component tests', () => {
@@ -81,8 +81,8 @@ describe('BaseUserInput component tests', () => {
       $wrapper = await mountComponent({
         props: {
           id: 'test',
-          type: FieldType.INPUT,
-          input: InputType.TEXT,
+          type: Fields.INPUT,
+          input: Types.TEXT,
           required: true,
           modelValue: $newEmittedValue
         }
@@ -98,11 +98,11 @@ describe('BaseUserInput component tests', () => {
     });
 
     it('Should prop type have a correct content', async () => {
-      expect($wrapper.props('type')).toEqual(FieldType.INPUT);
+      expect($wrapper.props('type')).toEqual(Fields.INPUT);
     })
 
     it('Should prop input have a correct content', async () => {
-      expect($wrapper.props('input')).toEqual(InputType.TEXT);
+      expect($wrapper.props('input')).toEqual(Types.TEXT);
     })
   });
 });
