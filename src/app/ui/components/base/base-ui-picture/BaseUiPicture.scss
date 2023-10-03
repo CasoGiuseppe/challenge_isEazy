@@ -4,12 +4,29 @@
   @apply flex justify-center items-center;
   @apply aspect-square overflow-hidden;
   @apply bg-gray-300 rounded-[50%];
-  
+
+  &--no-picture {
+    @apply text-red-100 text-xlg font-bold leading-none;
+    @apply bg-red-50;
+
+    &::before {
+      @apply content-['x'];
+    }
+  }
+
   &[data-size='xlg'] {
-    @apply w-xlg
+    @apply w-xlg;
+
+    &#{$baseuipicture}--no-picture {
+      @apply text-base;
+    }
   }
 
   &[data-size='xxlg'] {
     @apply w-xxlg
+  }
+
+  &::v-deep(img) {
+    @apply max-w-full
   }
 }

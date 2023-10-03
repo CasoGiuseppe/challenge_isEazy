@@ -12,14 +12,14 @@
       :is="type"
       :type="input ?? null"
       :value="modelValue"
-      :aria-invalid="hasError"
+      :aria-invalid="slotError"
       :required="required"
       :placeholder="placeholder"
       @input="updateValue"
     />
     <button
       data-testID="ui-reset"
-      v-if="hasError"
+      v-if="slotError"
       class="base-ui-field__reset"
       aria-label="Reset input state"
       @click="resetInputValue"
@@ -27,7 +27,7 @@
       <TrashIcon class="text-red" />
     </button>
 
-    <span v-if="hasError" class="base-ui-field__display-error" id="ui-error">
+    <span v-if="slotError" class="base-ui-field__display-error" id="ui-error">
       <slot name="error"></slot>
     </span>
   </fieldset>
@@ -64,8 +64,8 @@ const { id, type, input, required, modelValue, placeholder } = defineProps({
   }
 });
 
-const getSlots = useSlots();
-const hasError = computed(() => !!getSlots['error']);
+const slots = useSlots();
+const slotError = computed(() => !!slots['error']);
 
 const customEmits = defineEmits(['update:modelValue', 'reset']);
 const updateValue = ({ target: { value } }: { target: { value: string } }) =>

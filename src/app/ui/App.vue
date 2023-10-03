@@ -28,6 +28,7 @@
     <br />
     <br />
     <BaseUiPicture />
+    <BaseUiPicture :size="Sizes.XLG" />
   </header>
 </template>
 <script setup lang="ts">

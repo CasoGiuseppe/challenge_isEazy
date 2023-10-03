@@ -66,6 +66,7 @@ export default {
       bold: 'var(--ie-font-weight-bold, 700)' // 700
     },
     fontSize: {
+      xlg: ['var(--ie-font-size-xbig)', { lineHeight: 'normal' }], // 30
       base: ['var(--ie-font-size-medium)', { lineHeight: 'normal' }], // 22
       lg: ['var(--ie-font-size-big)', { lineHeight: 'normal' }], // 16
       small: ['var(--ie-font-size-small)', { lineHeight: 'normal' }], // 14
