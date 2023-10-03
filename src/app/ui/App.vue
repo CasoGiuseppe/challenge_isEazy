@@ -19,7 +19,11 @@
     <br />
     <BaseUiButton :variant="ButtonVariants.CIRCLE" :role="Roles.FILE"><PlayIcon /></BaseUiButton>
     <BaseUiButton :variant="ButtonVariants.CIRCLE" :size="Sizes.XLG"><PlayIcon /></BaseUiButton>
+    <BaseUiButton :variant="ButtonVariants.CIRCLE" :size="Sizes.XLG"><PlayIcon /></BaseUiButton>
     <BaseUiButton :variant="ButtonVariants.CIRCLE" :size="Sizes.XXLG"><PlayIcon /></BaseUiButton>
+    <BaseUiButton :variant="ButtonVariants.CIRCLE" :size="Sizes.XXLG" loading>
+      <PlayIcon />
+    </BaseUiButton>
     <br />
     <br />
     <BaseUiButton :variant="ButtonVariants.EMPTY" :size="Sizes.XXLG"

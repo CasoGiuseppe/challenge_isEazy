@@ -1,7 +1,7 @@
 .base-ui-button {
   $baseuibutton: &;
 
-  @apply p-sm;
+  @apply p-sm relative overflow-hidden;
   @apply bg-blue-400 text-default-positive border border-solid border-[transparent];
   @apply rounded-md;
   @apply text-small;
@@ -55,5 +55,13 @@
 
   &[data-variant='empty'] {
     @apply bg-default-none text-blue-400;
+  }
+
+  &--is-loading {
+    &::before {
+      @apply absolute w-full aspect-square;
+      @apply content-[''];
+      @apply bg-default-negative opacity-50
+    }
   }
 }
