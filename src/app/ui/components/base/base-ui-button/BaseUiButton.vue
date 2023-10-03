@@ -1,7 +1,7 @@
 <template>
   <component
     data-testID="ui-button"
-    :class="[loading ? 'base-ui-button--is-loading' : null, 'base-ui-button']"
+    :class="[loading ? 'is--loading' : null, 'base-ui-button']"
     :aria-disabled="disabled || loading"
     :aria-label="label"
     :data-variant="variant"

@@ -12,12 +12,16 @@
     <hr />
     <br />
     <BaseUiButton @submit="submit"> ciccio </BaseUiButton>
+    <BaseUiButton @submit="submit" loading> ciccio </BaseUiButton>
     <br />
     <br />
     <BaseUiButton disabled> ciccio </BaseUiButton>
     <br />
     <br />
     <BaseUiButton :variant="ButtonVariants.CIRCLE" :role="Roles.FILE"><PlayIcon /></BaseUiButton>
+    <BaseUiButton :variant="ButtonVariants.CIRCLE" :role="Roles.FILE" loading>
+      <PlayIcon />
+    </BaseUiButton>
     <BaseUiButton :variant="ButtonVariants.CIRCLE" :size="Sizes.XLG"><PlayIcon /></BaseUiButton>
     <BaseUiButton :variant="ButtonVariants.CIRCLE" :size="Sizes.XLG"><PlayIcon /></BaseUiButton>
     <BaseUiButton :variant="ButtonVariants.CIRCLE" :size="Sizes.XXLG"><PlayIcon /></BaseUiButton>
@@ -26,9 +30,12 @@
     </BaseUiButton>
     <br />
     <br />
-    <BaseUiButton :variant="ButtonVariants.EMPTY" :size="Sizes.XXLG"
-      ><CloudArrowDownIcon
-    /></BaseUiButton>
+    <BaseUiButton :variant="ButtonVariants.EMPTY" :size="Sizes.XXLG">
+      <CloudArrowDownIcon />
+    </BaseUiButton>
+    <BaseUiButton :variant="ButtonVariants.EMPTY" :size="Sizes.XXLG" loading>
+      <CloudArrowDownIcon />
+    </BaseUiButton>
   </header>
 </template>
 <script setup lang="ts">

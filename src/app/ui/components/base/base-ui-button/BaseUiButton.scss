@@ -56,12 +56,4 @@
   &[data-variant='empty'] {
     @apply bg-default-none text-blue-400;
   }
-
-  &--is-loading {
-    &::before {
-      @apply absolute w-full aspect-square;
-      @apply content-[''];
-      @apply bg-default-negative opacity-50
-    }
-  }
 }

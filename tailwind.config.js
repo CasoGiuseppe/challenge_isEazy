@@ -80,7 +80,17 @@ export default {
       spacing: 'margin, padding',
       opacity: 'opacity'
     },
-    extend: {}
+    extend: {
+      animation: {
+        spinner: 'spinner .6s linear infinite'
+      },
+      keyframes: {
+        spinner: {
+          '0%': { transform: 'translateX(-50%) translateY(-50%) rotate(0deg)' },
+          '100%': { transform: 'translateX(-50%) translateY(-50%) rotate(360deg)' }
+        }
+      }
+    }
   },
   plugins: []
 };
