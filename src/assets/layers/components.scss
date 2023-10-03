@@ -1,4 +1,5 @@
 @layer components {
+  // fields
   *[class*="ui-field"] {
     @apply flex-[2];
     @apply bg-gray-200 border-gray-300 border outline-[transparent];
@@ -15,7 +16,7 @@
     }
 
     &::placeholder {
-      @apply text-gray-300;
+      @apply text-gray-300 text-xsmall;
       @apply transition-colors duration-[600ms];
     }
 
@@ -26,6 +27,31 @@
       &::placeholder {
         @apply text-default-positive
       }
+    }
+  }
+
+  // button, submit, file 
+  *[class*="ui-button"] {
+    @apply p-sm;
+    @apply bg-blue-400 text-default-positive;
+    @apply rounded-md;
+    @apply text-small;
+    @apply transition-colors duration-[600ms];
+
+    &:not(:disabled) {
+      &:focus {
+        @apply outline-yellow-400 outline-offset-[2px];
+      }
+
+      @screen desktop {
+        &:hover {
+          @apply bg-blue-200 text-blue-400;
+        }
+      }
+    }
+
+    &:disabled {
+      @apply bg-gray-300 text-gray-200
     }
   }
 }

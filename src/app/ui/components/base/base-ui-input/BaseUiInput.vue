@@ -1,7 +1,7 @@
 <template>
   <fieldset class="base-ui-input">
     <component
-      data-testID="user-input"
+      data-testID="ui-input"
       autocomplete="one-time-code"
       class="base-ui-field"
       aria-describedby="field-error"
@@ -16,7 +16,7 @@
       @input="updateValue"
     />
     <button
-      data-testID="user-reset"
+      data-testID="ui-reset"
       v-if="hasError"
       class="base-ui-input__reset"
       aria-label="Reset input state"

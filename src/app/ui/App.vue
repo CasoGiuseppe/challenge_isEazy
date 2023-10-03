@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header style="padding: 10px">
     isEazy App {{ message }}
     <BaseUiInput
       :input="InputType.TEXT"
@@ -13,7 +13,10 @@
     <BaseUiInput :type="FieldType.TEXTAREA" />
     <br />
     <hr />
+    <br />
     <BaseUiButton> ciccio </BaseUiButton>
+    <br />
+    <BaseUiButton disabled> ciccio </BaseUiButton>
   </header>
 </template>
 <script setup lang="ts">

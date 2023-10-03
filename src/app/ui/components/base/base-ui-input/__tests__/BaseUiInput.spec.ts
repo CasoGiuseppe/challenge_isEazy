@@ -3,7 +3,9 @@ import {
   mountComponent,
   $initEmittedValue,
   $newEmittedValue,
-  $errorMessage
+  $errorMessage,
+  $uiInputTrigger,
+  $uiResetTrigger
 } from './utilities';
 import { FieldType, InputType } from '@shared/types/definitions';
 
@@ -23,7 +25,7 @@ describe('BaseUserInput component tests', () => {
     });
 
     it('Should reset button be visible', () => {
-      expect($wrapper.find('.base-user-input__reset')).not.toBeUndefined();
+      expect($wrapper.find(`${$uiResetTrigger}`)).not.toBeUndefined();
     });
   });
 
@@ -40,7 +42,7 @@ describe('BaseUserInput component tests', () => {
 
     it('Should model value have correct text on input change', async () => {
       await $wrapper
-        .find('[data-testID=user-input]')
+        .find(`${$uiInputTrigger}`)
         .setValue($newEmittedValue);
       expect($wrapper.props('modelValue')).toBe($newEmittedValue);
     });
@@ -56,17 +58,17 @@ describe('BaseUserInput component tests', () => {
     });
 
     it('Should emit "update:modelValue" could have a correct property on input change', async () => {
-      $wrapper.find('[data-testID=user-input]').setValue($newEmittedValue);
+      $wrapper.find(`${$uiInputTrigger}`).setValue($newEmittedValue);
       expect($wrapper.emitted()).toHaveProperty('update:modelValue');
     });
 
     it('Should emit "reset" could have a correct property on reset click', async () => {
-      $wrapper.find('[data-testID=user-reset]').trigger('click');
+      $wrapper.find('[data-testID=ui-reset]').trigger('click');
       expect($wrapper.emitted()).toHaveProperty('reset');
     });
 
     it('Should emit "update:modelValue" was detected ad have correct value', async () => {
-      $wrapper.find('[data-testID=user-input]').setValue($newEmittedValue);
+      $wrapper.find(`${$uiInputTrigger}`).setValue($newEmittedValue);
       expect($wrapper.emitted('update:modelValue')).toHaveLength(1);
       expect($wrapper.emitted('update:modelValue')[0][0]).toEqual(
         $newEmittedValue

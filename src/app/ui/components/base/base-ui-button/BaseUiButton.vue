@@ -1,5 +1,12 @@
 <template>
-  <component :id="id" :is="getIsType" :type="getInputType ? type : null">
+  <component
+    data-testID="ui-button"
+    class="base-ui-button"
+    :id="id"
+    :is="getIsType"
+    :type="getInputType ? type : null"
+    :disabled="disabled"
+  >
     <slot />
   </component>
 </template>
@@ -8,7 +15,7 @@ import { computed, useSlots, type PropType } from 'vue';
 import { ButtonType } from '@shared/types/definitions';
 import { ButtonAllowedArray } from './definitions';
 
-const { id, type } = defineProps({
+const { id, type, disabled } = defineProps({
   id: {
     type: String as PropType<String>,
     default: 'buttonID'
@@ -18,6 +25,11 @@ const { id, type } = defineProps({
     type: String as PropType<ButtonType>,
     validator: (prop: ButtonType) => ButtonAllowedArray.includes(prop),
     default: ButtonType.BUTTON
+  },
+
+  disabled: {
+    type: Boolean as PropType<Boolean>,
+    default: false
   }
 });
 
