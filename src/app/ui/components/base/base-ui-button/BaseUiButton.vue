@@ -3,12 +3,14 @@
     data-testID="ui-button"
     class="base-ui-button"
     :aria-disabled="disabled"
+    :aria-label="label"
     :data-variant="variant"
     :data-size="size"
     :id="id"
     :is="Types.BUTTON"
     :disabled="disabled"
     :type="role"
+    :title="label"
   >
     <slot />
   </component>
@@ -40,6 +42,10 @@ const { id, role, disabled, variant } = defineProps({
     type: String as PropType<Sizes>,
     default: Sizes.LG,
     validator: (prop: Sizes) => Object.values(Sizes).includes(prop)
+  },
+  label: {
+    type: String as PropType<String>,
+    default: 'Click here to launch your custom action'
   }
 });
 </script>

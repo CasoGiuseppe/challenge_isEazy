@@ -10,5 +10,6 @@ export interface Props {
   role?: Roles,
   disabled: boolean,
   variant: ButtonVariants,
-  size?: Sizes
+  size?: Sizes,
+  label?: String,
 }
