@@ -1,14 +1,14 @@
 <template>
   <component
     data-testID="ui-button"
-    class="base-ui-button"
-    :aria-disabled="disabled"
+    :class="[loading ? 'is--loading' : null, 'base-ui-button']"
+    :aria-disabled="disabled || loading"
     :aria-label="label"
     :data-variant="variant"
     :data-size="size"
     :id="id"
     :is="Types.BUTTON"
-    :disabled="disabled"
+    :disabled="disabled || loading"
     :type="role"
     :title="label"
     @click="sendSubmit"
@@ -21,7 +21,7 @@ import { type PropType } from 'vue';
 import { Roles, Sizes, Types } from '@shared/types/definitions';
 import { ButtonVariants } from './definitions';
 
-const { id, role, disabled, variant, size, label } = defineProps({
+const { id, role, disabled, variant, size, label, loading } = defineProps({
   id: {
     type: String as PropType<String>,
     default: 'buttonID'
@@ -47,6 +47,10 @@ const { id, role, disabled, variant, size, label } = defineProps({
   label: {
     type: String as PropType<String>,
     default: 'Click here to launch your custom action'
+  },
+  loading: {
+    type: Boolean as PropType<Boolean>,
+    default: false
   }
 });
 

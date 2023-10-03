@@ -12,4 +12,5 @@ export interface Props {
   variant: ButtonVariants,
   size?: Sizes,
   label?: String,
+  loading?: String
 }

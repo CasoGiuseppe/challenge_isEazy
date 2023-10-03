@@ -1,3 +1,25 @@
 @layer components {
+  .is--loading {
+    @apply flex justify-center;
 
+    &::before,
+    &::after {
+      @apply absolute;
+      @apply content-[''];
+    }
+
+    &::before {
+      @apply w-full h-full;
+      @apply bg-default-negative opacity-50;
+      inset: 0;
+    }
+
+    &::after {
+      @apply h-[35%] aspect-square;
+      @apply border-2 border-solid border-default-positive rounded-[50%];
+      @apply border-b-default-none;
+      @apply animate-spinner;
+      inset: 50%;
+    }
+  }
 }

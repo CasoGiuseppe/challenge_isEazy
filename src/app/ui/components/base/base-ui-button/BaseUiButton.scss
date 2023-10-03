@@ -1,7 +1,7 @@
 .base-ui-button {
   $baseuibutton: &;
 
-  @apply p-sm;
+  @apply p-sm relative overflow-hidden;
   @apply bg-blue-400 text-default-positive border border-solid border-[transparent];
   @apply rounded-md;
   @apply text-small;

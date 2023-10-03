@@ -1,7 +1,7 @@
 @layer base {
   html,
   body {
-    @apply min-h-full m-none p-none bg-default-positive font-default overflow-hidden;
+    @apply min-h-full m-none p-none bg-default-positive font-default;
 
     * {
       @apply box-border;
