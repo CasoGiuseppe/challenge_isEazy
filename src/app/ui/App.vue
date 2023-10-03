@@ -29,6 +29,18 @@
     <br />
     <BaseUiPicture />
     <BaseUiPicture :size="Sizes.XLG" />
+    <BaseUiPicture>
+      <img
+        src="https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles"
+        aria-description="Picture image for Name Surname"
+      />
+    </BaseUiPicture>
+    <BaseUiPicture :size="Sizes.XLG">
+      <img
+        src="https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles"
+        aria-description="Picture image for Name Surname"
+      />
+    </BaseUiPicture>
   </header>
 </template>
 <script setup lang="ts">

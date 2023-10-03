@@ -4,7 +4,11 @@
     :data-size="size"
     :aria-label="label"
   >
-    <slot />
+    <slot
+      ><img
+        src="https://api.dicebear.com/7.x/bottts/svg?seed=Harley"
+        aria-description="Default image for user picture"
+    /></slot>
   </figure>
 </template>
 <script setup lang="ts">

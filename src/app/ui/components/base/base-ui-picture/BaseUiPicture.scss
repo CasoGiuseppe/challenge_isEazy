@@ -3,14 +3,18 @@
   
   @apply flex justify-center items-center;
   @apply aspect-square overflow-hidden;
-  @apply bg-gray-300 rounded-[50%];
+  @apply bg-green-100 rounded-[50%];
+
+  &::v-deep(img) {
+    @apply max-w-full;
+  }
 
   &--no-picture {
     @apply text-red-100 text-xlg font-bold leading-none;
     @apply bg-red-50;
 
-    &::before {
-      @apply content-['x'];
+    &::v-deep(img) {
+      @apply max-w-[65%];
     }
   }
 
@@ -24,9 +28,5 @@
 
   &[data-size='xxlg'] {
     @apply w-xxlg
-  }
-
-  &::v-deep(img) {
-    @apply max-w-full
   }
 }
