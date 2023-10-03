@@ -41,27 +41,22 @@ const { id, type, input, required, modelValue, placeholder } = defineProps({
     type: String as PropType<String>,
     default: 'fieldID'
   },
-
   type: {
     type: String as PropType<FieldType>,
     validator: (prop: FieldType) => FieldAllowedArray.includes(prop),
     default: FieldType.INPUT
   },
-
   input: {
     type: String as PropType<InputType>,
     validator: (prop: InputType) => InputAllowedArray.includes(prop)
   },
-
   required: {
     type: Boolean as PropType<Boolean>,
     default: true
   },
-
   modelValue: {
     type: String as PropType<String>
   },
-
   placeholder: {
     type: String as PropType<String>,
     default: 'Add here your text'

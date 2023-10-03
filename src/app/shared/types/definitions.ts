@@ -10,3 +10,9 @@ export enum InputType {
   SUBMIT = 'submit',
   TEXT = 'text'
 }
+
+export enum ButtonType {
+  BUTTON = 'button',
+  SUBMIT = 'submit',
+  FILE = 'file',
+}

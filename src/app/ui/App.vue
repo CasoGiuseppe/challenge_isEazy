@@ -13,10 +13,12 @@
     <BaseUiInput :type="FieldType.TEXTAREA" />
     <br />
     <hr />
+    <BaseUiButton> ciccio </BaseUiButton>
   </header>
 </template>
 <script setup lang="ts">
 import BaseUiInput from '@ui/components/base/base-ui-input/BaseUiInput.vue';
+import BaseUiButton from '@ui/components/base/base-ui-button/BaseUiButton.vue';
 import { FieldType, InputType } from '@shared/types/definitions';
 import { ref } from 'vue';
 
