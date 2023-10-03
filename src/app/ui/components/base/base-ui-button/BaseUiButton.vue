@@ -21,7 +21,7 @@ import { type PropType } from 'vue';
 import { Roles, Sizes, Types } from '@shared/types/definitions';
 import { ButtonVariants } from './definitions';
 
-const { id, role, disabled, variant } = defineProps({
+const { id, role, disabled, variant, size, label } = defineProps({
   id: {
     type: String as PropType<String>,
     default: 'buttonID'

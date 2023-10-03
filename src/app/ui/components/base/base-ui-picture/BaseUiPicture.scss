@@ -1,0 +1,15 @@
+.base-ui-picture {
+  $baseuipicture: &;
+  
+  @apply flex justify-center items-center;
+  @apply aspect-square overflow-hidden;
+  @apply bg-gray-300 rounded-[50%];
+  
+  &[data-size='xlg'] {
+    @apply w-xlg
+  }
+
+  &[data-size='xxlg'] {
+    @apply w-xxlg
+  }
+}

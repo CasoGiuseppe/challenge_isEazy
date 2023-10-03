@@ -25,11 +25,16 @@
     <BaseUiButton :variant="ButtonVariants.EMPTY" :size="Sizes.XXLG"
       ><CloudArrowDownIcon
     /></BaseUiButton>
+    <br />
+    <br />
+    <BaseUiPicture />
   </header>
 </template>
 <script setup lang="ts">
 import BaseUiInput from '@ui/components/base/base-ui-input/BaseUiInput.vue';
 import BaseUiButton from '@ui/components/base/base-ui-button/BaseUiButton.vue';
+import BaseUiPicture from '@ui/components/base/base-ui-picture/BaseUiPicture.vue';
+
 import { PlayIcon, CloudArrowDownIcon } from '@heroicons/vue/24/solid';
 import { Fields, Types, Sizes, Roles } from '@shared/types/definitions';
 import { ButtonVariants } from '@ui/components/base/base-ui-button/definitions';
