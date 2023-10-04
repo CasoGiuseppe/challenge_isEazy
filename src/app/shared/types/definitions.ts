@@ -25,3 +25,8 @@ export enum Sizes {
   XLG = 'xlg',
   XXLG = 'xxlg',
 }
+
+export enum Positions {
+  LEFT = 'left',
+  RIGHT = 'right',
+}

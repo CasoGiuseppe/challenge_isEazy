@@ -1,0 +1,8 @@
+.user-message {
+  $usemessage: &;
+  @apply flex gap-sm items-center;
+
+  &__text {
+    @apply text-small
+  }
+}

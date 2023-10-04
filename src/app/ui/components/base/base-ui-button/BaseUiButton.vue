@@ -1,12 +1,12 @@
 <template>
   <component
     data-testID="ui-button"
+    :id="id"
     :class="[loading ? 'is--loading' : null, 'base-ui-button']"
     :aria-disabled="disabled || loading"
     :aria-label="label"
     :data-variant="variant"
     :data-size="size"
-    :id="id"
     :is="Types.BUTTON"
     :disabled="disabled || loading"
     :type="role"
