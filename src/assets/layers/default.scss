@@ -8,7 +8,7 @@
 
       &::after,
       &::before {
-        @apply box-border
+        @apply box-border;
       }
 
       &:is(button) {
@@ -16,7 +16,7 @@
       }
 
       &:is(ul, ol, li, h1, h2, h3, h4, p, form) {
-        @apply m-none p-none list-none
+        @apply m-none p-none list-none;
       }
     }
   }

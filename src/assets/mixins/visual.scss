@@ -18,11 +18,7 @@
   }
 
   &::after {
-    @if $position == 'right' {
-      border-right-color: #{$color};
-    } @else {
-      border-left-color: #{$color};
-    }
+    border-#{$position}-color: #{$color};
     border-width: #{$width};
     margin-top: #{ calc($width * -1 )};
   }

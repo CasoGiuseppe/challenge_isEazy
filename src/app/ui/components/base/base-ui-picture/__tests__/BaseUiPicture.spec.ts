@@ -23,6 +23,6 @@ describe('BaseUiPicture component tests', () => {
 
     it('Should prop size have a correct content', async () => {
       expect($wrapper.props('size')).toEqual(Sizes.XLG);
-    })
+    });
   });
 });

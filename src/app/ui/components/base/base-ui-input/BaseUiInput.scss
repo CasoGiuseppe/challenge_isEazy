@@ -14,7 +14,7 @@
       @apply border-blue-300 bg-blue-200 outline-yellow-400 outline-offset-[3px];
 
       &::placeholder {
-        @apply text-blue-400
+        @apply text-blue-400;
       }
     }
 
@@ -23,12 +23,12 @@
       @apply transition-colors duration-[600ms];
     }
 
-    &[aria-invalid = true] {
+    &[aria-invalid='true'] {
       @apply border-red-100 bg-red-50;
       @apply text-default-positive;
 
       &::placeholder {
-        @apply text-default-positive
+        @apply text-default-positive;
       }
     }
   }
@@ -43,7 +43,7 @@
     @apply flex max-w-md;
 
     > svg {
-      @apply w-[100%] text-gray-300
+      @apply w-[100%] text-gray-300;
     }
   }
 }

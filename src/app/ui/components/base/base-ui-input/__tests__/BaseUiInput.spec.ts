@@ -34,16 +34,13 @@ describe('BaseUiInput component tests', () => {
       $wrapper = await mountComponent({
         props: {
           modelValue: $initEmittedValue,
-          'onUpdate:modelValue': (e: any) =>
-            $wrapper.setProps({ modelValue: e })
+          'onUpdate:modelValue': (e: any) => $wrapper.setProps({ modelValue: e })
         }
       });
     });
 
     it('Should model value have correct text on input change', async () => {
-      await $wrapper
-        .find(`${$uiInputTrigger}`)
-        .setValue($newEmittedValue);
+      await $wrapper.find(`${$uiInputTrigger}`).setValue($newEmittedValue);
       expect($wrapper.props('modelValue')).toBe($newEmittedValue);
     });
   });
@@ -70,9 +67,7 @@ describe('BaseUiInput component tests', () => {
     it('Should emit "update:modelValue" was detected ad have correct value', async () => {
       $wrapper.find(`${$uiInputTrigger}`).setValue($newEmittedValue);
       expect($wrapper.emitted('update:modelValue')).toHaveLength(1);
-      expect($wrapper.emitted('update:modelValue')[0][0]).toEqual(
-        $newEmittedValue
-      );
+      expect($wrapper.emitted('update:modelValue')[0][0]).toEqual($newEmittedValue);
     });
   });
 
@@ -99,10 +94,10 @@ describe('BaseUiInput component tests', () => {
 
     it('Should prop type have a correct content', async () => {
       expect($wrapper.props('type')).toEqual(Fields.INPUT);
-    })
+    });
 
     it('Should prop input have a correct content', async () => {
       expect($wrapper.props('input')).toEqual(Types.TEXT);
-    })
+    });
   });
 });

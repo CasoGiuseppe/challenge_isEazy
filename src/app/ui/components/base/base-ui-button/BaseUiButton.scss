@@ -16,31 +16,31 @@
       @screen desktop {
         &:hover {
           @apply bg-blue-600 border-blue-200;
-          @apply shadow-default
+          @apply shadow-default;
         }
       }
     }
   }
 
   &:disabled {
-    @apply bg-gray-300 text-gray-200
+    @apply bg-gray-300 text-gray-200;
   }
 
   &[data-variant='circle'],
   &[data-variant='empty'] {
     @apply p-none flex items-center justify-center;
     @apply aspect-square;
-    
+
     &[data-size='lg'] {
-      @apply w-lg
+      @apply w-lg;
     }
 
     &[data-size='xlg'] {
-      @apply w-xlg
+      @apply w-xlg;
     }
 
     &[data-size='xxlg'] {
-      @apply w-xxlg
+      @apply w-xxlg;
     }
 
     &::v-deep(svg) {

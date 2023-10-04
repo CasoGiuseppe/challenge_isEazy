@@ -1,6 +1,6 @@
 export enum Fields {
   INPUT = 'input',
-  TEXTAREA = 'textarea',
+  TEXTAREA = 'textarea'
 }
 
 export enum Types {
@@ -23,10 +23,10 @@ export enum Sizes {
   MD = 'md',
   LG = 'lg',
   XLG = 'xlg',
-  XXLG = 'xxlg',
+  XXLG = 'xxlg'
 }
 
 export enum Messages {
   SEND = 'send',
-  RECEIVE = 'receive',
+  RECEIVE = 'receive'
 }

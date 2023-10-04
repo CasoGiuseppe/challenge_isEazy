@@ -3,14 +3,14 @@ import { Roles, Sizes } from '@shared/types/definitions';
 export enum ButtonVariants {
   DEFAULT = 'default',
   CIRCLE = 'circle',
-  EMPTY = 'empty',
+  EMPTY = 'empty'
 }
 export interface Props {
-  id?: String,
-  role?: Roles,
-  disabled: boolean,
-  variant: ButtonVariants,
-  size?: Sizes,
-  label?: String,
-  loading?: String
+  id?: String;
+  role?: Roles;
+  disabled: boolean;
+  variant: ButtonVariants;
+  size?: Sizes;
+  label?: String;
+  loading?: String;
 }

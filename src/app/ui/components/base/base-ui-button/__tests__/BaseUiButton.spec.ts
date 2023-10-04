@@ -17,7 +17,7 @@ describe('BaseUiButton component tests', () => {
     it('Should default slot have a correct label content', () => {
       expect($wrapper.html()).toContain($buttonLabel);
     });
-  })
+  });
 
   describe('Test props behaviours', () => {
     beforeEach(async () => {
@@ -44,17 +44,17 @@ describe('BaseUiButton component tests', () => {
 
     it('Should prop role have a correct content', async () => {
       expect($wrapper.props('role')).toEqual(Roles.BUTTON);
-    })
+    });
 
     it('Should prop variant have a correct content', async () => {
       expect($wrapper.props('variant')).toEqual(ButtonVariants.DEFAULT);
-    })
-  })
+    });
+  });
 
   describe('Test emits behaviours', () => {
     it('Should emit "submit" could have a correct property on reset click', async () => {
       $wrapper.find(`${$uiSubmitTrigger}`).trigger('click');
       expect($wrapper.emitted()).toHaveProperty('submit');
     });
-  })
-})
+  });
+});
