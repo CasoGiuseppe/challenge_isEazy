@@ -1,8 +1,18 @@
 .user-message {
   $usemessage: &;
-  @apply flex gap-sm items-center;
+  @apply flex gap-sm items-center flex-row-reverse;
+
+  &[data-type='receive'] {
+    @apply flex-row
+  }
 
   &__text {
-    @apply text-small
+    @apply p-md;
+    @apply text-small text-default-positive;
+    @apply bg-blue-400 ;
+    
+    [data-type='receive'] & {
+      @apply bg-gray-200 text-gray-400;
+    }
   }
 }

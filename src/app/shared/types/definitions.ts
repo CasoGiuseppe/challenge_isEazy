@@ -26,7 +26,7 @@ export enum Sizes {
   XXLG = 'xxlg',
 }
 
-export enum Positions {
-  LEFT = 'left',
-  RIGHT = 'right',
+export enum Messages {
+  SEND = 'send',
+  RECEIVE = 'receive',
 }

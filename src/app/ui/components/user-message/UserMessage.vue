@@ -2,7 +2,7 @@
   <article
     data-testID="ui-message"
     :id="id"
-    :data-type="`display-${type}`"
+    :data-type="type"
     class="user-message"
     aria-describedby="message"
   >
@@ -12,7 +12,7 @@
 </template>
 <script setup lang="ts">
 import { type PropType } from 'vue';
-import { Positions } from '@shared/types/definitions';
+import { Messages } from '@shared/types/definitions';
 
 const { id, type } = defineProps({
   id: {
@@ -20,9 +20,8 @@ const { id, type } = defineProps({
     default: 'messageID'
   },
   type: {
-    type: String as PropType<Positions>,
-    validator: (prop: Positions) => Object.values(Positions).includes(prop),
-    default: Positions.LEFT
+    type: String as PropType<Messages>,
+    validator: (prop: Messages) => Object.values(Messages).includes(prop)
   }
 });
 </script>
