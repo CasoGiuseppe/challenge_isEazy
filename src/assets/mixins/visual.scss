@@ -1,4 +1,8 @@
-@mixin hasArrow($position: 'left', $color: var(--ie-c-black), $width: var(--ie-size-sm)) {
+@mixin printArrow(
+  $position: 'left',
+  $color: var(--ie-c-black),
+  $width: var(--ie-size-sm)
+) {
   @apply relative;
 
   &::after,

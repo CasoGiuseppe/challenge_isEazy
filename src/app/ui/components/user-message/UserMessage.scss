@@ -13,7 +13,7 @@
     @apply bg-blue-400 rounded-sm;
     
     [data-type='send'] & {
-      @include hasArrow(
+      @include printArrow(
         $position: 'left',
         $color: var(--ie-c-blue-400),
         $width: var(--ie-size-xsm)
@@ -21,7 +21,7 @@
     }
 
     [data-type='receive'] & {
-      @include hasArrow(
+      @include printArrow(
         $position: 'right',
         $color: var(--ie-c-gray-200),
         $width: var(--ie-size-xsm)
