@@ -27,7 +27,8 @@ const { id, type } = defineProps({
   },
   type: {
     type: String as PropType<Messages>,
-    validator: (prop: Messages) => Object.values(Messages).includes(prop)
+    validator: (prop: Messages) => Object.values(Messages).includes(prop),
+    default: Messages.SEND
   }
 });
 </script>

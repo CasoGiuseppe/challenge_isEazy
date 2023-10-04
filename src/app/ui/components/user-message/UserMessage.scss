@@ -4,16 +4,28 @@
   @apply flex gap-sm items-center flex-row-reverse;
 
   &[data-type='receive'] {
-    @apply flex-row
+    @apply flex-row;
   }
 
   &__text {
-    @include hasArrow();
-    @apply p-md flex gap-xsm flex-col relative;
+    @apply p-md flex gap-xsm flex-col;
     @apply text-small text-default-positive;
     @apply bg-blue-400 rounded-sm;
     
+    [data-type='send'] & {
+      @include hasArrow(
+        $position: 'left',
+        $color: var(--ie-c-blue-400),
+        $width: var(--ie-size-xsm)
+      );
+    }
+
     [data-type='receive'] & {
+      @include hasArrow(
+        $position: 'right',
+        $color: var(--ie-c-gray-200),
+        $width: var(--ie-size-xsm)
+      );
       @apply bg-gray-200 text-gray-400;
     }
   }

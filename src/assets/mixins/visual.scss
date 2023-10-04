@@ -1,26 +1,25 @@
-@mixin hasArrow($position: 'left', $color: var(--ie-c-black)) {
+@mixin hasArrow($position: 'left', $color: var(--ie-c-black), $width: var(--ie-size-sm)) {
   @apply relative;
 
   &::after,
   &::before {
-    right: 100%;
-    top: 50%;
-    border: solid transparent;
-    content: "";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none; 
+    @if $position == 'right' {
+      @apply right-[100%]
+    } @else {
+      @apply left-[100%]
+    }
+    @apply top-[50%] h-none w-none absolute;
+    @apply content-[''] pointer-events-none;
+    @apply border-solid border-default-none;
   }
 
   &::after {
-    border-right-color: #{$color};
-    border-width: 30px;
-    margin-top: -30px;
-  }
-
-  &::before {
-    border-width: 36px;
-    margin-top: -36px;
+    @if $position == 'right' {
+      border-right-color: #{$color};
+    } @else {
+      border-left-color: #{$color};
+    }
+    border-width: #{$width};
+    margin-top: #{ calc($width * -1 )};
   }
 }
