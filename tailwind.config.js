@@ -18,13 +18,13 @@ export default {
       default: '0px 0px 5px 2px hsla(0,0%,70%, .5)'
     },
     spacing: {
-      none: '0px',
-      xsm: '.25rem', // 4
-      sm: '.5rem', // 8
-      md: '1rem', // 16
-      lg: '1.5rem', // 24
-      xlg: '2rem', // 32
-      xxlg: '4rem' // 64
+      none: 'var(--ie-size-none, 1rem)',
+      xsm: 'var(--ie-size-xsm, 1rem)', // 4
+      sm: 'var(--ie-size-sm, 1rem)', // 8
+      md: 'var(--ie-size-md, 1rem)', // 16
+      lg: 'var(--ie-size-lg, 1rem)', // 24
+      xlg: 'var(--ie-size-xlg, 1rem)', // 32
+      xxlg: 'var(--ie-size-xxlg, 1rem)' // 64
     },
     colors: {
       blue: {

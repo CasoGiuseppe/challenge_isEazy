@@ -9,6 +9,8 @@
         />
       </BaseUiPicture>
     </template>
+    <template #message>message message message message message message message message</template>
+    <template #date>30 dic 2020 / 08:00</template>
   </UserMessage>
   <br />
   <UserMessage :type="Messages.RECEIVE">
@@ -20,6 +22,7 @@
         />
       </BaseUiPicture>
     </template>
+    <template #date>30 dic 2020 / 08:00</template>
   </UserMessage>
 </template>
 <script setup lang="ts">

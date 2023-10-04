@@ -1,5 +1,6 @@
 .user-message {
   $usemessage: &;
+
   @apply flex gap-sm items-center flex-row-reverse;
 
   &[data-type='receive'] {
@@ -7,12 +8,17 @@
   }
 
   &__text {
-    @apply p-md;
+    @include hasArrow();
+    @apply p-md flex gap-xsm flex-col relative;
     @apply text-small text-default-positive;
-    @apply bg-blue-400 ;
+    @apply bg-blue-400 rounded-sm;
     
     [data-type='receive'] & {
       @apply bg-gray-200 text-gray-400;
     }
+  }
+
+  &__date {
+    @apply text-[10px]
   }
 }
