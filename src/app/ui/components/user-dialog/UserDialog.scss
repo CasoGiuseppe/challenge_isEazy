@@ -1,0 +1,17 @@
+.user-dialog {
+  @apply border-[1px] border-gray-200 rounded-md;
+  @apply p-md max-w-[95vw] w-screen max-h-[90vh] overflow-y-auto;
+  @apply shadow-backdrop;
+
+  @screen tablet-ld {
+    @apply max-w-[70vw]
+  }
+
+  @screen desktop {
+    @apply max-w-[60vw]
+  }
+
+  &::backdrop {
+    @apply bg-default-negative opacity-80
+  }
+}

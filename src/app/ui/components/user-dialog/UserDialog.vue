@@ -1,5 +1,5 @@
 <template>
-  <dialog class="user-dialog" :open="open">dialog</dialog>
+  <dialog class="user-dialog">dialog</dialog>
 </template>
 <script setup lang="ts">
 import { type PropType } from 'vue';
@@ -15,3 +15,4 @@ const { id, open } = defineProps({
   }
 });
 </script>
+<style lang="scss" src="./UserDialog.scss" scoped />

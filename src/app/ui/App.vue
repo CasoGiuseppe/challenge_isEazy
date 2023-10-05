@@ -53,5 +53,8 @@ import { Sizes, Messages } from '@shared/types/definitions';
 import { ref } from 'vue';
 
 const dialog = ref<boolean>(false);
-const openDialog = () => (dialog.value = true);
+const openDialog = () => {
+  const dialog = document.querySelector('dialog');
+  dialog?.showModal();
+};
 </script>
