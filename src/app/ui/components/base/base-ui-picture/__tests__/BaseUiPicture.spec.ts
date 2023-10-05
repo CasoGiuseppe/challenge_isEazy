@@ -1,12 +1,13 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { Sizes } from '@shared/types/definitions';
-import { mountComponent } from './utilities';
+import { mountComponent } from '@tests/utilities';
+import BaseUiPicture from '../BaseUiPicture.vue';
 
 let $wrapper: any;
 describe('BaseUiPicture component tests', () => {
   describe('Test props behaviours', () => {
     beforeEach(async () => {
-      $wrapper = await mountComponent({
+      $wrapper = await mountComponent(BaseUiPicture, {
         props: {
           id: 'test',
           size: Sizes.XLG,

@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import {
-  mountComponent,
   $initEmittedValue,
   $newEmittedValue,
   $errorMessage,
@@ -8,12 +7,14 @@ import {
   $uiResetTrigger
 } from './utilities';
 import { Fields, Types } from '@shared/types/definitions';
+import { mountComponent } from '@tests/utilities';
+import BaseUiInput from '../BaseUiInput.vue';
 
 let $wrapper: any;
 describe('BaseUiInput component tests', () => {
   describe('Test slost behaviours', () => {
     beforeEach(async () => {
-      $wrapper = await mountComponent({
+      $wrapper = await mountComponent(BaseUiInput, {
         slots: {
           error: $errorMessage
         }
@@ -31,7 +32,7 @@ describe('BaseUiInput component tests', () => {
 
   describe('Test v-model behaviours', () => {
     beforeEach(async () => {
-      $wrapper = await mountComponent({
+      $wrapper = await mountComponent(BaseUiInput, {
         props: {
           modelValue: $initEmittedValue,
           'onUpdate:modelValue': (e: any) => $wrapper.setProps({ modelValue: e })
@@ -47,7 +48,7 @@ describe('BaseUiInput component tests', () => {
 
   describe('Test emits behaviours', () => {
     beforeEach(async () => {
-      $wrapper = await mountComponent({
+      $wrapper = await mountComponent(BaseUiInput, {
         slots: {
           error: $errorMessage
         }
@@ -73,7 +74,7 @@ describe('BaseUiInput component tests', () => {
 
   describe('Test props behaviours', () => {
     beforeEach(async () => {
-      $wrapper = await mountComponent({
+      $wrapper = await mountComponent(BaseUiInput, {
         props: {
           id: 'test',
           type: Fields.INPUT,

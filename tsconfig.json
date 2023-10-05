@@ -19,6 +19,7 @@
       "@shared/*": ["./src/app/shared/*"],
       "@assets/*": ["./src/assets/*"],
       "@domains/*": ["./src/domains/*"],
+      "@tests/*": ["./src/app/shared/tests/*"],
     },
     "typeRoots": ["./node_modules/@types", "./src/app/shared/types"]
   }

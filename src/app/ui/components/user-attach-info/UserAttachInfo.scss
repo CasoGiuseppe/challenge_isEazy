@@ -1,0 +1,25 @@
+.user-attach-info {
+  @apply flex px-sm py-md justify-between;
+  @apply border-[1px] border-y-gray-200;
+
+  &__heading {
+    @apply flex flex-col gap-xsm;
+
+    &-version,
+    &-title {
+      @apply text-small font-bold;
+    }
+
+    &-version {
+      @apply uppercase;
+    }
+
+    &-title {
+      @apply text-blue-400
+    }
+
+    &-typing {
+      @apply text-xsmall
+    }
+  }
+}

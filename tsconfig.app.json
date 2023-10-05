@@ -12,6 +12,7 @@
       "@shared/*": ["./src/app/shared/*"],
       "@assets/*": ["./src/assets/*"],
       "@domains/*": ["./src/domains/*"],
+      "@tests/*": ["./src/app/shared/tests/*"],
     }
   }
 }

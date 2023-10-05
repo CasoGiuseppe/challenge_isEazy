@@ -1,13 +1,29 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { mountComponent, $buttonLabel, $uiSubmitTrigger } from './utilities';
+import { $buttonLabel, $uiSubmitTrigger } from './utilities';
 import { Roles, Sizes } from '@shared/types/definitions';
 import { ButtonVariants } from '../definitions';
+import { mountComponent } from '@tests/utilities';
+import BaseUiButton from '../BaseUiButton.vue';
 
 let $wrapper: any;
 describe('BaseUiButton component tests', () => {
+  describe('Test HTML attribute', () => {
+    beforeEach(async () => {
+      $wrapper = await mountComponent(BaseUiButton, {
+        props: {
+          disabled: true,
+        }
+      });
+    });
+
+    it('Should input have correct disabled state', () => {
+      expect($wrapper.props('disabled')).toBeTruthy;
+    });
+  });
+
   describe('Test slost behaviours', () => {
     beforeEach(async () => {
-      $wrapper = await mountComponent({
+      $wrapper = await mountComponent(BaseUiButton, {
         slots: {
           default: $buttonLabel
         }
@@ -21,7 +37,7 @@ describe('BaseUiButton component tests', () => {
 
   describe('Test props behaviours', () => {
     beforeEach(async () => {
-      $wrapper = await mountComponent({
+      $wrapper = await mountComponent(BaseUiButton, {
         props: {
           id: 'test',
           role: Roles.BUTTON,
