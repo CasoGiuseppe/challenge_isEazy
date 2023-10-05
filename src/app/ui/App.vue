@@ -36,7 +36,19 @@
     </template>
   </UserAttachInfo>
   <br /><br />
-  <UserDialog :open="dialog"></UserDialog>
+  <UserDialog :open="dialog" @close="openDialog">
+    <template #content>dialog here</template>
+    <template #close>
+      <BaseUiButton
+        :variant="ButtonVariants.EMPTY"
+        :size="Sizes.XLG"
+        @submit="openDialog"
+        label="To close click here or press ESC"
+      >
+        <XMarkIcon />
+      </BaseUiButton>
+    </template>
+  </UserDialog>
   <button @click="openDialog">open dialog</button>
 </template>
 <script setup lang="ts">
@@ -46,15 +58,12 @@ import BaseUiButton from '@ui/components/base/base-ui-button/BaseUiButton.vue';
 import UserAttachInfo from '@ui/components/user-attach-info/UserAttachInfo.vue';
 import UserDialog from '@ui/components/user-dialog/UserDialog.vue';
 
-import { CloudArrowDownIcon } from '@heroicons/vue/24/solid';
+import { CloudArrowDownIcon, XMarkIcon } from '@heroicons/vue/24/solid';
 import { ButtonVariants } from '@ui/components/base/base-ui-button/definitions';
 
 import { Sizes, Messages } from '@shared/types/definitions';
 import { ref } from 'vue';
 
 const dialog = ref<boolean>(false);
-const openDialog = () => {
-  const dialog = document.querySelector('dialog');
-  dialog?.showModal();
-};
+const openDialog = () => (dialog.value = !dialog.value);
 </script>

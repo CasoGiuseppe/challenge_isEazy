@@ -1,7 +1,9 @@
 .user-dialog {
+  @apply flex;
   @apply border-[1px] border-gray-200 rounded-md;
-  @apply p-md max-w-[95vw] w-screen max-h-[90vh] overflow-y-auto;
+  @apply p-md max-w-[95vw] w-screen max-h-[90vh] overflow-y-auto overflow-x-hidden relative;
   @apply shadow-backdrop;
+  @apply hidden;
 
   @screen tablet-ld {
     @apply max-w-[70vw]
@@ -11,7 +13,17 @@
     @apply max-w-[60vw]
   }
 
+  &[open] {
+    @apply flex;
+    @apply animate-dialog;
+  }
+
   &::backdrop {
     @apply bg-default-negative opacity-80
+  }
+
+  &::v-deep(button) {
+    @apply absolute right-sm top-sm;
+    @apply text-blue-400 w-lg
   }
 }
