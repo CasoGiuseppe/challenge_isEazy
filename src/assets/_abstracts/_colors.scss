@@ -1,22 +1,22 @@
 // colors
 :root {
-  --ie-c-blue-600: hsl(208, 98%, 39%);
-  --ie-c-blue-400: hsl(208, 96%, 51%);
-  --ie-c-blue-300: hsl(208, 94%, 70%);
-  --ie-c-blue-200: hsl(208, 83%, 88%);
+  --ie-c-blue-600: hsla(208, 98%, 39%, 1);
+  --ie-c-blue-400: hsla(208, 96%, 51%, 1);
+  --ie-c-blue-300: hsla(208, 94%, 70%, 1);
+  --ie-c-blue-200: hsla(208, 83%, 88%, 1);
 
-  --ie-c-gray-400: hsl(0, 0%, 24%);
-  --ie-c-gray-300: hsl(0, 0%, 70%);
-  --ie-c-gray-200: hsl(0, 0%, 97%);
+  --ie-c-gray-400: hsla(0, 0%, 24%, 1);
+  --ie-c-gray-300: hsla(0, 0%, 70%, 1);
+  --ie-c-gray-200: hsla(0, 0%, 97%, 1);
 
-  --ie-c-red-100: hsl(353, 100%, 41%);
-  --ie-c-red-50: hsl(0, 91%, 78%);
+  --ie-c-red-100: hsla(353, 100%, 41%, 1);
+  --ie-c-red-50: hsla(0, 91%, 78%, 1);
 
-  --ie-c-green-100: hsl(70, 50%, 46%);
-  --ie-c-green-50: hsl(57, 90%, 88%);
+  --ie-c-green-100: hsla(70, 50%, 46%, 1);
+  --ie-c-green-50: hsla(57, 90%, 88%, 1);
 
-  --ie-c-yellow-400: hsl(50, 96%, 51%);
+  --ie-c-yellow-400: hsla(50, 96%, 51%, 1);
 
-  --ie-c-white: hsl(0, 0%, 100%);
-  --ie-c-black: hsl(0, 0%, 0%);
+  --ie-c-white: hsla(0, 0%, 100%, 1);
+  --ie-c-black: hsla(0, 0%, 0%, 1);
 }

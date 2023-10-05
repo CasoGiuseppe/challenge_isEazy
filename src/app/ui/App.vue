@@ -35,15 +35,23 @@
       </BaseUiButton>
     </template>
   </UserAttachInfo>
+  <br /><br />
+  <UserDialog :open="dialog"></UserDialog>
+  <button @click="openDialog">open dialog</button>
 </template>
 <script setup lang="ts">
 import UserMessage from '@ui/components/user-message/UserMessage.vue';
 import BaseUiPicture from '@ui/components/base/base-ui-picture/BaseUiPicture.vue';
 import BaseUiButton from '@ui/components/base/base-ui-button/BaseUiButton.vue';
 import UserAttachInfo from '@ui/components/user-attach-info/UserAttachInfo.vue';
+import UserDialog from '@ui/components/user-dialog/UserDialog.vue';
 
 import { CloudArrowDownIcon } from '@heroicons/vue/24/solid';
 import { ButtonVariants } from '@ui/components/base/base-ui-button/definitions';
 
 import { Sizes, Messages } from '@shared/types/definitions';
+import { ref } from 'vue';
+
+const dialog = ref<boolean>(false);
+const openDialog = () => (dialog.value = true);
 </script>
