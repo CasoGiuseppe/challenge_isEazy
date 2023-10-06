@@ -14,7 +14,6 @@
     @click="sendSubmit"
   >
     <slot />
-    {{ disabled }}
   </component>
 </template>
 <script setup lang="ts">
