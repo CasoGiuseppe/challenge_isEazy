@@ -52,7 +52,7 @@ const { id, role, disabled, variant, size, label, loading } = defineProps({
     default: ButtonVariants.DEFAULT
   },
   /**
-   * Set the size of button in circle or empty variant
+   * Set the size of button for circle or empty variant
    */
   size: {
     type: String as PropType<Sizes>,
