@@ -10,7 +10,7 @@ const meta = {
     id: { control: 'text' },
     size: { control: 'select',  options: ['xlg', 'xxlg']},
     label: { control: 'text'},
-    default: { control: 'text', description: 'Slot control'}
+    default: { control: 'text' }
   },
   args: {
     id: 'defaultID',

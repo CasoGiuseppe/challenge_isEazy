@@ -13,6 +13,7 @@
     :title="label"
     @click="sendSubmit"
   >
+    <!-- @slot Default slot for button label -->
     <slot />
   </component>
 </template>

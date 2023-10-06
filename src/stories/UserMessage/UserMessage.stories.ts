@@ -10,9 +10,9 @@ const meta = {
   argTypes: {
     id: { control: 'text' },
     type: { control: 'select', options: Object.values(Messages) },
-    picture: { control: 'text', description: 'Slot picture control'},
-    message: { control: 'text', description: 'Slot message control'},
-    date: { control: 'text', description: 'Slot date control'},
+    picture: { control: 'text' },
+    message: { control: 'text' },
+    date: { control: 'text' },
   },
   args: {
     id: 'defaultID',

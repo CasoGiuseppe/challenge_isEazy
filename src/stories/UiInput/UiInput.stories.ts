@@ -14,7 +14,7 @@ const meta = {
     type: { control: 'select', options: Object.values(Fields) },
     input: { control: 'select', options: Object.values(Types) },
     required: { control: 'radio', options: [true, false]},
-    error: {control: 'text', description: 'Slot error control'}
+    error: { control: 'text' }
   },
   args: {
     id: 'defaultID',

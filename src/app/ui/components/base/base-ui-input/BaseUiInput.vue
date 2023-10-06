@@ -28,6 +28,7 @@
     </button>
 
     <span ref="error" v-if="slotError" class="base-ui-field__display-error" id="ui-error">
+      <!-- @slot Slot for error message -->
       <slot name="error"></slot>
     </span>
   </fieldset>

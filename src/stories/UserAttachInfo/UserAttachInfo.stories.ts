@@ -9,9 +9,9 @@ const meta = {
   component: UserAttachInfo,
   tags: ['autodocs'],
   argTypes: {
-    version: { control: 'text', description: 'Slot version control' },
-    title: { control: 'text', description: 'Slot title control' },
-    typing: { control: 'text', description: 'Slot typing control' }
+    version: { control: 'text' },
+    title: { control: 'text' },
+    typing: { control: 'text' }
   },
   args: {
     version: 'Version 1',

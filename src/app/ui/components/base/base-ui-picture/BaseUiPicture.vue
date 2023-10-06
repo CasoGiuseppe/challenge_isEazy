@@ -6,6 +6,7 @@
     :data-size="size"
     :aria-label="label"
   >
+    <!-- @slot Default slot for picture image -->
     <slot>
       <img
         src="https://api.dicebear.com/7.x/bottts/svg?seed=Harley"
