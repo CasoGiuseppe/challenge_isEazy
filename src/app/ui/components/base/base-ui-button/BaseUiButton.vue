@@ -23,28 +23,28 @@ import { ButtonVariants } from './definitions';
 
 const { id, role, disabled, variant, size, label, loading } = defineProps({
   /**
-   * The id of the ui button
+   * Set the unique id of the ui button
    */
   id: {
     type: String as PropType<String>,
     default: 'buttonID'
   },
   /**
-   * The type of the ui button
+   * Set the button type [butto, submit, file, reset]
    */
   role: {
     type: String as PropType<Roles>,
     validator: (prop: Roles) => Object.values(Roles).includes(prop)
   },
   /**
-   * The disabled state of the ui button
+   * Set the disabled button state
    */
   disabled: {
     type: Boolean as PropType<Boolean>,
     default: false
   },
   /**
-   * The variant of the ui button
+   * Set the allowed button variant [default, circle, empty]
    */
   variant: {
     type: String as PropType<ButtonVariants>,
@@ -52,7 +52,7 @@ const { id, role, disabled, variant, size, label, loading } = defineProps({
     default: ButtonVariants.DEFAULT
   },
   /**
-   * The size of the ui button
+   * Set the size of button in circle or empty variant
    */
   size: {
     type: String as PropType<Sizes>,
@@ -60,14 +60,14 @@ const { id, role, disabled, variant, size, label, loading } = defineProps({
     validator: (prop: Sizes) => Object.values(Sizes).includes(prop)
   },
   /**
-   * The label of the ui button
+   * Set the aria accesibility label
    */
   label: {
     type: String as PropType<String>,
     default: 'Click here to launch your custom action'
   },
   /**
-   * The loading state of the ui button
+   * Set the loading button state
    */
   loading: {
     type: Boolean as PropType<Boolean>,

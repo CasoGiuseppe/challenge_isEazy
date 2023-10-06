@@ -16,7 +16,7 @@ const meta = {
     variant: { control: 'select', options: Object.values(ButtonVariants)},
     size: { if: { arg: 'variant', neq: 'default' }, control: 'select', options: ['lg', 'xlg', 'xxlg']},
     loading: { control: 'radio', options: [true, false] },
-    default: { if: { arg: 'variant', eq: 'default' }, control: 'text', description: 'Slot controll'}
+    default: { if: { arg: 'variant', eq: 'default' }, control: 'text', description: 'Slot control'}
   },
   args: {
     id: 'defaultID',
