@@ -13,11 +13,14 @@
         title="To close click here or press ESC"
         @click="handleDialogState"
       >
+        <!-- @slot Slot for close icon -->
         <slot name="close">x</slot>
       </button>
+      <!-- @slot Slot for dialog content -->
       <slot name="content" />
     </dialog>
     <div role="button" @click="handleDialogState">
+      <!-- @slot Slot for trigger that handle open/close dialog -->
       <slot name="trigger"></slot>
     </div>
   </section>
@@ -26,6 +29,9 @@
 import { type PropType, watch, ref } from 'vue';
 
 const { id } = defineProps({
+  /**
+   * Set the unique for user dialog
+   */
   id: {
     type: String as PropType<String>,
     default: 'dialogID'
