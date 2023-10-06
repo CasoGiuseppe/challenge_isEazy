@@ -21,10 +21,16 @@ import { NO_MESSAGE_FOUND } from './definitions';
 import { Messages } from '@shared/types/definitions';
 
 const { id, type } = defineProps({
+  /**
+   * Set the unique id for user message
+   */
   id: {
     type: String as PropType<String>,
     default: 'messageID'
   },
+  /**
+   * Set message type [receive, send]
+   */
   type: {
     type: String as PropType<Messages>,
     validator: (prop: Messages) => Object.values(Messages).includes(prop),
