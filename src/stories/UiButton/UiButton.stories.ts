@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import BaseUiButton from '@ui/components/base/base-ui-button/BaseUiButton.vue';
 import { ButtonVariants } from '@ui/components/base/base-ui-button/definitions';
+import { XMarkIcon } from '@heroicons/vue/24/solid';
 import { Roles, Sizes } from '@shared/types/definitions';
 import { action } from '@storybook/addon-actions'
 
@@ -36,12 +37,12 @@ type Story = StoryObj<typeof BaseUiButton>;
 
 const Template: Story = {
   render: (args) => ({
-    components: { BaseUiButton },
+    components: { BaseUiButton, XMarkIcon },
     setup() { return { args }},
     template: `
       <base-ui-button v-bind="args" @click="action">
         <template v-if="args.default">{{ args.default }}</template>
-        <template v-else>x</template>
+        <template v-else><XMarkIcon /></template>
       </base-ui-button>`,
     methods: { action: action('clicked') }
   })

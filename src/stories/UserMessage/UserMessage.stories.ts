@@ -4,7 +4,7 @@ import BaseUiPicture from '@ui/components/base/base-ui-picture/BaseUiPicture.vue
 import { Messages } from '@/app/shared/types/definitions';
 
 const meta = {
-  title: 'User Components/User Message',
+  title: 'User Message',
   component: UserMessage,
   tags: ['autodocs'],
   argTypes: {
