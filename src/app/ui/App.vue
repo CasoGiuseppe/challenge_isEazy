@@ -36,20 +36,11 @@
     </template>
   </UserAttachInfo>
   <br /><br />
-  <UserDialog :open="dialog" @close="openDialog">
+  <UserDialog>
     <template #content>dialog here</template>
-    <template #close>
-      <BaseUiButton
-        :variant="ButtonVariants.EMPTY"
-        :size="Sizes.XLG"
-        @submit="openDialog"
-        label="To close click here or press ESC"
-      >
-        <XMarkIcon />
-      </BaseUiButton>
-    </template>
+    <template #close><XMarkIcon /></template>
+    <template #trigger>Open/Close Dialog</template>
   </UserDialog>
-  <button @click="openDialog">open dialog</button>
 </template>
 <script setup lang="ts">
 import UserMessage from '@ui/components/user-message/UserMessage.vue';
@@ -62,8 +53,4 @@ import { CloudArrowDownIcon, XMarkIcon } from '@heroicons/vue/24/solid';
 import { ButtonVariants } from '@ui/components/base/base-ui-button/definitions';
 
 import { Sizes, Messages } from '@shared/types/definitions';
-import { ref } from 'vue';
-
-const dialog = ref<boolean>(false);
-const openDialog = () => (dialog.value = !dialog.value);
 </script>

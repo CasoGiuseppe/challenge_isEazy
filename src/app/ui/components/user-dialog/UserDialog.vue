@@ -1,39 +1,45 @@
 <template>
-  <dialog
-    :id="id"
-    ref="dialog"
-    class="user-dialog"
-    aria-labelledby="title"
-    aria-describedby="description"
-    @keydown.esc="closeDialog"
-  >
-    <slot name="close">x</slot>
-    <slot name="content" />
-  </dialog>
+  <section class="user-dialog">
+    <dialog
+      :id="id"
+      ref="dialog"
+      class="user-dialog__modal"
+      aria-labelledby="title"
+      aria-describedby="description"
+      @keydown.esc="handleDialogState"
+    >
+      <button
+        aria-label="To close click here or press ESC"
+        title="To close click here or press ESC"
+        @click="handleDialogState"
+      >
+        <slot name="close">x</slot>
+      </button>
+      <slot name="content" />
+    </dialog>
+    <div role="button" @click="handleDialogState">
+      <slot name="trigger"></slot>
+    </div>
+  </section>
 </template>
 <script setup lang="ts">
 import { type PropType, watch, ref } from 'vue';
 
-const props = defineProps({
+const { id } = defineProps({
   id: {
     type: String as PropType<String>,
     default: 'dialogID'
-  },
-  open: {
-    type: Boolean as PropType<Boolean>,
-    default: false
   }
 });
 
 const dialog = ref<HTMLDialog>(null);
-watch(
-  () => props.open,
-  (newValue) => {
-    newValue ? dialog.value.showModal() : dialog.value.close();
-  }
-);
+const state = ref<boolean>(false);
 
-const customEmits = defineEmits(['close']);
-const closeDialog = () => customEmits('close');
+watch(state, (newValue) => (newValue ? dialog.value.showModal() : dialog.value.close()));
+
+const handleDialogState = () => {
+  state.value = !state.value;
+  console.log(state.value);
+};
 </script>
 <style lang="scss" src="./UserDialog.scss" scoped />
