@@ -37,9 +37,6 @@ const state = ref<boolean>(false);
 
 watch(state, (newValue) => (newValue ? dialog.value.showModal() : dialog.value.close()));
 
-const handleDialogState = () => {
-  state.value = !state.value;
-  console.log(state.value);
-};
+const handleDialogState = () => (state.value = !state.value);
 </script>
 <style lang="scss" src="./UserDialog.scss" scoped />
