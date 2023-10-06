@@ -27,37 +27,55 @@
       <TrashIcon class="text-red" />
     </button>
 
-    <span v-if="slotError" class="base-ui-field__display-error" id="ui-error">
+    <span ref="error" v-if="slotError" class="base-ui-field__display-error" id="ui-error">
       <slot name="error"></slot>
     </span>
   </fieldset>
 </template>
 <script setup lang="ts">
-import { useSlots, type PropType, computed } from 'vue';
+import { useSlots, type PropType, computed, ref } from 'vue';
 import { Fields, Types } from '@shared/types/definitions';
 import { TrashIcon } from '@heroicons/vue/24/solid';
 
 const { id, type, input, required, modelValue, placeholder } = defineProps({
+  /**
+   * Set the unique id of the ui input
+   */
   id: {
     type: String as PropType<String>,
     default: 'fieldID'
   },
+  /**
+   * Set type of user field [input, textarea]
+   */
   type: {
     type: String as PropType<Fields>,
     validator: (prop: Fields) => Object.values(Fields).includes(prop),
     default: Fields.INPUT
   },
+  /**
+   * Set the type of input field [emai, file, password, submit, text, button]
+   */
   input: {
     type: String as PropType<Types>,
     validator: (prop: Types) => Object.values(Types).includes(prop)
   },
+  /**
+   * Set the required property
+   */
   required: {
     type: Boolean as PropType<Boolean>,
     default: true
   },
+  /**
+   * Set the input value
+   */
   modelValue: {
     type: String as PropType<String>
   },
+  /**
+   * Set the start placeholder value
+   */
   placeholder: {
     type: String as PropType<String>,
     default: 'Add here your text'
@@ -65,7 +83,7 @@ const { id, type, input, required, modelValue, placeholder } = defineProps({
 });
 
 const slots = useSlots();
-const slotError = computed(() => !!slots['error']);
+const slotError = computed(() => !!slots['error'] && slots?.error?.()[0].children !== '');
 
 const customEmits = defineEmits(['update:modelValue', 'reset']);
 const updateValue = ({ target: { value } }: { target: { value: string } }) =>

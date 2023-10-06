@@ -28,7 +28,7 @@ const meta = {
     loading: false,
     default: 'Button label',
   }
-}satisfies Meta<typeof BaseUiButton>
+} satisfies Meta<typeof BaseUiButton>
 
 export default meta;
 
@@ -39,10 +39,10 @@ const Template: Story = {
     components: { BaseUiButton },
     setup() { return { args }},
     template: `
-      <BaseUiButton v-bind="args" @click="action">
+      <base-ui-button v-bind="args" @click="action">
         <template v-if="args.default">{{ args.default }}</template>
         <template v-else>x</template>
-      </BaseUiButton>`,
+      </base-ui-button>`,
     methods: { action: action('clicked') }
   })
 }
