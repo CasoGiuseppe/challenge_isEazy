@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import BaseUiButton from '@ui/components/base/base-ui-button/BaseUiButton.vue';
 import { ButtonVariants } from '@ui/components/base/base-ui-button/definitions';
 import { Roles, Sizes } from '@shared/types/definitions';
+import { action } from '@storybook/addon-actions'
 
 const meta = {
   title: 'Base/Ui Button',
@@ -38,10 +39,11 @@ const Template: Story = {
     components: { BaseUiButton },
     setup() { return { args }},
     template: `
-      <BaseUiButton v-bind="args">
+      <BaseUiButton v-bind="args" @click="action">
         <template v-if="args.default">{{ args.default }}</template>
         <template v-else>x</template>
-      </BaseUiButton>`
+      </BaseUiButton>`,
+    methods: { action: action('clicked') }
   })
 }
 
