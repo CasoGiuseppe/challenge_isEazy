@@ -7,7 +7,8 @@
   @apply text-small;
   @apply transition-colors duration-[600ms];
 
-  &:not([data-variant='circle']) {
+  &:not([data-variant='circle']),
+  &:not([data-variant='empty']) {
     &::v-deep(svg) {
       @apply h-md text-default-current;
     }

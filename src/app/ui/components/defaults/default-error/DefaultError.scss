@@ -1,0 +1,14 @@
+.default-error {
+  $defaulterror: &;
+
+  @apply flex gap-sm items-center;
+  @apply text-red-100;
+
+  &::v-deep(svg) {
+    @apply w-lg text-default-current;
+  }
+
+  &::after {
+    content: attr(error)
+  }
+}
