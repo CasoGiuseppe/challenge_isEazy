@@ -1,4 +1,5 @@
 <template>
+  <!-- get error message from error attribute -->
   <aside class="default-error"><ExclamationTriangleIcon />UPS!:</aside>
 </template>
 <script setup lang="ts">
