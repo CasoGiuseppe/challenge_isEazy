@@ -1,3 +1,13 @@
+# Required System
+
+```sh
+node version: 20.8.0
+```
+
+```sh
+npm version: 10.1.0
+```
+
 # challenge isEazy
 
 This project was made to
