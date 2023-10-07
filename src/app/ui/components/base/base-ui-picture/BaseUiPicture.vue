@@ -24,7 +24,7 @@ const { id, size, label } = defineProps({
    * Set the unique id of the ui picture
    */
   id: {
-    type: String as PropType<String>,
+    type: String as PropType<string>,
     default: 'pictureID'
   },
   /**
@@ -39,7 +39,7 @@ const { id, size, label } = defineProps({
    * Set the aria accesibility label
    */
   label: {
-    type: String as PropType<String>,
+    type: String as PropType<string>,
     default: 'This is a user picture image'
   }
 });

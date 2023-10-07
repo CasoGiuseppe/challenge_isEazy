@@ -33,15 +33,18 @@ const { id } = defineProps({
    * Set the unique for user dialog
    */
   id: {
-    type: String as PropType<String>,
+    type: String as PropType<string>,
     default: 'dialogID'
   }
 });
 
-const dialog = ref<HTMLDialog>(null);
+const dialog = ref<any>(null);
 const state = ref<boolean>(false);
 
-watch(state, (newValue) => (newValue ? dialog.value.showModal() : dialog.value.close()));
+watch(state, (newValue) => {
+  if (!dialog.value) return;
+  newValue ? dialog.value.showModal() : dialog.value.close();
+});
 
 const handleDialogState = () => (state.value = !state.value);
 </script>

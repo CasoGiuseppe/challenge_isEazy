@@ -27,7 +27,7 @@ const { id, role, disabled, variant, size, label, loading } = defineProps({
    * Set the unique id of the ui button
    */
   id: {
-    type: String as PropType<String>,
+    type: String as PropType<string>,
     default: 'buttonID'
   },
   /**
@@ -64,7 +64,7 @@ const { id, role, disabled, variant, size, label, loading } = defineProps({
    * Set the aria accesibility label
    */
   label: {
-    type: String as PropType<String>,
+    type: String as PropType<string>,
     default: 'Click here to launch your custom action'
   },
   /**

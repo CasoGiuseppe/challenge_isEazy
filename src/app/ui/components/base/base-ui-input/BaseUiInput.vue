@@ -1,11 +1,6 @@
 <template>
   <fieldset class="base-ui-field">
     <component
-      data-testID="ui-input"
-      autocomplete="one-time-code"
-      class="base-ui-field__user-input"
-      pattern=".{4,}"
-      aria-describedby="ui-error"
       :aria-placeholder="placeholder"
       :aria-required="required"
       :id="id"
@@ -15,6 +10,11 @@
       :aria-invalid="slotError"
       :required="required"
       :placeholder="placeholder"
+      data-testID="ui-input"
+      autocomplete="one-time-code"
+      class="base-ui-field__user-input"
+      pattern=".{4,}"
+      aria-describedby="ui-error"
       @input="updateValue"
     />
     <button
@@ -34,7 +34,7 @@
   </fieldset>
 </template>
 <script setup lang="ts">
-import { useSlots, type PropType, computed, ref } from 'vue';
+import { useSlots, type PropType, computed } from 'vue';
 import { Fields, Types } from '@shared/types/definitions';
 import { TrashIcon } from '@heroicons/vue/24/solid';
 
@@ -43,7 +43,7 @@ const { id, type, input, required, modelValue, placeholder } = defineProps({
    * Set the unique id of the ui input
    */
   id: {
-    type: String as PropType<String>,
+    type: String as PropType<string>,
     default: 'fieldID'
   },
   /**
@@ -72,13 +72,13 @@ const { id, type, input, required, modelValue, placeholder } = defineProps({
    * Set the input value
    */
   modelValue: {
-    type: String as PropType<String>
+    type: String as PropType<string>
   },
   /**
    * Set the start placeholder value
    */
   placeholder: {
-    type: String as PropType<String>,
+    type: String as PropType<string>,
     default: 'Add here your text'
   }
 });

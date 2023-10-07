@@ -28,7 +28,7 @@ const { id, type } = defineProps({
    * Set the unique id for user message
    */
   id: {
-    type: String as PropType<String>,
+    type: String as PropType<string>,
     default: 'messageID'
   },
   /**
