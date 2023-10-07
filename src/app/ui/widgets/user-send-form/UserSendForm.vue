@@ -27,10 +27,10 @@
     <component
       :is="userSendMessageButton"
       :role="Roles.FILE"
-      id="user-send-attach"
+      id="user-send-upload"
       class="user-send-form__action"
-      label="Attach a new document version"
-      ><PaperClipIcon />Attach a new document version</component
+      label="Upload a new document version"
+      ><PaperClipIcon />Upload a new document version</component
     >
   </section>
 </template>
