@@ -3,7 +3,14 @@
   "exclude": [],
   "compilerOptions": {
     "composite": true,
-    "lib": [],
+    "lib": [
+      "es5",
+      "es6",
+      "es7",
+      "es2017",
+      "dom",
+      "es2015.collection"
+    ],
     "types": ["node", "jsdom"],
     "paths": {
       "@/*": ["./src/*"],

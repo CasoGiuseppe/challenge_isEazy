@@ -35,16 +35,20 @@
   </section>
 </template>
 <script setup lang="ts">
-import useAsyncComponent from '@shared/composables/useAsyncComponent';
 import { Roles, Sizes } from '@shared/types/definitions';
 import { ButtonVariants } from '@ui/components/base/base-ui-button/definitions';
 import { PaperAirplaneIcon, PaperClipIcon } from '@heroicons/vue/24/solid';
+import useAsyncComponent from '@shared/composables/useAsyncComponent';
 
 const { create } = useAsyncComponent();
 
 // async define components
-const userSendMessageInput = await create({ component: 'base/base-ui-input/BaseUiInput.vue' });
-const userSendMessageButton = await create({ component: 'base/base-ui-button/BaseUiButton.vue' });
+const userSendMessageInput = await create({
+  component: 'base/base-ui-input/BaseUiInput'
+});
+const userSendMessageButton = await create({
+  component: 'base/base-ui-button/BaseUiButton'
+});
 
 const sendForm = () => console.log('send');
 </script>

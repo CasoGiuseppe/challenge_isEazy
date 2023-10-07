@@ -1,11 +1,9 @@
-import { createApp } from 'vue';
+import { createApp, defineAsyncComponent } from 'vue';
 import { createPinia } from 'pinia';
-
-import App from '@ui/App.vue';
 import router from '@router/index';
 
 import '@assets/index.scss';
-const app = createApp(App);
+const app = createApp(defineAsyncComponent(() => import('@ui/App.vue')));
 
 app.use(createPinia());
 app.use(router);

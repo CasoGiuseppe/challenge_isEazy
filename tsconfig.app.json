@@ -13,6 +13,13 @@
       "@assets/*": ["./src/assets/*"],
       "@domains/*": ["./src/domains/*"],
       "@tests/*": ["./src/app/shared/tests/*"],
-    }
+    },
+    "lib": [
+      "es5",
+      "es6",
+      "es7",
+      "dom",
+      "es2015.collection"
+    ]
   }
 }
