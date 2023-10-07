@@ -5,7 +5,7 @@ import UserDefaultLoader from "@ui/components/defaults/default-loader/DefaultLoa
 
 export default function useAsyncComponent(): IAsyncComponent {
   const create = async ({ component, error = UserDefaultError, loader = UserDefaultLoader } :{ component: string, error?: Component, loader?: Component}): Promise<Component> => {
-    const path = `${window.location.origin}/src/app/ui/components/${component}.vue`
+    const path = `/src/app/ui/components/${component}.vue`
     return await defineAsyncComponent({
       errorComponent: error,
       loadingComponent: loader,
