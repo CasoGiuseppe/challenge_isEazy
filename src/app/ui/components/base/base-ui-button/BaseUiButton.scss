@@ -1,11 +1,17 @@
 .base-ui-button {
   $baseuibutton: &;
 
-  @apply p-sm relative overflow-hidden;
+  @apply p-sm relative overflow-hidden flex items-center justify-center gap-md;
   @apply bg-blue-400 text-default-positive border border-solid border-[transparent];
   @apply rounded-md;
   @apply text-small;
   @apply transition-colors duration-[600ms];
+
+  &:not([data-variant='circle']) {
+    &::v-deep(svg) {
+      @apply h-md text-default-current;
+    }
+  }
 
   &:not(:disabled) {
     &:not([data-variant='empty']) {
@@ -28,19 +34,19 @@
 
   &[data-variant='circle'],
   &[data-variant='empty'] {
-    @apply p-none flex items-center justify-center;
+    @apply p-none;
     @apply aspect-square;
 
     &[data-size='lg'] {
-      @apply w-lg;
+      @apply w-lg flex-lg;
     }
 
     &[data-size='xlg'] {
-      @apply w-xlg;
+      @apply w-xlg flex-xlg;
     }
 
     &[data-size='xxlg'] {
-      @apply w-xxlg;
+      @apply w-xxlg flex-xxlg;
     }
 
     &::v-deep(svg) {

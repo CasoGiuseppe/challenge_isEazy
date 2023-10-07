@@ -83,6 +83,11 @@ export default {
       opacity: 'opacity'
     },
     extend: {
+      flex: {
+        lg: '0 1 var(--ie-size-lg, 1rem)',
+        xlg: '0 0 var(--ie-size-xlg, 1rem)',
+        xxlg: '0 0 var(--ie-size-xxlg, 1rem)'
+      },
       animation: {
         spinner: 'spinner .6s linear infinite',
         dialog: 'dialog .6s ease-out'

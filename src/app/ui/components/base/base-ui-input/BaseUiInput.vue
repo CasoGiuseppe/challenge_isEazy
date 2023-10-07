@@ -59,7 +59,8 @@ const { id, type, input, required, modelValue, placeholder } = defineProps({
    */
   input: {
     type: String as PropType<Types>,
-    validator: (prop: Types) => Object.values(Types).includes(prop)
+    validator: (prop: Types) => Object.values(Types).includes(prop),
+    default: Types.TEXT
   },
   /**
    * Set the required property

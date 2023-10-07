@@ -1,0 +1,29 @@
+.user-send-form {
+  $usersendform: &;
+
+  @apply flex flex-row gap-md justify-between items-center;
+
+  @screen tablet-pt {
+    @apply gap-xxlg
+  }
+
+  @screen phone {
+    @apply flex-col gap-md;
+
+    > * {
+      @apply w-full
+    }
+  }
+
+  &__submit {
+    @apply flex grow gap-sm justify-between items-center;
+
+    @screen tablet-pt {
+      @apply grow gap-md
+    }
+  }
+
+  &__input {
+    @apply grow
+  }
+}

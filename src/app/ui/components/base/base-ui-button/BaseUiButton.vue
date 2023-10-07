@@ -57,8 +57,8 @@ const { id, role, disabled, variant, size, label, loading } = defineProps({
    */
   size: {
     type: String as PropType<Sizes>,
-    default: Sizes.LG,
-    validator: (prop: Sizes) => Object.values(Sizes).includes(prop)
+    validator: (prop: Sizes) => Object.values(Sizes).includes(prop),
+    default: Sizes.LG
   },
   /**
    * Set the aria accesibility label
