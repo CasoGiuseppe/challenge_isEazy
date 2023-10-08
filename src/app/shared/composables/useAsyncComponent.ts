@@ -8,7 +8,7 @@ export default function useAsyncComponent(): IAsyncComponent {
     return await defineAsyncComponent({
       errorComponent: error,
       loadingComponent: loader,
-      loader: () => import (/* @vite-ignore */ `${ component }.vue`)
+      loader: () => import (/* @vite-ignore */ `../../ui/components/${ component }.vue`)
     })
   }
 

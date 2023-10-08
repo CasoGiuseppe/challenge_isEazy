@@ -1,0 +1,25 @@
+.user-message-window {
+  $usermessagewindow: &;
+
+  @apply flex flex-col min-h-full flex-1;
+
+  &__header,
+  &__footer,
+  &__content {
+    @apply p-lg
+  }
+
+  &__header {
+    @apply flex items-center justify-center py-md;
+    @apply border-b-[1px] border-gray-400;
+    @apply font-bold text-base;
+  }
+
+  &__content {
+    @apply flex flex-col justify-end grow;
+  }
+
+  &__footer {
+    @apply border-t-[1px] border-gray-300;
+  }
+}

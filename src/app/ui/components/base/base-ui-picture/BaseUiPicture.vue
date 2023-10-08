@@ -2,7 +2,7 @@
   <figure
     data-testID="ui-picture"
     :id="id"
-    :class="[slotPicture ? null : 'base-ui-picture--no-picture', 'base-ui-picture']"
+    :class="[slotDefaultExist ? null : 'base-ui-picture--no-picture', 'base-ui-picture']"
     :data-size="size"
     :aria-label="label"
   >
@@ -45,6 +45,6 @@ const { id, size, label } = defineProps({
 });
 
 const slots = useSlots();
-const slotPicture = computed(() => !!slots['default']);
+const slotDefaultExist = computed(() => !!slots['default']);
 </script>
 <style lang="scss" src="./BaseUiPicture.scss" scoped />
