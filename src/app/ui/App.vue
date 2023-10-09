@@ -41,7 +41,7 @@
   </Suspense>
 </template>
 <script setup lang="ts">
-import { inject } from 'vue';
+import { inject, onMounted } from 'vue';
 import UserSendForm from '@ui/widgets/user-send-form/UserSendForm.vue';
 import UserMessageWindow from '@ui/layouts/user-message-window/UserMessageWindow.vue';
 import UserDefaultLoader from '@ui/components/defaults/default-loader/DefaultLoader.vue';
@@ -57,6 +57,8 @@ import type { IMessagesDetails } from '@shared/composables/interfaces/useMessage
 const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
 const useMessagesDetailsState = inject<IMessagesDetails>('UseMessagesDetails') as IMessagesDetails;
 
-const { userID, name } = useInfoUserState;
+const { userID, name, saveUser } = useInfoUserState;
 const { items } = useMessagesDetailsState;
+
+onMounted(async () => await saveUser());
 </script>

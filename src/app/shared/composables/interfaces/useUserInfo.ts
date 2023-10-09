@@ -1,4 +1,5 @@
 export interface IUserInfo {
   userID: string,
-  name: string
+  name: string,
+  saveUser(): Promise<void>
 }

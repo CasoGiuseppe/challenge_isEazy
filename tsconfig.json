@@ -21,6 +21,7 @@
       "@domains/*": ["./src/domains/*"],
       "@tests/*": ["./src/app/shared/tests/*"],
     },
+    "types": ["vite/client"],
     "typeRoots": ["./node_modules/@types", "./src/app/shared/types"],
     "lib": [
       "es5", "es6", "dom", "dom.iterable"
