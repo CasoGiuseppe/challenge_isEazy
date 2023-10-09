@@ -1,7 +1,12 @@
 .base-ui-field {
   $baseuifield: &;
 
-  @apply flex flex-wrap gap-sm items-center;
+  @apply flex flex-wrap gap-xsm items-center;
+
+  &__label {
+    @apply w-full;
+    @apply text-small text-gray-300
+  }
 
   &__user-input {
     @apply flex-[2];
@@ -21,6 +26,10 @@
     &::placeholder {
       @apply text-gray-300 text-xsmall;
       @apply transition-colors duration-[600ms];
+    }
+
+    &[disabled] {
+      @apply bg-gray-300
     }
 
     &[aria-invalid='true'] {

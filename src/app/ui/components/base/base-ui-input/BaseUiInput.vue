@@ -1,15 +1,18 @@
 <template>
   <fieldset class="base-ui-field">
+    <label v-if="slotLabel" class="base-ui-field__label" :for="id"><slot name="label" /></label>
     <component
       :aria-placeholder="placeholder"
       :aria-required="required"
       :id="id"
       :is="type"
+      :name="id"
       :type="input ?? null"
       :value="modelValue"
       :aria-invalid="slotError"
       :required="required"
       :placeholder="placeholder"
+      :disabled="disabled"
       data-testID="ui-input"
       autocomplete="one-time-code"
       class="base-ui-field__user-input"
@@ -81,11 +84,19 @@ const { id, type, input, required, modelValue, placeholder } = defineProps({
   placeholder: {
     type: String as PropType<string>,
     default: 'Add here your text'
+  },
+  /**
+   * Set the start placeholder value
+   */
+  disabled: {
+    type: Boolean as PropType<boolean>,
+    default: false
   }
 });
 
 const slots = useSlots();
 const slotError = computed(() => !!slots['error'] && slots?.error?.()[0].children !== '');
+const slotLabel = computed(() => !!slots['label']);
 
 const customEmits = defineEmits(['update:modelValue', 'reset']);
 const updateValue = ({ target: { value } }: { target: { value: string } }) =>

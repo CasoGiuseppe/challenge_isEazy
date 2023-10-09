@@ -10,7 +10,7 @@ export default function useUserInfo(store: UserStore, client: IHttpRequestServic
   const loading = ref<boolean>(false);
   const error = ref<Record<string, boolean | string>>({ state: false, message: ''});
   
-  const loginUser = async (): Promise<void> => {
+  const signIn = async (): Promise<void> => {
     try {
       loading.value = true;
       const { id, name, surname, picture } = await client.get<IUserState>(
@@ -34,6 +34,6 @@ export default function useUserInfo(store: UserStore, client: IHttpRequestServic
     getUser: storeToRefs(store).getUser,
     loading,
     error,
-    loginUser
+    signIn
   };
 }

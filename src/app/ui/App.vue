@@ -38,7 +38,9 @@
       </UserDialog> -->
         <RouterView v-slot="{ Component }">
           <transition appear name="appear-change-view" mode="out-in">
-            <component :is="Component" />
+            <component :is="Component">
+              <template #title>Access messages</template>
+            </component>
           </transition>
         </RouterView>
       </template>

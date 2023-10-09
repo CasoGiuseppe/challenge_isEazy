@@ -1,6 +1,7 @@
 .user-login {
   $userlogin: &;
 
+  @apply flex gap-md flex-col;
   @apply bg-default-positive rounded-sm;
   @apply p-md min-w-[80%];
 
@@ -10,5 +11,9 @@
 
   @screen phone {
     @apply p-md min-w-[95%];
+  }
+
+  &__title {
+    @apply font-bold text-blue-600 uppercase
   }
 }

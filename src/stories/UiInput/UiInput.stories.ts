@@ -14,6 +14,7 @@ const meta = {
     type: { control: 'select', options: Object.values(Fields) },
     input: { control: 'select', options: Object.values(Types) },
     required: { control: 'radio', options: [true, false]},
+    disabled: { control: 'radio', options: [true, false]},
     error: { control: 'text' }
   },
   args: {
@@ -23,6 +24,7 @@ const meta = {
     type: Fields.INPUT,
     input: Types.TEXT,
     required: true,
+    disabled: false,
     error: 'error message'
   }
 } satisfies Meta<typeof BaseUiInput>

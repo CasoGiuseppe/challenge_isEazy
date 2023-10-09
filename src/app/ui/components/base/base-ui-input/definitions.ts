@@ -6,4 +6,5 @@ export interface Props {
   required?: Boolean;
   modelValue: String;
   placeholder: String;
+  disabled: Boolean;
 }
