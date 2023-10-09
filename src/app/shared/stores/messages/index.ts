@@ -10,12 +10,12 @@ export const messagesStore = defineStore('messagesStore', () => {
     state.value = [...(state.value || []), message];
   };
 
-  const getMessage = computed(() => state.value);
+  const getMessages = computed(() => state.value);
 
   return {
     state,
     setMessage,
-    getMessage
+    getMessages
   }
 });
 

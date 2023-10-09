@@ -3,7 +3,7 @@
     <template #default>
       <UserDialog>
         <template #content>
-          <UserMessageWindow :id="userID" :list="getMessage">
+          <UserMessageWindow :id="userID" :list="items">
             <template #header>Comments</template>
             <template
               #properties="{
@@ -51,23 +51,12 @@ import BaseUiPicture from '@ui/components/base/base-ui-picture/BaseUiPicture.vue
 import { Messages, Sizes } from '@shared/types/definitions';
 import { XMarkIcon } from '@heroicons/vue/24/solid';
 
-// user local store
-// import { useUserStore } from '@shared/stores/user';
-import { useMessageStore } from '@shared/stores/messages';
-import { storeToRefs } from 'pinia';
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
+import type { IMessagesDetails } from '@shared/composables/interfaces/useMessagesDetails';
 
 const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
-
-// get user id from local store
-// const { getUser } = storeToRefs(useUserStore);
-const { getMessage } = storeToRefs(useMessageStore);
+const useMessagesDetailsState = inject<IMessagesDetails>('UseMessagesDetails') as IMessagesDetails;
 
 const { userID, name } = useInfoUserState;
-// import useAsyncComponent from '@shared/composables/useAsyncComponent';
-
-// const { create } = useAsyncComponent();
-// const UserMessageWindow = await create({
-//   component: 'layouts/user-message-window/UserMessageWindow.vue'
-// });
+const { items } = useMessagesDetailsState;
 </script>
