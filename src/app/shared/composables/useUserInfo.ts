@@ -10,14 +10,16 @@ export default function useUserInfo(store: UserStore, client: IHttpRequestServic
   const loading = ref<boolean>(false);
   const error = ref<Record<string, boolean | string>>({ state: false, message: ''});
   
-  const signIn = async (): Promise<void> => {
+  const signIn = async ({ email, password}: { email: string, password: string}): Promise<void> => {
     try {
       loading.value = true;
+      error.value = { state: false, message: ''};
+      
       const { id, name, surname, picture } = await client.get<IUserState>(
         `${import.meta.env.VITE_APP_API_NAMESPACE}/user`,
         {
-          email: `${import.meta.env.VITE_APP_LOGIN_EMAIL}`,
-          password: `${import.meta.env.VITE_APP_LOGIN_PASSWORD}`
+          email,
+          password
         }
       );
 

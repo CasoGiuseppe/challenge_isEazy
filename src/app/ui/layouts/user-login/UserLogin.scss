@@ -2,7 +2,7 @@
   $userlogin: &;
 
   @apply flex gap-md flex-col;
-  @apply bg-default-positive rounded-sm;
+  @apply bg-default-positive rounded-sm shadow-backdrop;
   @apply p-md min-w-[80%];
 
   @screen tablet-ld {
@@ -15,5 +15,9 @@
 
   &__title {
     @apply font-bold text-blue-600 uppercase
+  }
+
+  &__error {
+    @apply text-small text-red-100
   }
 }

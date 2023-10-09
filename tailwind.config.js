@@ -16,7 +16,7 @@ export default {
 
     boxShadow: {
       default: '0px 0px 5px 2px hsla(0,0%,70%, .5)',
-      backdrop: '0px 0px 10px 4px hsla(0,0%,0%, .5)'
+      backdrop: '0px 0px 10px 4px hsla(0,0%,0%, .15)'
     },
     spacing: {
       none: 'var(--ie-size-none, 1rem)',

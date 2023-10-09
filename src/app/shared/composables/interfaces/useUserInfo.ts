@@ -4,5 +4,5 @@ export interface IUserInfo {
   getUser: any,
   loading: Ref<boolean>,
   error: Ref<Record<string, boolean | string>>,
-  signIn(): Promise<void>
+  signIn({ email, password}: { email: string, password: string}): Promise<void>
 }

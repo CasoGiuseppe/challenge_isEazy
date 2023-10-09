@@ -1,11 +1,10 @@
 <template>
   <form class="user-login" @submit.prevent="sendLogin">
     <h2 v-if="slotTitle" class="user-login__title"><slot name="title" /></h2>
-    {{ activeUserButton }}{{ email }}{{ password }}
     <!-- user email -->
     <component
       id="email"
-      placeholder="giuseppe@isEazy.com"
+      :placeholder="emailPlaceholder"
       :is="userInput"
       :type="Fields.INPUT"
       :input="Types.EMAIL"
@@ -20,10 +19,10 @@
     <!-- user password -->
     <component
       id="password"
-      placeholder="isEazy"
+      :placeholder="pwdPlaceholder"
       :is="userInput"
       :type="Fields.INPUT"
-      :input="Types.TEXT"
+      :input="Types.PASSWORD"
       :modelValue="password"
       :disabled="loading"
       required
@@ -33,9 +32,18 @@
     </component>
 
     <!-- user action -->
-    <component :is="userAction" id="login" :role="Roles.SUBMIT" :disabled="activeUserButton"
-      >Login</component
+    <component
+      id="login"
+      :is="userAction"
+      :role="Roles.SUBMIT"
+      :disabled="activeUserButton"
+      :loading="loading"
     >
+      Login
+    </component>
+
+    <!-- error message -->
+    <span v-if="error.state" class="user-login__error">{{ error.message }}</span>
   </form>
 </template>
 <script setup lang="ts">
@@ -43,6 +51,9 @@ import { inject, useSlots, computed, ref } from 'vue';
 import { Fields, Types, Roles } from '@shared/types/definitions';
 import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncComponent';
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
+
+const emailPlaceholder = `${import.meta.env.VITE_APP_LOGIN_EMAIL}`;
+const pwdPlaceholder = `${import.meta.env.VITE_APP_LOGIN_PASSWORD}`;
 
 // ref values for email and login
 const email = ref<string>(null);
@@ -56,7 +67,7 @@ const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
 const { create } = useAsyncComponent;
 
 // get user composable states
-const { getUser, signIn, loading, error } = useInfoUserState;
+const { signIn, loading, error } = useInfoUserState;
 
 // async define components
 const userInput = await create({ component: 'base/base-ui-input/BaseUiInput' });
@@ -74,6 +85,8 @@ const activeUserButton = computed(() =>
   [email.value, password.value].some((el) => el === null || el === '')
 );
 // form submit action
-const sendLogin = (): void => console.log('loin');
+const sendLogin = (): void => {
+  signIn({ email: email.value, password: password.value });
+};
 </script>
 <style lang="scss" src="./UserLogin.scss" scoped />

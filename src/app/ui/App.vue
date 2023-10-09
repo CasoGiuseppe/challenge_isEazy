@@ -67,8 +67,5 @@ import type { IMessagesDetails } from '@shared/composables/interfaces/useMessage
 const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
 const useMessagesDetailsState = inject<IMessagesDetails>('UseMessagesDetails') as IMessagesDetails;
 
-const { getUser, loginUser, loading, error } = useInfoUserState;
 const { items } = useMessagesDetailsState;
-
-onMounted(async () => await loginUser());
 </script>
