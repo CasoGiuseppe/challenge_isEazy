@@ -1,8 +1,9 @@
 .user-dialog {
+  @apply flex items-center w-full justify-center;
+
   &__modal {
-    @apply hidden;
     @apply shadow-backdrop;
-    @apply p-md max-w-[95vw] w-screen max-h-[90vh] overflow-y-auto overflow-x-hidden relative;
+    @apply max-w-[95vw] w-screen max-h-[90vh] h-[95vh] overflow-y-auto overflow-x-hidden relative;
     @apply border-[1px] border-gray-200 rounded-md;
 
     &[open] {
@@ -14,8 +15,8 @@
       @apply bg-default-negative opacity-80
     }
   
-    &::v-deep(button) {
-      @apply absolute right-sm top-sm;
+    > ::v-deep(button) {
+      @apply absolute right-sm top-sm overflow-hidden;
       @apply text-blue-400 w-lg
     }
 

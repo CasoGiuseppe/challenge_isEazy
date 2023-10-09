@@ -44,10 +44,10 @@ const { create } = useAsyncComponent();
 
 // async define components
 const userSendMessageInput = await create({
-  component: '../../ui/components/base/base-ui-input/BaseUiInput'
+  component: 'base/base-ui-input/BaseUiInput'
 });
 const userSendMessageButton = await create({
-  component: '../../ui/components/base/base-ui-button/BaseUiButton'
+  component: 'base/base-ui-button/BaseUiButton'
 });
 
 const sendForm = () => console.log('send');

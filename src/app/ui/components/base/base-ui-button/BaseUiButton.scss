@@ -51,7 +51,7 @@
     }
 
     &::v-deep(svg) {
-      @apply w-[60%] text-default-current;
+      @apply h-[50%] text-default-current aspect-square;
     }
   }
 
