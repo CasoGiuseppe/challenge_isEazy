@@ -1,11 +1,6 @@
 <template>
   <Suspense>
     <template #default>
-      <!-- <UserMessageWindow>
-        <template #header>Comments</template>
-        <div>conent</div>
-        <template #footer><UserSendForm /></template>
-      </UserMessageWindow> -->
       <UserDialog>
         <template #content>
           <UserMessageWindow>
