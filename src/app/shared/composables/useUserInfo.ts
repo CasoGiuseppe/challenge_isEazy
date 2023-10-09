@@ -7,14 +7,17 @@ import type { IUserState } from '@/server/types/users';
 
 export default function useUserInfo(store: UserStore, client: IHttpRequestService): IUserInfo {
   const { setUser } = store;
-  const loading = ref<boolean>(false);
-  const error = ref<Record<string, boolean | string>>({ state: false, message: ''});
+  const isLoading = ref<boolean>(false);
+  const isSuccess = ref<boolean>(false);
+  const hasError = ref<Record<string, boolean | string>>({ state: false, message: ''});
   
   const signIn = async ({ email, password}: { email: string, password: string}): Promise<void> => {
     try {
-      loading.value = true;
-      error.value = { state: false, message: ''};
+      // 1. set loading && error state
+      isLoading.value = true;
+      hasError.value = { state: false, message: ''};
       
+      // 2. get from API user attrs
       const { id, name, surname, picture } = await client.get<IUserState>(
         `${import.meta.env.VITE_APP_API_NAMESPACE}/user`,
         {
@@ -23,19 +26,27 @@ export default function useUserInfo(store: UserStore, client: IHttpRequestServic
         }
       );
 
+      // 3. set local store with logged user params
       setUser({ id, name, surname, picture });
+
+      // 4. set success state
+      isSuccess.value = true
     } catch (e) {
-      error.value = { state: true, message: 'Username or pawword incorrects'}
+
+      // 4. handle error
+      hasError.value = { state: true, message: 'Username or pawword incorrects'}
       return 
     } finally {
-      loading.value = false;
+      // 5. reset loading state
+      isLoading.value = false;
     }
   };
 
   return {
     getUser: storeToRefs(store).getUser,
-    loading,
-    error,
+    isLoading,
+    isSuccess,
+    hasError,
     signIn
   };
 }

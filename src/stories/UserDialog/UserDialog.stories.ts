@@ -11,14 +11,15 @@ const meta = {
     id: { control: 'text' },
     content: { control: 'text' },
     close: { control: 'text' },
-    trigger: { control: 'text' },
+    title: { control: 'text' },
+    extra: { control: 'text' },
   },
   args: {
     id: 'defaultID',
     content: 'this is a content dialog',
     close: 'close',
-    trigger: 'Open/close dialog'
-
+    title: 'Dialog title',
+    extra: 'Dialog extra info'
   }
 } satisfies Meta<typeof UserDialog>;
 
@@ -35,10 +36,9 @@ const Template: Story = {
     template: `
       <user-dialog v-bind="args">
         <template #content>{{ args.content }}</template>
-        <template #trigger>
-          <base-ui-button>{{ args.trigger }}</base-ui-button>
-        </template>
         <template #close><XMarkIcon /></template>
+        <template #title>{{ args.title }}</template>
+        <template #extra>{{ args.extra }}</template>
       </user-dialog>`
   })
 };

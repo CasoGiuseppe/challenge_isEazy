@@ -9,7 +9,7 @@
       :type="Fields.INPUT"
       :input="Types.EMAIL"
       :modelValue="email"
-      :disabled="loading"
+      :disabled="isLoading"
       required
       @update:modelValue="setEmail"
     >
@@ -24,7 +24,7 @@
       :type="Fields.INPUT"
       :input="Types.PASSWORD"
       :modelValue="password"
-      :disabled="loading"
+      :disabled="isLoading"
       required
       @update:modelValue="setPassword"
     >
@@ -37,13 +37,19 @@
       :is="userAction"
       :role="Roles.SUBMIT"
       :disabled="activeUserButton"
-      :loading="loading"
+      :loading="isLoading"
     >
-      Login
+      Sign in
     </component>
 
     <!-- error message -->
-    <span v-if="error.state" class="user-login__error">{{ error.message }}</span>
+    <span v-if="hasError.state" class="user-login__error">{{ hasError.message }}</span>
+    <UserDialog v-if="isSuccess">
+      <template #content>content</template>
+      <template #close><XMarkIcon /></template>
+      <template #title>Comments</template>
+      <template #extra>Extra</template>
+    </UserDialog>
   </form>
 </template>
 <script setup lang="ts">
@@ -51,6 +57,9 @@ import { inject, useSlots, computed, ref } from 'vue';
 import { Fields, Types, Roles } from '@shared/types/definitions';
 import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncComponent';
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
+
+import UserDialog from '@ui/components/user-dialog/UserDialog.vue';
+import { XMarkIcon } from '@heroicons/vue/24/solid';
 
 const emailPlaceholder = `${import.meta.env.VITE_APP_LOGIN_EMAIL}`;
 const pwdPlaceholder = `${import.meta.env.VITE_APP_LOGIN_PASSWORD}`;
@@ -67,7 +76,7 @@ const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
 const { create } = useAsyncComponent;
 
 // get user composable states
-const { signIn, loading, error } = useInfoUserState;
+const { signIn, isLoading, hasError, isSuccess } = useInfoUserState;
 
 // async define components
 const userInput = await create({ component: 'base/base-ui-input/BaseUiInput' });

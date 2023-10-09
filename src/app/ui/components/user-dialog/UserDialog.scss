@@ -1,23 +1,16 @@
 .user-dialog {
-  @apply flex items-center w-full justify-center;
-
   &__modal {
     @apply shadow-backdrop;
     @apply max-w-[95vw] w-screen max-h-[90vh] h-[95vh] overflow-y-auto overflow-x-hidden relative;
     @apply border-[1px] border-gray-200 rounded-md;
 
     &[open] {
-      @apply flex;
+      @apply flex flex-col;
       @apply animate-dialog;
     }
   
     &::backdrop {
       @apply bg-default-negative opacity-80
-    }
-  
-    > ::v-deep(button) {
-      @apply absolute right-sm top-sm overflow-hidden;
-      @apply text-blue-400 w-lg
     }
 
     @screen tablet-ld {
@@ -27,5 +20,18 @@
     @screen desktop {
       @apply max-w-[60vw]
     }
+  }
+
+  &__header {
+    @apply flex flex-row-reverse justify-between p-md;
+    @apply border-b-[1px] border-b-gray-300;
+
+    ::v-deep(button) {
+      @apply text-blue-400 w-lg
+    }
+  }
+
+  &__title {
+    @apply text-base font-bold
   }
 }
