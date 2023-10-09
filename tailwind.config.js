@@ -98,7 +98,7 @@ export default {
           '100%': { transform: 'translateX(-50%) translateY(-50%) rotate(360deg)' }
         },
         dialog: {
-          '0%': { transform: 'translateY(-110%)', opacity: 0 },
+          '0%': { transform: 'translateY(-60%)', opacity: 0 },
           '100%': { transform: 'translateY(0%)', opacity: 1 }
         }
       }

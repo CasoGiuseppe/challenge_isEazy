@@ -16,7 +16,12 @@
   }
 
   &__content {
-    @apply flex flex-col justify-end grow;
+    @apply flex flex-col grow overflow-y-auto gap-lg;
+    @apply snap-y snap-mandatory scroll-smooth;
+    
+    &::v-deep(li) {
+      @apply snap-center
+    }
   }
 
   &__footer {
