@@ -4,7 +4,7 @@ import { initUserState } from './definitions';
 import type { IUserState } from './type';
 
 export const userStore = defineStore('userStore', () => {
-  const state = ref(initUserState);
+  const state = ref<IUserState>(initUserState);
 
   const setUser = ({ id, name, email }: IUserState): void => {
     state.value = { id, name, email };
