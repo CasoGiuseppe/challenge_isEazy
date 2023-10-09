@@ -1,7 +1,11 @@
 .user-message {
   $usemessage: &;
 
-  @apply flex gap-sm items-center flex-row-reverse;
+  @apply flex gap-sm items-center;
+
+  &[data-type='send'] {
+    @apply flex-row-reverse;
+  }
 
   &[data-type='receive'] {
     @apply flex-row;

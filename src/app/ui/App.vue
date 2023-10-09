@@ -3,159 +3,38 @@
     <template #default>
       <UserDialog>
         <template #content>
-          <UserMessageWindow :id="id">
+          <UserMessageWindow :id="userID" :list="getMessage">
             <template #header>Comments</template>
-            <li>
-              <UserMessage>
+            <template
+              #properties="{
+                property: {
+                  node: {
+                    id,
+                    item: { text, date }
+                  }
+                }
+              }"
+            >
+              <UserMessage :type="id !== userID ? Messages.RECEIVE : Messages.SEND">
                 <template #picture>
                   <BaseUiPicture :size="Sizes.XLG">
                     <img
                       src="https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles"
-                      aria-description="Picture image for Name Surname"
+                      :aria-description="`Picture image for ${name}`"
+                      :title="`Picture image for ${name}`"
                     />
                   </BaseUiPicture>
                 </template>
-                <template #message>
-                  Reprehenderit est mollit proident labore enim fugiat esse sint.
-                </template>
-                <template #date>date</template>
+                <template #message> {{ text }}</template>
+                <template #date>{{ date }}</template>
               </UserMessage>
-            </li>
-            <li>
-              <UserMessage id="1" :type="Messages.RECEIVE">
-                <template #picture>
-                  <BaseUiPicture :size="Sizes.XLG">
-                    <img
-                      src="https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles"
-                      aria-description="Picture image for Name Surname"
-                    />
-                  </BaseUiPicture>
-                </template>
-                <template #message>
-                  Reprehenderit est mollit proident labore enim fugiat esse sint.
-                </template>
-                <template #date>date</template>
-              </UserMessage>
-            </li>
-            <li>
-              <UserMessage>
-                <template #picture>
-                  <BaseUiPicture :size="Sizes.XLG">
-                    <img
-                      src="https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles"
-                      aria-description="Picture image for Name Surname"
-                    />
-                  </BaseUiPicture>
-                </template>
-                <template #message>
-                  Reprehenderit est mollit proident labore enim fugiat esse sint.
-                </template>
-                <template #date>date</template>
-              </UserMessage>
-            </li>
-            <li>
-              <UserMessage id="1" :type="Messages.RECEIVE">
-                <template #picture>
-                  <BaseUiPicture :size="Sizes.XLG">
-                    <img
-                      src="https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles"
-                      aria-description="Picture image for Name Surname"
-                    />
-                  </BaseUiPicture>
-                </template>
-                <template #message>
-                  Reprehenderit est mollit proident labore enim fugiat esse sint.
-                </template>
-                <template #date>date</template>
-              </UserMessage>
-            </li>
-            <li>
-              <UserMessage>
-                <template #picture>
-                  <BaseUiPicture :size="Sizes.XLG">
-                    <img
-                      src="https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles"
-                      aria-description="Picture image for Name Surname"
-                    />
-                  </BaseUiPicture>
-                </template>
-                <template #message>
-                  Reprehenderit est mollit proident labore enim fugiat esse sint.
-                </template>
-                <template #date>date</template>
-              </UserMessage>
-            </li>
-            <li>
-              <UserMessage id="1" :type="Messages.RECEIVE">
-                <template #picture>
-                  <BaseUiPicture :size="Sizes.XLG">
-                    <img
-                      src="https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles"
-                      aria-description="Picture image for Name Surname"
-                    />
-                  </BaseUiPicture>
-                </template>
-                <template #message>
-                  Reprehenderit est mollit proident labore enim fugiat esse sint.
-                </template>
-                <template #date>date</template>
-              </UserMessage>
-            </li>
-            <li>
-              <UserMessage>
-                <template #picture>
-                  <BaseUiPicture :size="Sizes.XLG">
-                    <img
-                      src="https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles"
-                      aria-description="Picture image for Name Surname"
-                    />
-                  </BaseUiPicture>
-                </template>
-                <template #message>
-                  Reprehenderit est mollit proident labore enim fugiat esse sint.
-                </template>
-                <template #date>date</template>
-              </UserMessage>
-            </li>
-            <li>
-              <UserMessage id="1" :type="Messages.RECEIVE">
-                <template #picture>
-                  <BaseUiPicture :size="Sizes.XLG">
-                    <img
-                      src="https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles"
-                      aria-description="Picture image for Name Surname"
-                    />
-                  </BaseUiPicture>
-                </template>
-                <template #message>
-                  Reprehenderit est mollit proident labore enim fugiat esse sint.
-                </template>
-                <template #date>date</template>
-              </UserMessage>
-            </li>
-            <li>
-              <UserMessage>
-                <template #picture>
-                  <BaseUiPicture :size="Sizes.XLG">
-                    <img
-                      src="https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles"
-                      aria-description="Picture image for Name Surname"
-                    />
-                  </BaseUiPicture>
-                </template>
-                <template #message>
-                  Reprehenderit est mollit proident labore enim fugiat esse sint.
-                </template>
-                <template #date>date</template>
-              </UserMessage>
-            </li>
+            </template>
             <template #footer><UserSendForm /></template>
           </UserMessageWindow>
         </template>
         <template #close><XMarkIcon /></template>
       </UserDialog>
     </template>
-    <!-- <UserSendForm></UserSendForm> -->
 
     <!-- fallback loader state -->
     <template #fallback><UserDefaultLoader /></template>
@@ -173,11 +52,14 @@ import { XMarkIcon } from '@heroicons/vue/24/solid';
 
 // user local store
 import { useUserStore } from '@shared/stores/user';
+import { useMessageStore } from '@shared/stores/messages';
 import { storeToRefs } from 'pinia';
 
 // get user id from local store
 const { getUser } = storeToRefs(useUserStore);
-const { id } = getUser.value;
+const { getMessage } = storeToRefs(useMessageStore);
+
+const { id: userID, name } = getUser.value;
 // import useAsyncComponent from '@shared/composables/useAsyncComponent';
 
 // const { create } = useAsyncComponent();

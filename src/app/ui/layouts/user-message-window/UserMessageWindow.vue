@@ -6,6 +6,9 @@
         <slot name="header" />
       </header>
       <ul class="user-message-window__content" ref="content">
+        <li v-for="node in list" :key="node.id">
+          <slot :property="{ node }" name="properties"></slot>
+        </li>
         <!-- @slot Slot with list of content -->
         <slot />
       </ul>
@@ -26,6 +29,10 @@ const { id } = defineProps({
   id: {
     type: String as PropType<string>,
     default: 'userMessageID'
+  },
+  list: {
+    type: Array as PropType<Array<Record<string, any>>>,
+    default: () => []
   }
 });
 
