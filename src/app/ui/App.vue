@@ -3,7 +3,7 @@
     <template #default>
       <UserDialog>
         <template #content>
-          <UserMessageWindow>
+          <UserMessageWindow :id="id">
             <template #header>Comments</template>
             <li>
               <UserMessage>
@@ -170,6 +170,14 @@ import UserMessage from '@ui/components/user-message/UserMessage.vue';
 import BaseUiPicture from '@ui/components/base/base-ui-picture/BaseUiPicture.vue';
 import { Messages, Sizes } from '@shared/types/definitions';
 import { XMarkIcon } from '@heroicons/vue/24/solid';
+
+// user local store
+import { useUserStore } from '@shared/stores/user';
+import { storeToRefs } from 'pinia';
+
+// get user id from local store
+const { getUser } = storeToRefs(useUserStore);
+const { id } = getUser.value;
 // import useAsyncComponent from '@shared/composables/useAsyncComponent';
 
 // const { create } = useAsyncComponent();
