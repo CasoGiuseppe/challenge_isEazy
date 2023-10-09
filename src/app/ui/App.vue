@@ -41,6 +41,7 @@
   </Suspense>
 </template>
 <script setup lang="ts">
+import { inject } from 'vue';
 import UserSendForm from '@ui/widgets/user-send-form/UserSendForm.vue';
 import UserMessageWindow from '@ui/layouts/user-message-window/UserMessageWindow.vue';
 import UserDefaultLoader from '@ui/components/defaults/default-loader/DefaultLoader.vue';
@@ -51,15 +52,18 @@ import { Messages, Sizes } from '@shared/types/definitions';
 import { XMarkIcon } from '@heroicons/vue/24/solid';
 
 // user local store
-import { useUserStore } from '@shared/stores/user';
+// import { useUserStore } from '@shared/stores/user';
 import { useMessageStore } from '@shared/stores/messages';
 import { storeToRefs } from 'pinia';
+import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
+
+const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
 
 // get user id from local store
-const { getUser } = storeToRefs(useUserStore);
+// const { getUser } = storeToRefs(useUserStore);
 const { getMessage } = storeToRefs(useMessageStore);
 
-const { id: userID, name } = getUser.value;
+const { userID, name } = useInfoUserState;
 // import useAsyncComponent from '@shared/composables/useAsyncComponent';
 
 // const { create } = useAsyncComponent();
