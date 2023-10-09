@@ -1,7 +1,8 @@
 <template>
-  <Suspense>
-    <template #default>
-      <!-- <UserDialog>
+  <section id="app-layout">
+    <Suspense>
+      <template #default>
+        <!-- <UserDialog>
         <template #content>
           <UserMessageWindow :id="userID" :list="items">
             <template #header>Comments</template>
@@ -35,15 +36,17 @@
         <template #close><XMarkIcon /></template>
         <template #trigger>{{ loader }}</template>
       </UserDialog> -->
-      {{ loading }}
-      {{ getUser.name }}
-      {{ getUser.id }}
-      {{ error }}
-    </template>
+        <RouterView v-slot="{ Component }">
+          <transition appear name="appear-change-view" mode="out-in">
+            <component :is="Component" />
+          </transition>
+        </RouterView>
+      </template>
 
-    <!-- fallback loader state -->
-    <template #fallback><UserDefaultLoader /></template>
-  </Suspense>
+      <!-- fallback loader state -->
+      <template #fallback><UserDefaultLoader /></template>
+    </Suspense>
+  </section>
 </template>
 <script setup lang="ts">
 import { inject, onMounted } from 'vue';

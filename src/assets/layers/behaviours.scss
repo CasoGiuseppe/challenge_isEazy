@@ -1,0 +1,14 @@
+#app {
+  &-layout {
+    --from-animation: 10vh;
+    --to-animation: -10vh;
+
+    @include create-animation($name: 'appear-change-view',
+      $from: translateY(var(--from-animation)),
+      $to: translateY(var(--to-animation))
+    );
+
+    @apply h-screen w-screen overflow-auto flex justify-center items-center;
+    @apply bg-blue-300;
+  }
+}

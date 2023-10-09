@@ -1,0 +1,14 @@
+.user-login {
+  $userlogin: &;
+
+  @apply bg-default-positive rounded-sm;
+  @apply p-md min-w-[80%];
+
+  @screen tablet-ld {
+    @apply min-w-[40%]
+  }
+
+  @screen phone {
+    @apply p-md min-w-[95%];
+  }
+}

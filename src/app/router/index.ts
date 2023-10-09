@@ -16,7 +16,7 @@ const router = createRouter({
       name: 'login',
       meta: { type: 'login' },
       components: {
-        default: () => import(/* webpackChunkName: "login" */ '@views/aggregator-list/AggregatorList.vue'),
+        default: () => import(/* webpackChunkName: "login" */ '@ui/layouts/user-login/UserLogin.vue'),
       },
       props: {
         default: true,
