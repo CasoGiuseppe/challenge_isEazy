@@ -6,17 +6,16 @@ import type { IUserState } from "@/server/types/users";
 export const userStore = defineStore('userStore', () => {
   const state = ref<IUserState>(initUserState);
 
-  const setUser = ({ id, name, surname, email, password, picture }: IUserState): void => {
-    state.value = { id, name, surname, password, email, picture };
+  const setUser = ({ id, name, surname, email, picture }: IUserState): void => {
+    state.value = { id, name, surname, email, picture };
   };
 
-  const getUser = computed((): IUserState => {
+  const getUser = computed((): IUserState | undefined => {
     return {
-      id: state.value.id,
+      id: state?.value?.id,
       name: state.value.name,
       surname: state.value.surname,
-      password: state.value.password,
-      email: state.value.email
+      picture: state.value.picture
     };
   })
 

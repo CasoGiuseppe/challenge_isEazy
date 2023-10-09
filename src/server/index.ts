@@ -15,7 +15,7 @@ const mockServer = new Server({
     this.get(`/user`, (schema, request) => {
       const result = schema.db.users.where({ email: request?.queryParams?.email, password: request?.queryParams?.password })
       return result.length > 0 ? result[0] : new Response(400, { some: 'header' }, { errors: '400' })
-    });
+    }, { timing: 4000 });
   },
 });
 

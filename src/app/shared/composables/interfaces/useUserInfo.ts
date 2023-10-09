@@ -1,5 +1,8 @@
+import type { Ref } from "vue";
+
 export interface IUserInfo {
-  userID: string,
-  name: string,
-  saveUser(): Promise<void>
+  getUser: any,
+  loading: Ref<boolean>,
+  error: Ref<Record<string, boolean | string>>,
+  loginUser(): Promise<void>
 }

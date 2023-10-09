@@ -1,7 +1,8 @@
 export default {
   id: 'SEND001',
-  name: "Giuseppe",
+  name: "Pasquale",
   surname: "Caso",
   email: "giuseppe@isEazy.com",
-  password: "isEazy"
+  password: "isEazy",
+  picture: 'picture'
 }

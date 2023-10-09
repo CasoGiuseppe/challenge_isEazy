@@ -1,7 +1,7 @@
 <template>
   <Suspense>
     <template #default>
-      <UserDialog>
+      <!-- <UserDialog>
         <template #content>
           <UserMessageWindow :id="userID" :list="items">
             <template #header>Comments</template>
@@ -33,7 +33,12 @@
           </UserMessageWindow>
         </template>
         <template #close><XMarkIcon /></template>
-      </UserDialog>
+        <template #trigger>{{ loader }}</template>
+      </UserDialog> -->
+      {{ loading }}
+      {{ getUser.name }}
+      {{ getUser.id }}
+      {{ error }}
     </template>
 
     <!-- fallback loader state -->
@@ -57,8 +62,8 @@ import type { IMessagesDetails } from '@shared/composables/interfaces/useMessage
 const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
 const useMessagesDetailsState = inject<IMessagesDetails>('UseMessagesDetails') as IMessagesDetails;
 
-const { userID, name, saveUser } = useInfoUserState;
+const { getUser, loginUser, loading, error } = useInfoUserState;
 const { items } = useMessagesDetailsState;
 
-onMounted(async () => await saveUser());
+onMounted(async () => await loginUser());
 </script>
