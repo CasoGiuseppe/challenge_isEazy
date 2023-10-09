@@ -1,5 +1,5 @@
 <template>
-  <aside class="default-loader">
+  <aside :id="id" class="default-loader">
     <ClockIcon />
     <!-- @slot Default slot laoding message -->
     <slot>wait a moment please...</slot>
@@ -14,7 +14,7 @@ const { id } = defineProps({
    */
   id: {
     type: String as PropType<string>,
-    default: 'errorID'
+    default: 'loaderID'
   }
 });
 </script>
