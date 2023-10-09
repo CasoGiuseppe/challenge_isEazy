@@ -13,7 +13,7 @@
       required
       @update:modelValue="setEmail"
     >
-      <template #label>Write here your email</template>
+      <template #label>Email</template>
     </component>
 
     <!-- user password -->
@@ -28,7 +28,7 @@
       required
       @update:modelValue="setPassword"
     >
-      <template #label>Write here your password</template>
+      <template #label>Password</template>
     </component>
 
     <!-- user action -->
