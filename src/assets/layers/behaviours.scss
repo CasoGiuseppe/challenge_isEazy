@@ -8,7 +8,7 @@
       $to: translateY(var(--to-animation))
     );
 
-    @apply h-screen w-screen overflow-auto flex justify-center items-center;
+    @apply h-screen w-screen overflow-auto flex flex-col justify-center items-center;
     @apply bg-blue-300;
   }
 }

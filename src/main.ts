@@ -33,7 +33,8 @@ const app = createApp(defineAsyncComponent(() => import('@ui/App.vue')));
 app.use(pinia);
 app.use(router);
 
-app.mount('#app');
+router.isReady().then(() => app.mount("#app"));
+
 app.provide<IUserInfo>('UseUserInfo', UseUserInfo);
 app.provide<IMessagesDetails>('UseMessagesDetails', UseMessagesDetais);
 app.provide<IAsyncComponent>('UseAsyncComponent', UseAsyncComponent);
