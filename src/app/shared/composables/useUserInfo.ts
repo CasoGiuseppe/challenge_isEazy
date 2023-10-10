@@ -3,37 +3,47 @@ import type { UserStore } from '@shared/stores/user';
 import type { IUserInfo } from './interfaces/useUserInfo';
 import type { IHttpRequestService } from '@shared/providers/http/http.interface';
 import type { IUserState } from '@/server/types/users';
-import { isLoading, hasError, isSuccess } from './shared/types';
+import { ref } from 'vue';
 
 export default function useUserInfo(store: UserStore, client: IHttpRequestService): IUserInfo {
   const { setUser } = store;
-  
-  
-  const signIn = async ({ email, password}: { email: string, password: string}): Promise<void> => {
+  const isLoading = ref<boolean>(false);
+  const isSuccess = ref<boolean>(false);
+  const hasError = ref<Record<string, boolean | string>>({ state: false, message: '' });
+
+  const signIn = async ({
+    email,
+    password
+  }: {
+    email: string;
+    password: string;
+  }): Promise<void> => {
     try {
       // 1. set loading && error state
       isLoading.value = true;
-      hasError.value = { state: false, message: ''};
-      
+      hasError.value = { state: false, message: '' };
+
       // 2. get from API user attrs
-      const { id, name, surname, picture, email: mail } = await client.get<IUserState>(
-        `${import.meta.env.VITE_APP_API_NAMESPACE}/user`,
-        {
-          email,
-          password
-        }
-      );
+      const {
+        id,
+        name,
+        surname,
+        picture,
+        email: mail
+      } = await client.get<IUserState>(`${import.meta.env.VITE_APP_API_NAMESPACE}/user`, {
+        email,
+        password
+      });
 
       // 3. set local store with logged user params
       setUser({ id, name, surname, picture, email: mail });
 
       // 4. set success state
-      isSuccess.value = true
+      isSuccess.value = true;
     } catch (e) {
-
       // 4. handle error
-      hasError.value = { state: true, message: 'Username or pawword incorrects'}
-      return 
+      hasError.value = { state: true, message: 'Username or pawword incorrects' };
+      return;
     } finally {
       // 5. reset loading state
       isLoading.value = false;

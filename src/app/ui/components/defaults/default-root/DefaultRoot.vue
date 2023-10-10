@@ -16,11 +16,19 @@
 
     <component v-if="isSuccess" :is="dialog" :open="open">
       <template #content>
-        <userMessages>
+        <userMessages @mounted="getMessages">
+          <template #content>
+            <messagesList :list="list" :loader="isLoading">
+              <template v-if="list" #properties="{ property }">
+                {{ property }}
+              </template>
+              <template v-else #loader>loading</template>
+            </messagesList>
+          </template>
           <template #footer><userSendForm /></template>
         </userMessages>
       </template>
-      <template #title>Comments</template>
+      <template #title>Comments {{ isLoading }}</template>
       <template #extra>
         <userIdentity>
           <template #picture>
@@ -43,11 +51,14 @@ import { inject, ref } from 'vue';
 import UserDefaultLoader from '@ui/components/defaults/default-loader/DefaultLoader.vue';
 import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncComponent';
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
+import type { IMessagesDetails } from '@shared/composables/interfaces/useMessagesDetails';
 import { Sizes } from '@shared/types/definitions';
+import type { IMessageState } from '@/server/types/messages';
 
 // inject composables
 const useAsyncComponent = inject<IAsyncComponent>('UseAsyncComponent') as IAsyncComponent;
 const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
+const useMessages = inject<IMessagesDetails>('UseMessages') as IMessagesDetails;
 
 // get create method to load lazy component
 const { create } = useAsyncComponent;
@@ -61,7 +72,17 @@ const userIdentity = await create({ component: 'components/user-identity/UserIde
 const userPicture = await create({ component: 'components/base/base-ui-picture/BaseUiPicture' });
 const userMessages = await create({ component: 'layouts/user-message-window/UserMessageWindow' });
 const userSendForm = await create({ component: 'widgets/user-send-form/UserSendForm' });
+const messagesList = await create({ component: 'components/base/base-ui-list/BaseUiList' });
 
-// handle open/close dialog
-const open = ref<boolea>(true);
+// set refs to dynamic values
+const open = ref<boolean>(true);
+const list = ref<IMessageState | undefined>(undefined);
+
+// get user messages method to download from API
+const { getUsersMessages, isLoading } = useMessages;
+
+// handle messages load
+const getMessages = async () => {
+  list.value = await getUsersMessages();
+};
 </script>

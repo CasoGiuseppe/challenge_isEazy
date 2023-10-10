@@ -1,0 +1,6 @@
+.base-ui-list {
+  &__fallback {
+    @apply flex justify-center items-center;
+    @apply text-small text-blue-400;
+  }
+}

@@ -1,13 +1,8 @@
 <template>
   <Suspense>
     <section :id="id" class="user-message-window">
-      <ul class="user-message-window__content" ref="content">
-        <li v-for="node in list" :key="node.id">
-          <slot :property="{ node }" name="properties"></slot>
-        </li>
-        <!-- @slot Slot with list of content -->
-        <slot />
-      </ul>
+      <!-- @slot Slot for default windows content -->
+      <slot name="content" />
       <footer v-if="slotFooterExist" class="user-message-window__footer">
         <!-- @slot Slot for fill footer content -->
         <slot name="footer" />
@@ -16,7 +11,7 @@
   </Suspense>
 </template>
 <script setup lang="ts">
-import { useSlots, computed, ref, onUpdated, type PropType } from 'vue';
+import { useSlots, computed, type PropType, onMounted } from 'vue';
 
 const { id } = defineProps({
   /**
@@ -25,20 +20,12 @@ const { id } = defineProps({
   id: {
     type: String as PropType<string>,
     default: 'userMessageID'
-  },
-  list: {
-    type: Array as PropType<Array<Record<string, any>>>,
-    default: () => []
   }
 });
-
-const content = ref<HTMLElement>();
-
 const slots = useSlots();
 const slotFooterExist = computed(() => !!slots['footer']);
 
-onUpdated(() => {
-  console.log(document.querySelector('.user-message-window__content'));
-});
+const customEmits = defineEmits(['mounted']);
+onMounted(() => customEmits('mounted'));
 </script>
 <style lang="scss" src="./UserMessageWindow.scss" scoped />

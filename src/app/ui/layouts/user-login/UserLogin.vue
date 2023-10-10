@@ -1,6 +1,6 @@
 <template>
   <form class="user-login" @submit.prevent="sendLogin">
-    <h2 v-if="slotTitle" class="user-login__title"><slot name="title" /></h2>
+    <h2 v-if="slotTitle" class="user-login__title"><slot name="title" />{{ isLoading }}</h2>
     <!-- user email -->
     <component
       id="email"
@@ -78,14 +78,14 @@ const slots = useSlots();
 const slotTitle = computed(() => !!slots['title']);
 
 // form validation
-const setEmail = (value) => (email.value = value);
-const setPassword = (value) => (password.value = value);
+const setEmail = (value: string) => (email.value = value);
+const setPassword = (value: string) => (password.value = value);
 
 const activeUserButton = computed(() =>
   [email.value, password.value].some((el) => el === null || el === '')
 );
 // form submit action
-const sendLogin = async (): void => {
+const sendLogin = async (): Promise<void> => {
   try {
     await signIn({ email: email.value, password: password.value });
   } catch (error) {

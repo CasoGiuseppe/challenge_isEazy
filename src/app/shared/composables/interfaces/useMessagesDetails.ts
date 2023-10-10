@@ -1,6 +1,8 @@
 import type { IMessageState } from "@/server/types/messages";
+import type { Ref } from "vue";
 
 export interface IMessagesDetails {
   items: any,
-  getMessages(): Promise<IMessageState | undefined>
+  isLoading: Ref<boolean>,
+  getUsersMessages(): Promise<IMessageState | undefined>
 }

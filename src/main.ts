@@ -15,7 +15,7 @@ import { useMessageStore } from '@shared/stores/messages';
 // import composables
 import useUserInfo from '@shared/composables/useUserInfo';
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
-import useMessagesDetails from '@shared/composables/useMessagesDetails';
+import useMessages from '@shared/composables/useMessagesDetails';
 import type { IMessagesDetails } from '@shared/composables/interfaces/useMessagesDetails';
 import userAsyncComponent from '@shared/composables/useAsyncComponent';
 import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncComponent';
@@ -24,7 +24,7 @@ import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncCom
 import { HTTPService } from '@shared/providers/http/http.service';
 
 const UseUserInfo = useUserInfo(useUserStore, new HTTPService());
-const UseMessagesDetais = useMessagesDetails(useMessageStore);
+const UseMessages = useMessages(useMessageStore, new HTTPService());
 const UseAsyncComponent = userAsyncComponent();
 
 // create lazy APP
@@ -36,5 +36,5 @@ app.use(router);
 router.isReady().then(() => app.mount("#app"));
 
 app.provide<IUserInfo>('UseUserInfo', UseUserInfo);
-app.provide<IMessagesDetails>('UseMessagesDetails', UseMessagesDetais);
+app.provide<IMessagesDetails>('UseMessages', UseMessages);
 app.provide<IAsyncComponent>('UseAsyncComponent', UseAsyncComponent);
