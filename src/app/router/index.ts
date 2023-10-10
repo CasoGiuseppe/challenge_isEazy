@@ -18,8 +18,14 @@ const router = createRouter({
       components: {
         default: () => import(/* webpackChunkName: "login" */ '@ui/layouts/user-login/UserLogin.vue'),
       },
-      props: {
-        default: true,
+    },
+
+    {
+      path: '/success',
+      name: 'success',
+      meta: { type: 'success' },
+      components: {
+        dialog: () => import(/* webpackChunkName: "dialog" */ '@ui/components/user-dialog/UserDialog.vue'),
       },
     }
   ]

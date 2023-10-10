@@ -1,7 +1,7 @@
 .user-dialog {
   &__modal {
     @apply shadow-backdrop;
-    @apply max-w-[95vw] w-screen max-h-[90vh] h-[95vh] overflow-y-auto overflow-x-hidden relative;
+    @apply max-w-[95vw] w-screen max-h-[90vh] overflow-y-auto overflow-x-hidden relative;
     @apply border-[1px] border-gray-200 rounded-md;
 
     &[open] {

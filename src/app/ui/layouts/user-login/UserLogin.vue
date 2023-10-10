@@ -44,12 +44,6 @@
 
     <!-- error message -->
     <span v-if="hasError.state" class="user-login__error">{{ hasError.message }}</span>
-    <UserDialog v-if="isSuccess">
-      <template #content>content</template>
-      <template #close><XMarkIcon /></template>
-      <template #title>Comments</template>
-      <template #extra>Extra</template>
-    </UserDialog>
   </form>
 </template>
 <script setup lang="ts">
@@ -58,15 +52,12 @@ import { Fields, Types, Roles } from '@shared/types/definitions';
 import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncComponent';
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
 
-import UserDialog from '@ui/components/user-dialog/UserDialog.vue';
-import { XMarkIcon } from '@heroicons/vue/24/solid';
-
 const emailPlaceholder = `${import.meta.env.VITE_APP_LOGIN_EMAIL}`;
 const pwdPlaceholder = `${import.meta.env.VITE_APP_LOGIN_PASSWORD}`;
 
 // ref values for email and login
-const email = ref<string>(null);
-const password = ref<string>(null);
+const email = ref<string>('giuseppe@isEazy.com');
+const password = ref<string>('isEazy');
 
 // inject composables
 const useAsyncComponent = inject<IAsyncComponent>('UseAsyncComponent') as IAsyncComponent;
@@ -94,8 +85,12 @@ const activeUserButton = computed(() =>
   [email.value, password.value].some((el) => el === null || el === '')
 );
 // form submit action
-const sendLogin = (): void => {
-  signIn({ email: email.value, password: password.value });
+const sendLogin = async (): void => {
+  try {
+    await signIn({ email: email.value, password: password.value });
+  } catch (error) {
+    /* empty */
+  }
 };
 </script>
 <style lang="scss" src="./UserLogin.scss" scoped />
