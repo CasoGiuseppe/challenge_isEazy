@@ -26,9 +26,9 @@ export default function useMessagesDetais(
 
       // 3. add type key to detect item typology
       // 4. save local store with recovery messages
-      sortByDate({array: result})
+      sortByDate({ array: result })
         .map((node) => MessageViewModel.createMessageViewModel(node).viewMessage)
-        .forEach((item: IMessageState) => saveMessage(item))
+        .forEach((item: IMessageState) => saveMessage(item));
     } catch (e) {
       /* empty */
     } finally {
@@ -36,9 +36,20 @@ export default function useMessagesDetais(
     }
   };
 
+  const createMessage = async (): Promise<void> => {
+    try {
+      const body = { name: 'ciccio'}
+      const xxx = await client.post(`${import.meta.env.VITE_APP_API_NAMESPACE}/messages/create`, body);
+      console.log(xxx)
+    } catch (e) {
+      /* empty */
+    }
+  };
+
   return {
     items: storeToRefs(store).getMessages,
     isLoading,
-    getUsersMessages
+    getUsersMessages,
+    createMessage
   };
 }

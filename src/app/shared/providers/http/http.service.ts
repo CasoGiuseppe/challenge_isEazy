@@ -12,4 +12,14 @@ export class HTTPService implements IHttpRequestService {
     };
     return parsedResponse;
   }
+
+  async post<T>(url: string, body:Record<string, any>): Promise<T> {
+    const send = await fetch(`${url}`, { 
+      method: 'POST',
+      body: JSON.stringify(body),
+      signal
+    });
+
+    return await send.json()
+  }
 }
