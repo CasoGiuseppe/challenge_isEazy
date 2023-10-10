@@ -1,10 +1,6 @@
 <template>
   <Suspense>
     <section :id="id" class="user-message-window">
-      <header v-if="slotHeaderExist" class="user-message-window__header">
-        <!-- @slot Slot for fill header content -->
-        <slot name="header" />
-      </header>
       <ul class="user-message-window__content" ref="content">
         <li v-for="node in list" :key="node.id">
           <slot :property="{ node }" name="properties"></slot>
@@ -39,7 +35,6 @@ const { id } = defineProps({
 const content = ref<HTMLElement>();
 
 const slots = useSlots();
-const slotHeaderExist = computed(() => !!slots['header']);
 const slotFooterExist = computed(() => !!slots['footer']);
 
 onUpdated(() => {

@@ -15,7 +15,11 @@
     </Suspense>
 
     <component v-if="isSuccess" :is="dialog" :open="open">
-      <template #content>content</template>
+      <template #content>
+        <userMessages>
+          <template #footer><userSendForm /></template>
+        </userMessages>
+      </template>
       <template #title>Comments</template>
       <template #extra>
         <userInfo>
@@ -52,9 +56,11 @@ const { create } = useAsyncComponent;
 const { isSuccess, getUser } = useInfoUserState;
 
 // lazy load for component instances
-const dialog = await create({ component: 'user-dialog/UserDialog' });
-const userInfo = await create({ component: 'user-info/UserInfo' });
-const userPicture = await create({ component: 'base/base-ui-picture/BaseUiPicture' });
+const dialog = await create({ component: 'components/user-dialog/UserDialog' });
+const userInfo = await create({ component: 'components/user-info/UserInfo' });
+const userPicture = await create({ component: 'components/base/base-ui-picture/BaseUiPicture' });
+const userMessages = await create({ component: 'layouts/user-message-window/UserMessageWindow' });
+const userSendForm = await create({ component: 'widgets/user-send-form/UserSendForm' });
 
 // handle open/close dialog
 const open = ref<boolea>(true);

@@ -2,7 +2,7 @@
   $defaultloader: &;
 
   @apply flex gap-sm items-center;
-  @apply text-default-positive;
+  @apply text-yellow-400;
 
   &::v-deep(svg) {
     @apply w-lg text-default-current;

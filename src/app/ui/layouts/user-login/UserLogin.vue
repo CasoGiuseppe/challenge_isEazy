@@ -70,8 +70,8 @@ const { create } = useAsyncComponent;
 const { signIn, isLoading, hasError } = useInfoUserState;
 
 // async define components
-const userInput = await create({ component: 'base/base-ui-input/BaseUiInput' });
-const userAction = await create({ component: 'base/base-ui-button/BaseUiButton' });
+const userInput = await create({ component: 'components/base/base-ui-input/BaseUiInput' });
+const userAction = await create({ component: 'components/base/base-ui-button/BaseUiButton' });
 
 // check slots
 const slots = useSlots();
