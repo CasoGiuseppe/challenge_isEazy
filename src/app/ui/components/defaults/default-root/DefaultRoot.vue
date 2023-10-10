@@ -22,7 +22,7 @@
       </template>
       <template #title>Comments</template>
       <template #extra>
-        <userInfo>
+        <userIdentity>
           <template #picture>
             <userPicture :size="Sizes.XLG">
               <img
@@ -33,7 +33,7 @@
           </template>
           <template #name>{{ `${getUser.completeName}` }}</template>
           <template #email>{{ getUser.email }}</template>
-        </userInfo>
+        </userIdentity>
       </template>
     </component>
   </section>
@@ -57,7 +57,7 @@ const { isSuccess, getUser } = useInfoUserState;
 
 // lazy load for component instances
 const dialog = await create({ component: 'components/user-dialog/UserDialog' });
-const userInfo = await create({ component: 'components/user-info/UserInfo' });
+const userIdentity = await create({ component: 'components/user-identity/UserIdentity' });
 const userPicture = await create({ component: 'components/base/base-ui-picture/BaseUiPicture' });
 const userMessages = await create({ component: 'layouts/user-message-window/UserMessageWindow' });
 const userSendForm = await create({ component: 'widgets/user-send-form/UserSendForm' });

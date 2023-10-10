@@ -1,5 +1,5 @@
 export interface IMessageState {
-  id: string;
+  user: string;
   type?: string;
   item: ITextType | IAttachType | {};
 }

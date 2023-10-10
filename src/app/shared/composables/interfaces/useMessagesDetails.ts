@@ -1,5 +1,6 @@
-import type { IMessageState } from "@shared/stores/messages/type";
+import type { IMessageState } from "@/server/types/messages";
 
 export interface IMessagesDetails {
-  items: IMessageState[],
+  items: any,
+  getMessages(): Promise<IMessageState | undefined>
 }

@@ -1,15 +1,13 @@
 import { storeToRefs } from 'pinia';
-import { ref } from 'vue';
 import type { UserStore } from '@shared/stores/user';
 import type { IUserInfo } from './interfaces/useUserInfo';
 import type { IHttpRequestService } from '@shared/providers/http/http.interface';
 import type { IUserState } from '@/server/types/users';
+import { isLoading, hasError, isSuccess } from './shared/types';
 
 export default function useUserInfo(store: UserStore, client: IHttpRequestService): IUserInfo {
   const { setUser } = store;
-  const isLoading = ref<boolean>(false);
-  const isSuccess = ref<boolean>(false);
-  const hasError = ref<Record<string, boolean | string>>({ state: false, message: ''});
+  
   
   const signIn = async ({ email, password}: { email: string, password: string}): Promise<void> => {
     try {

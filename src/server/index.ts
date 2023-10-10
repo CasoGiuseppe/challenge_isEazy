@@ -20,7 +20,7 @@ const mockServer = new Server({
     }, { timing: 4000 });
 
     // get messages
-    this.get(`/messages`, (schema) => schema.db.users)
+    this.get(`/messages`, (schema) => schema.db.users, { timing: 4000 })
   },
 });
 
