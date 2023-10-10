@@ -1,16 +1,18 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
-import { initMessagesState } from './definitions';
 import type { IMessageState } from "@/server/types/messages";
 
 export const messagesStore = defineStore('messagesStore', () => {
-  const state = ref<IMessageState[]>(initMessagesState);
+  const state = ref<IMessageState[] | []>([]);
 
   const setMessage = (message: IMessageState) => {
     state.value = [...(state.value || []), message];
   };
 
-  const getMessages = computed(() => state.value);
+  const getMessages = computed(() => {
+    if (!state.value) return;
+    return state.value
+  });
 
   return {
     state,
