@@ -51,7 +51,7 @@
               </template>
             </messagesList>
           </template>
-          <template #footer><userSendForm /></template>
+          <template #footer><userSendForm :disabled="!items" /></template>
         </userMessages>
       </template>
       <template #title>Comments</template>

@@ -86,7 +86,7 @@ const { id, type, input, required, modelValue, placeholder } = defineProps({
     default: 'Add here your text'
   },
   /**
-   * Set the start placeholder value
+   * Handle disabled state
    */
   disabled: {
     type: Boolean as PropType<boolean>,
