@@ -9,6 +9,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     id: { control: 'text' },
+    open: { control: 'radio', options: [true, false] },
     content: { control: 'text' },
     close: { control: 'text' },
     title: { control: 'text' },
@@ -16,6 +17,7 @@ const meta = {
   },
   args: {
     id: 'defaultID',
+    open: true,
     content: 'this is a content dialog',
     close: 'close',
     title: 'Dialog title',
@@ -36,7 +38,6 @@ const Template: Story = {
     template: `
       <user-dialog v-bind="args">
         <template #content>{{ args.content }}</template>
-        <template #close><XMarkIcon /></template>
         <template #title>{{ args.title }}</template>
         <template #extra>{{ args.extra }}</template>
       </user-dialog>`

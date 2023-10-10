@@ -19,7 +19,7 @@
   }
 
   &[data-size='xlg'] {
-    @apply w-xlg;
+    @apply w-xlg flex-xlg;
 
     &#{$baseuipicture}--no-picture {
       @apply text-base;

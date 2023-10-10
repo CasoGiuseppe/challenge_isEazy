@@ -1,17 +1,20 @@
 .user-dialog {
   &__modal {
-    @apply shadow-backdrop;
-    @apply max-w-[95vw] w-screen max-h-[90vh] overflow-y-auto overflow-x-hidden relative;
-    @apply border-[1px] border-gray-200 rounded-md;
-
     &[open] {
-      @apply flex flex-col;
-      @apply animate-dialog;
+      @apply flex flex-col fixed w-screen h-screen items-center justify-center;
+      background: hsla(0, 0%, 0%, .5)
     }
   
     &::backdrop {
       @apply bg-default-negative opacity-80
     }
+  }
+
+  &__area {
+    @apply shadow-backdrop;
+    @apply max-w-[95vw] max-h-[90vh] w-full overflow-y-auto overflow-x-hidden;
+    @apply border-[1px] border-gray-200 rounded-md bg-default-positive;
+    @apply animate-dialog;
 
     @screen tablet-ld {
       @apply max-w-[70vw]
@@ -23,15 +26,27 @@
   }
 
   &__header {
-    @apply flex flex-row-reverse justify-between p-md;
+    @apply grid grid-rows-1 grid-cols-3 gap-sm p-md;
     @apply border-b-[1px] border-b-gray-300;
 
     ::v-deep(button) {
       @apply text-blue-400 w-lg
     }
+
+    > * {
+      @apply row-start-1
+    }
+  }
+
+  &__action {
+    @apply col-start-3 text-right;
   }
 
   &__title {
-    @apply text-base font-bold
+    @apply text-base font-bold text-center
+  }
+
+  &__extra {
+    @apply col-start-1;
   }
 }

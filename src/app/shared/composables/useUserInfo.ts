@@ -18,7 +18,7 @@ export default function useUserInfo(store: UserStore, client: IHttpRequestServic
       hasError.value = { state: false, message: ''};
       
       // 2. get from API user attrs
-      const { id, name, surname, picture } = await client.get<IUserState>(
+      const { id, name, surname, picture, email: mail } = await client.get<IUserState>(
         `${import.meta.env.VITE_APP_API_NAMESPACE}/user`,
         {
           email,
@@ -27,7 +27,7 @@ export default function useUserInfo(store: UserStore, client: IHttpRequestServic
       );
 
       // 3. set local store with logged user params
-      setUser({ id, name, surname, picture });
+      setUser({ id, name, surname, picture, email: mail });
 
       // 4. set success state
       isSuccess.value = true

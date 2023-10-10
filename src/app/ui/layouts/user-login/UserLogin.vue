@@ -67,7 +67,7 @@ const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
 const { create } = useAsyncComponent;
 
 // get user composable states
-const { signIn, isLoading, hasError, isSuccess } = useInfoUserState;
+const { signIn, isLoading, hasError } = useInfoUserState;
 
 // async define components
 const userInput = await create({ component: 'base/base-ui-input/BaseUiInput' });

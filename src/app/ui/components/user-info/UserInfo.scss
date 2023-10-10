@@ -1,0 +1,9 @@
+.user-info {
+  $userinfo: &;
+
+  @apply flex items-center gap-sm;
+
+  &__data {
+    @apply flex flex-col text-xsmall text-gray-300
+  }
+}

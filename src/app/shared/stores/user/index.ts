@@ -13,9 +13,9 @@ export const userStore = defineStore('userStore', () => {
   const getUser = computed((): IUserState | undefined => {
     return {
       id: state?.value?.id,
-      name: state.value.name,
-      surname: state.value.surname,
-      picture: state.value.picture
+      completeName: `${state.value.name}, ${state.value.surname}`,
+      picture: state.value.picture,
+      email: state.value.email
     };
   })
 

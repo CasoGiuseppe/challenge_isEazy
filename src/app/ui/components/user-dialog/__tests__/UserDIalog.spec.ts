@@ -7,6 +7,7 @@ let $wrapper: any;
 describe('UserDialog component tests', () => {
   beforeEach(async () => {
     $wrapper = await mountComponent(UserDialog, {
+      
       slots: {
         close: $closeLabel,
         content:  $content
