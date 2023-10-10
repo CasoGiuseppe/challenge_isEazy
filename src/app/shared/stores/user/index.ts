@@ -5,7 +5,7 @@ import type { IUserState } from "@/server/types/users";
 export const userStore = defineStore('userStore', () => {
   const state = ref<IUserState | undefined>(undefined);
 
-  const setUser = ({ id, name, surname, email, picture }: IUserState): void => {
+  const saveUser = ({ id, name, surname, email, picture }: IUserState): void => {
     state.value = { id, name, surname, email, picture };
   };
 
@@ -21,7 +21,7 @@ export const userStore = defineStore('userStore', () => {
 
   return {
     state,
-    setUser,
+    saveUser,
     getUser
   };
 });

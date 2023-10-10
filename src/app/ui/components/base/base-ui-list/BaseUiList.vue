@@ -1,7 +1,7 @@
 <template>
   <section :id="id" class="base-ui-list">
     <slot name="loader" />
-    <ul v-if="list?.length !== 0">
+    <ul v-if="list?.length !== 0" class="base-ui-list__items">
       <li v-for="item in list" :key="item.id">
         <slot :property="{ item }" name="properties"></slot>
       </li>

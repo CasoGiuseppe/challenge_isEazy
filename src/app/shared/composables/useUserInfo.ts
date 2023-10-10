@@ -6,7 +6,7 @@ import type { IUserState } from '@/server/types/users';
 import { ref } from 'vue';
 
 export default function useUserInfo(store: UserStore, client: IHttpRequestService): IUserInfo {
-  const { setUser } = store;
+  const { saveUser } = store;
   const isLoading = ref<boolean>(false);
   const isSuccess = ref<boolean>(false);
   const hasError = ref<Record<string, boolean | string>>({ state: false, message: '' });
@@ -36,7 +36,7 @@ export default function useUserInfo(store: UserStore, client: IHttpRequestServic
       });
 
       // 3. set local store with logged user params
-      setUser({ id, name, surname, picture, email: mail });
+      saveUser({ id, name, surname, picture, email: mail });
 
       // 4. set success state
       isSuccess.value = true;

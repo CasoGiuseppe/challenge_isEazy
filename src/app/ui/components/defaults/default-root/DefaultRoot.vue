@@ -18,8 +18,8 @@
       <template #content>
         <userMessages @mounted="getMessages">
           <template #content>
-            <messagesList :list="list" :loader="isLoading">
-              <template v-if="list" #properties="{ property }">
+            <messagesList :list="items" :loader="isLoading">
+              <template v-if="items" #properties="{ property }">
                 {{ property }}
               </template>
               <template v-else #loader>
@@ -57,7 +57,6 @@ import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncCom
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
 import type { IMessagesDetails } from '@shared/composables/interfaces/useMessagesDetails';
 import { Sizes } from '@shared/types/definitions';
-import type { IMessageState } from '@/server/types/messages';
 
 // inject composables
 const useAsyncComponent = inject<IAsyncComponent>('UseAsyncComponent') as IAsyncComponent;
@@ -80,13 +79,10 @@ const messagesList = await create({ component: 'components/base/base-ui-list/Bas
 
 // set refs to dynamic values
 const open = ref<boolean>(true);
-const list = ref<IMessageState | undefined>(undefined);
 
 // get user messages method to download from API
-const { getUsersMessages, isLoading } = useMessages;
+const { getUsersMessages, isLoading, items } = useMessages;
 
 // handle messages load
-const getMessages = async () => {
-  list.value = await getUsersMessages();
-};
+const getMessages = async () => await getUsersMessages();
 </script>

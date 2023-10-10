@@ -30,3 +30,8 @@ export enum Messages {
   SEND = 'send',
   RECEIVE = 'receive'
 }
+
+export enum ListType {
+    MESSAGE = 'message',
+    ATTACH = 'attach',
+}

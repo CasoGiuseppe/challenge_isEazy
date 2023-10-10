@@ -61,7 +61,6 @@ const slotTitleExist = computed(() => !!slots['title']);
 const slotExtraExist = computed(() => !!slots['extra']);
 
 const dialog = ref<HTMLDialogElement>();
-const modal = dialog.value;
 
 const customEmits = defineEmits(['close']);
 const closeDialog = () => customEmits('close');

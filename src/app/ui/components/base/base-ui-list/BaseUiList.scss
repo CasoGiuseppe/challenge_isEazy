@@ -1,4 +1,10 @@
 .base-ui-list {
+  @apply flex flex-col p-md items-center;
+
+  &__items {
+    @apply flex flex-col gap-md;
+  }
+
   &__fallback {
     @apply flex justify-center items-center;
     @apply text-small text-blue-400;

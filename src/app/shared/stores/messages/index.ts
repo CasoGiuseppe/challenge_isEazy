@@ -5,18 +5,19 @@ import type { IMessageState } from "@/server/types/messages";
 export const messagesStore = defineStore('messagesStore', () => {
   const state = ref<IMessageState[] | []>([]);
 
-  const setMessage = (message: IMessageState) => {
-    state.value = [...(state.value || []), message];
+  const saveMessage = (message: IMessageState) => {
+    const current = state.value;
+    state.value = [...current, message];
   };
 
   const getMessages = computed(() => {
     if (!state.value) return;
-    return state.value
+    return state.value.length > 0 ? state.value : undefined
   });
 
   return {
     state,
-    setMessage,
+    saveMessage,
     getMessages
   }
 });
