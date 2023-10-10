@@ -19,8 +19,30 @@
         <userMessages @mounted="getMessages">
           <template #content>
             <messagesList :list="items" :loader="isLoading">
-              <template v-if="items" #properties="{ property }">
-                {{ property }}
+              <template
+                v-if="items"
+                #properties="{
+                  property: {
+                    item: {
+                      user,
+                      picture,
+                      item: { text, date }
+                    }
+                  }
+                }"
+              >
+                <userMessage
+                  :id="user"
+                  :type="getUser.id === user ? Messages.SEND : Messages.RECEIVE"
+                >
+                  <template #picture>
+                    <userPicture :size="Sizes.XLG">
+                      <img :src="picture" :aria-description="`Picture image for ${user}`" />
+                    </userPicture>
+                  </template>
+                  <template #message>{{ text }}</template>
+                  <template #date>{{ date }}</template>
+                </userMessage>
               </template>
               <template v-else #loader>
                 <UserDefaultLoader>
@@ -36,7 +58,7 @@
       <template #extra>
         <userIdentity>
           <template #picture>
-            <userPicture :size="Sizes.XLG">
+            <userPicture :size="Sizes.XXLG">
               <img
                 :src="getUser.picture"
                 :aria-description="`Picture image for ${getUser.completeName}`"
@@ -56,7 +78,7 @@ import UserDefaultLoader from '@ui/components/defaults/default-loader/DefaultLoa
 import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncComponent';
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
 import type { IMessagesDetails } from '@shared/composables/interfaces/useMessagesDetails';
-import { Sizes } from '@shared/types/definitions';
+import { Sizes, Messages } from '@shared/types/definitions';
 
 // inject composables
 const useAsyncComponent = inject<IAsyncComponent>('UseAsyncComponent') as IAsyncComponent;
@@ -76,6 +98,7 @@ const userPicture = await create({ component: 'components/base/base-ui-picture/B
 const userMessages = await create({ component: 'layouts/user-message-window/UserMessageWindow' });
 const userSendForm = await create({ component: 'widgets/user-send-form/UserSendForm' });
 const messagesList = await create({ component: 'components/base/base-ui-list/BaseUiList' });
+const userMessage = await create({ component: 'components/user-message/UserMessage' });
 
 // set refs to dynamic values
 const open = ref<boolean>(true);

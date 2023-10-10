@@ -10,6 +10,12 @@
   >
     <section class="user-dialog__area">
       <header class="user-dialog__header">
+        <!-- @slot Slot for extra header info -->
+        <aside v-if="slotExtraExist" class="user-dialog__extra"><slot name="extra" /></aside>
+
+        <!-- @slot Slot for set dialog title -->
+        <h2 v-if="slotTitleExist" class="user-dialog__title"><slot name="title" /></h2>
+
         <button
           v-if="slotCloseExist"
           aria-label="To close click here or press ESC"
@@ -20,12 +26,6 @@
           <!-- @slot Slot for close icon -->
           <slot name="close" />
         </button>
-
-        <!-- @slot Slot for set dialog title -->
-        <h2 v-if="slotTitleExist" class="user-dialog__title"><slot name="title" /></h2>
-
-        <!-- @slot Slot for extra header info -->
-        <aside v-if="slotExtraExist" class="user-dialog__extra"><slot name="extra" /></aside>
       </header>
       <!-- @slot Slot for dialog content -->
       <slot name="content" />

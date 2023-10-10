@@ -2,7 +2,7 @@
   @apply flex flex-col p-md items-center;
 
   &__items {
-    @apply flex flex-col gap-md;
+    @apply flex flex-col gap-md w-full;
   }
 
   &__fallback {

@@ -4,6 +4,7 @@ export interface IMessageState {
   user: string;
   type?: ListType;
   item: ITextType | IAttachType | {};
+  picture?: string
 }
 
 export interface ITextType {
