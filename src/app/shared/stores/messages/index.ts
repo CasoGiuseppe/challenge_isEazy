@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
-import type { IMessageState } from './type';
 import { initMessagesState } from './definitions';
+import type { IMessageState } from "@/server/types/messages";
 
 export const messagesStore = defineStore('messagesStore', () => {
   const state = ref<IMessageState[]>(initMessagesState);
