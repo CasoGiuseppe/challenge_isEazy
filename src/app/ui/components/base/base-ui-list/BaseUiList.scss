@@ -1,4 +1,13 @@
 .base-ui-list {
+  --from-animation: 25%;
+  --to-animation: -250%;
+
+  @include create-animation(
+    $name: 'appear-message',
+    $from: translateY(var(--from-animation)),
+    $to: translateY(var(--to-animation))
+  );
+
   @apply flex flex-col p-md items-center;
 
   &__items {

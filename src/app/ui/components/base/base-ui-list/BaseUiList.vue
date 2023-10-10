@@ -1,11 +1,17 @@
 <template>
   <section :id="id" class="base-ui-list">
     <slot name="loader" />
-    <ul v-if="list?.length !== 0" class="base-ui-list__items">
+    <TransitionGroup
+      appear
+      v-if="list?.length !== 0"
+      tag="ul"
+      class="base-ui-list__items"
+      name="appear-message"
+    >
       <li v-for="item in list" :key="item.id">
         <slot :property="{ item }" name="properties"></slot>
       </li>
-    </ul>
+    </TransitionGroup>
     <aside v-else class="base-ui-list__fallback">No items was found</aside>
   </section>
 </template>
