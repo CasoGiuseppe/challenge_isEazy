@@ -24,12 +24,11 @@ export default function useMessagesDetais(
         `${import.meta.env.VITE_APP_API_NAMESPACE}/messages`
       );
 
-      const mapped = sortByDate({array: result}).map((node) => MessageViewModel.createMessageViewModel(node).viewMessage)
-
-      console.log(sortByDate({array: result}));
       // 3. add type key to detect item typology
       // 4. save local store with recovery messages
-      mapped.forEach((item: IMessageState) => saveMessage(item));
+      sortByDate({array: result})
+        .map((node) => MessageViewModel.createMessageViewModel(node).viewMessage)
+        .forEach((item: IMessageState) => saveMessage(item))
     } catch (e) {
       /* empty */
     } finally {

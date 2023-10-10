@@ -5,7 +5,7 @@ import type { IMessageState } from "@/server/types/messages";
 export const messagesStore = defineStore('messagesStore', () => {
   const state = ref<IMessageState[] | []>([]);
 
-  const saveMessage = (message: IMessageState) => {
+  const saveMessage = (message: IMessageState): void => {
     const current = state.value;
     state.value = [...current, message];
   };
