@@ -22,10 +22,10 @@ export default function useMessagesDetais(
       const result = await client.get<IMessageState[]>(`${import.meta.env.VITE_APP_API_NAMESPACE}/messages`);
 
       // 3. add type key to detect item typology
-      const addTyeToResult = result.map(node => MessageViewModel.createMessageViewModel(node).viewMessage)
-
       // 4. save local store with recovery messages
-      addTyeToResult.forEach((item: IMessageState) => saveMessage(item))
+      result
+        .map(node => MessageViewModel.createMessageViewModel(node).viewMessage)
+        .forEach((item: IMessageState) => saveMessage(item))
       
     } catch (e) {
       /* empty */
