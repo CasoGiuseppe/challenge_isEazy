@@ -5,6 +5,7 @@ import type { IMessagesDetails } from './interfaces/useMessagesDetails';
 import type { IHttpRequestService } from '@shared/providers/http/http.interface';
 import type { IMessageState } from '@/server/types/messages';
 import { MessageViewModel } from './views-model/messagesDetails.view';
+import { sortByDate } from '../helpers';
 
 export default function useMessagesDetais(
   store: MessageStore,
@@ -19,14 +20,16 @@ export default function useMessagesDetais(
       isLoading.value = true;
 
       // 2. get from API user attrs
-      const result = await client.get<IMessageState[]>(`${import.meta.env.VITE_APP_API_NAMESPACE}/messages`);
+      const result = await client.get<IMessageState[]>(
+        `${import.meta.env.VITE_APP_API_NAMESPACE}/messages`
+      );
 
+      const mapped = sortByDate({array: result}).map((node) => MessageViewModel.createMessageViewModel(node).viewMessage)
+
+      console.log(sortByDate({array: result}));
       // 3. add type key to detect item typology
       // 4. save local store with recovery messages
-      result
-        .map(node => MessageViewModel.createMessageViewModel(node).viewMessage)
-        .forEach((item: IMessageState) => saveMessage(item))
-      
+      mapped.forEach((item: IMessageState) => saveMessage(item));
     } catch (e) {
       /* empty */
     } finally {

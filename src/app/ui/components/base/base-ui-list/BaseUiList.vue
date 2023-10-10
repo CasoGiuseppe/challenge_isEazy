@@ -1,5 +1,6 @@
 <template>
   <section :id="id" class="base-ui-list">
+    <!-- @slot Slot to handle loading state -->
     <slot name="loader" />
     <TransitionGroup
       appear
@@ -9,6 +10,7 @@
       name="appear-message"
     >
       <li v-for="item in list" :key="item.id">
+        <!-- @slot Slot for list of content -->
         <slot :property="{ item }" name="properties"></slot>
       </li>
     </TransitionGroup>
