@@ -22,13 +22,17 @@
               <template v-if="list" #properties="{ property }">
                 {{ property }}
               </template>
-              <template v-else #loader>loading</template>
+              <template v-else #loader>
+                <UserDefaultLoader>
+                  Wait please...we are recovering your messages
+                </UserDefaultLoader>
+              </template>
             </messagesList>
           </template>
           <template #footer><userSendForm /></template>
         </userMessages>
       </template>
-      <template #title>Comments {{ isLoading }}</template>
+      <template #title>Comments</template>
       <template #extra>
         <userIdentity>
           <template #picture>

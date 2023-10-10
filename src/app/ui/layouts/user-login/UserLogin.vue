@@ -1,6 +1,6 @@
 <template>
   <form class="user-login" @submit.prevent="sendLogin">
-    <h2 v-if="slotTitle" class="user-login__title"><slot name="title" />{{ isLoading }}</h2>
+    <h2 v-if="slotTitle" class="user-login__title"><slot name="title" /></h2>
     <!-- user email -->
     <component
       id="email"
