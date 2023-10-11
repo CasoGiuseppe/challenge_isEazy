@@ -29,7 +29,7 @@ import useAggregator from './app/shared/composables/useAggregator';
 import { HTTPService } from '@shared/providers/http/http.service';
 
 const UseUserInfo = useUserInfo(useUserStore, new HTTPService());
-const UseMessages = useMessages(useMessageStore, new HTTPService());
+const UseMessages = useMessages(new HTTPService());
 const UseAsyncComponent = userAsyncComponent();
 const UseObserver = useObserver();
 const UseUploadAttach = useUploadAttach(useAttachStore, new HTTPService())
