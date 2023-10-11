@@ -33,7 +33,7 @@ const mockServer = new Server({
     }, { timing: randomTiming(1500, 4000) })
 
     // get attaches
-    // this.get(`/user`, (schema) => schema.db.attaches, { timing: randomTiming(1500, 4000) });
+    this.get(`/attaches`, (schema) => schema.db.attaches, { timing: randomTiming(1500, 4000) });
   },
 });
 

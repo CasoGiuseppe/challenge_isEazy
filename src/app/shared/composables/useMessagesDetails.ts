@@ -21,7 +21,7 @@ export default function useMessagesDetais(
       // 1. set loading state
       isLoading.value = true;
 
-      // 2. get from API user attrs
+      // 2. get from API messages list
       const result = await client.get<IMessageState[]>(
         `${import.meta.env.VITE_APP_API_NAMESPACE}/messages`
       );
@@ -35,7 +35,7 @@ export default function useMessagesDetais(
           saveMessage(item)
         });
     } catch (e) {
-      /* empty */
+      throw new Error(e as string);
     } finally {
       // 5. restore loading state
       isLoading.value = false;
