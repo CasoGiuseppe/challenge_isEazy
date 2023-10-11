@@ -21,7 +21,6 @@ export class MessageViewModel {
       id: this.id,
       picture: this.picture,
       user:  this.user,
-      // item: { ...this.item, date: tranformDate(this.item as ITextType) },
       item: this.item,
       type: isTextMessage(this.item) ? ListType.MESSAGE : ListType.ATTACH
     };

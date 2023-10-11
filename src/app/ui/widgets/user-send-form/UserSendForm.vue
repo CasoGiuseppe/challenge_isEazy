@@ -34,8 +34,7 @@
     <component
       :is="userSendButton"
       :role="Roles.FILE"
-      :disabled="disabled"
-      :loading="saving"
+      :disabled="disabled || saving"
       id="user-send-upload"
       class="user-send-form__action"
       label="Upload a new document version"

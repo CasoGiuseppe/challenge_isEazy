@@ -119,40 +119,42 @@ const factoryItemType = (type: string) => (type === ListType.MESSAGE ? userMessa
 const open = ref<boolean>(true);
 
 // handle messages
-const { getUsersMessages, createMessage, isSaving } = useMessages;
-const getMessages = async () => await getUsersMessages();
+const { getUsersMessages, createMessage } = useMessages;
 const attachMessage = async ({ message }: { message: string }) => {
   const { id, picture } = getUser.value;
-  await createMessage({
-    body: {
-      id,
-      user: id,
-      picture,
-      item: {
-        text: message,
-        date: new Date()
-      }
+  const body = {
+    id,
+    user: id,
+    picture,
+    item: {
+      text: message,
+      date: new Date()
     }
+  };
+  await aggregateItems({
+    collection: [
+      {
+        fn: createMessage,
+        params: { body }
+      }
+    ]
   });
-
-  await getMessages();
 };
 
-const { aggregateItems, items, isLoading } = useAggregator;
-const fillAggragator = () => aggregateItems({ collection: [getMessages] });
+const { aggregateItems, items, isLoading, isSaving } = useAggregator;
+const fillAggragator = async () => await aggregateItems({ collection: [{ fn: getUsersMessages }] });
 
 // handle mutation observer to set list bottom position
-const { init } = useObserver;
+const { init: mutationStart } = useObserver;
 watch(
   () => items.value,
   () => {
     const messagesList = document.querySelector('#messagesList') as Element;
-    init({
+    mutationStart({
       trigger: messagesList,
       action: async () => {
         messagesList.scrollTop = messagesList.scrollHeight;
-        await delay(50);
-        messagesList.scrollTo(10, messagesList.scrollHeight);
+        await delay(50).then(() => messagesList.scrollTo(10, messagesList.scrollHeight));
       }
     });
   }

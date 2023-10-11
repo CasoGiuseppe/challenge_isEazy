@@ -1,4 +1,3 @@
-import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 import type { MessageStore } from '@shared/stores/messages';
 import type { IMessagesDetails } from './interfaces/useMessagesDetails';
@@ -27,7 +26,7 @@ export default function useMessagesDetais(
     }
   };
 
-  const createMessage = async ({ body }: { body: IMessageState }): Promise<void> => {
+  const createMessage = async ({ body }: { body: IMessageState }): Promise<IMessagesStoreState[]> => {
     try {
       // 1. set saving state
       isSaving.value = true;
@@ -37,11 +36,9 @@ export default function useMessagesDetais(
         body
       );
 
-      // sortByDate({ array: postedMessage })
-      //   .map((node) => MessageViewModel.createMessageViewModel(node).viewMessage)
-      //   .forEach((item: IMessagesStoreState) => saveMessage(item));
+      return postedMessage.map((node) => MessageViewModel.createMessageViewModel(node).viewMessage);
     } catch (e) {
-      /* empty */
+      throw new Error(e as string);
     } finally {
       // 5. restore saving state
       isSaving.value = false;
@@ -49,7 +46,6 @@ export default function useMessagesDetais(
   };
 
   return {
-    isSaving,
     getUsersMessages,
     createMessage
   };

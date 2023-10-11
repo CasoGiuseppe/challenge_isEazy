@@ -9,15 +9,17 @@ import { AggregatorViewModel } from './views-model/aggregator.view';
 export default function useAggregator(store: MessageStore): IAggregator {
   const { saveMessage } = store;
   const isLoading = ref<boolean>(false);
+  const isSaving = ref<boolean>(false);
 
-  const aggregateItems = async ({ collection }: { collection: any[] }): Promise<void> => {
+  const aggregateItems = async ({ collection }: { collection: Record<string, any>[] }): Promise<void> => {
     try {
       // 1. set loading state on true to display spinner
       isLoading.value = true;
+      isSaving.value = true;
 
       // 2. promise all methods to get list items [ messages, attaches ]
       const aggregatorCollection = await Promise.all(
-        collection.map(async (getter) => await getter())
+        collection.map(async (getter) => await getter.fn(getter.params ?? null))
       );
 
       // 3. sort promises result and save on store
@@ -29,12 +31,14 @@ export default function useAggregator(store: MessageStore): IAggregator {
     } finally {
       // 5. restore loading state
       isLoading.value = false;
+      isSaving.value = false;
     }
   };
 
   return {
     items: storeToRefs(store).getMessages,
     isLoading,
+    isSaving,
     aggregateItems
   };
 }
