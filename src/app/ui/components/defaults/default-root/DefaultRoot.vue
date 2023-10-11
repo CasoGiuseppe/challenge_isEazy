@@ -52,7 +52,7 @@
             </messagesList>
           </template>
           <template #footer
-            ><userSendForm :disabled="!items" @createMessage="attachMessage"
+            ><userSendForm :disabled="!items" :saving="isSaving" @createMessage="attachMessage"
           /></template>
         </userMessages>
       </template>
@@ -106,7 +106,7 @@ const userMessage = await create({ component: 'components/user-message/UserMessa
 const open = ref<boolean>(true);
 
 // get user messages method to download from API
-const { getUsersMessages, createMessage, isLoading, items } = useMessages;
+const { getUsersMessages, createMessage, isLoading, isSaving, items } = useMessages;
 
 // handle messages load
 const getMessages = async () => await getUsersMessages();

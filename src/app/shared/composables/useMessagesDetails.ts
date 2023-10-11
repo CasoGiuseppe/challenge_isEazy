@@ -17,7 +17,7 @@ export default function useMessagesDetais(
 
   const getUsersMessages = async (): Promise<void> => {
     try {
-      // 1. set loading && error state
+      // 1. set loading state
       isLoading.value = true;
 
       // 2. get from API user attrs
@@ -33,12 +33,16 @@ export default function useMessagesDetais(
     } catch (e) {
       /* empty */
     } finally {
+      // 5. restore loading state
       isLoading.value = false;
     }
   };
 
   const createMessage = async ({ body }: { body: IMessageState }): Promise<void> => {
     try {
+      // 1. set saving state
+      isSaving.value = true;
+
       const postedMessage = await client.post<IMessageState[]>(
         `${import.meta.env.VITE_APP_API_NAMESPACE}/messages/create`,
         body
@@ -49,6 +53,9 @@ export default function useMessagesDetais(
         .forEach((item: IMessageState) => saveMessage(item));
     } catch (e) {
       /* empty */
+    } finally {
+      // 5. restore saving state
+      isSaving.value = false;
     }
   };
 

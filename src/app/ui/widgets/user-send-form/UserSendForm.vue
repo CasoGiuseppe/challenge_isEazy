@@ -9,9 +9,9 @@
     >
       <component
         :is="userSendInput"
-        :disabled="disabled"
         :type="Fields.TEXTAREA"
         :modelValue="messageAreaText"
+        :disabled="saving || disabled"
         class="user-send-form__input"
         id="user-send-input"
         placeholder="Write here your message"
@@ -22,10 +22,11 @@
         :role="Roles.SUBMIT"
         :variant="ButtonVariants.CIRCLE"
         :size="Sizes.XLG"
+        :disabled="disabled"
+        :loading="saving"
         id="user-send-action"
         class="user-send-form__action"
         label="Click to send your message"
-        :disabled="disabled"
       >
         <PaperAirplaneIcon />
       </component>
@@ -33,10 +34,11 @@
     <component
       :is="userSendButton"
       :role="Roles.FILE"
+      :disabled="disabled"
+      :loading="saving"
       id="user-send-upload"
       class="user-send-form__action"
       label="Upload a new document version"
-      :disabled="disabled"
     >
       <PaperClipIcon />Upload a new document version
     </component>
@@ -56,6 +58,13 @@ const { id, disabled } = defineProps({
   id: {
     type: String as PropType<string>,
     default: 'formID'
+  },
+  /**
+   * Handle saving state
+   */
+  saving: {
+    type: Boolean as PropType<boolean>,
+    default: false
   },
   /**
    * Handle disabled state
@@ -81,6 +90,9 @@ const setNewMessage = (value: string) => (messageAreaText.value = value);
 
 // define and launch custom events
 const customEmits = defineEmits(['createMessage', 'attach']);
-const createNewMessage = () => customEmits('createMessage', { message: messageAreaText.value });
+const createNewMessage = () => {
+  messageAreaText.value = '';
+  customEmits('createMessage', { message: messageAreaText.value });
+};
 </script>
 <style lang="scss" src="./UserSendForm.scss" scoped />
