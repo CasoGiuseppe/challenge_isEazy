@@ -34,6 +34,12 @@ const mockServer = new Server({
 
     // get attaches
     this.get(`/attaches`, (schema) => schema.db.attaches, { timing: randomTiming(1500, 4000) });
+
+    // post attach
+    this.post('/attaches/create', (schema, request) => {
+      const attach = JSON.parse(request.requestBody);
+      return [...schema.db.attaches, attach];
+    }, { timing: randomTiming(1500, 4000) })
   },
 });
 
