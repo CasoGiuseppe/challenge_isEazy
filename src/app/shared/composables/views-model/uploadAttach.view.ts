@@ -13,10 +13,10 @@ export class UploadAttachViewModel {
   }
 
   get viewUploadAttach(): IUploadAttachStoreState {
-    const { size, type, ...rest} = this.item
+    const { size, type, version, ...rest} = this.item
     return {
       id: this.id,
-      item: {...rest, info: `Documento/${type} (${size})`}
+      item: {...rest, version: `Version ${version}`, info: `Documento/${type} (${size})`}
     };
   }
 }

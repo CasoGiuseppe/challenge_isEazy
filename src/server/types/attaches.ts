@@ -4,7 +4,7 @@ export interface IAttachState {
 }
 
 export interface IAttachType {
-  version: string,
+  version: number,
   title: string,
   type: string,
   size: string,

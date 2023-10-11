@@ -11,7 +11,6 @@ import '@assets/index.scss';
 // import stores
 import { useUserStore } from '@shared/stores/user';
 import { useMessageStore } from '@shared/stores/messages';
-import { useAttachStore} from '@shared/stores/attaches';
 
 // import composables
 import useUserInfo from '@shared/composables/useUserInfo';

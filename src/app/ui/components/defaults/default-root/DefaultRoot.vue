@@ -47,6 +47,15 @@
                   <template #version>{{ version }}</template>
                   <template #title>{{ title }}</template>
                   <template #typing> {{ info }}</template>
+                  <template #action>
+                    <component
+                      :is="userActionButton"
+                      :variant="ButtonVariants.EMPTY"
+                      :size="Sizes.XXLG"
+                    >
+                      <CloudArrowDownIcon />
+                    </component>
+                  </template>
                 </component>
               </template>
               <template v-else #loader>
@@ -90,6 +99,8 @@ import type { IAggregator } from '@shared/composables/interfaces/useAggregator';
 import type { IAttaches } from '@shared/composables/interfaces/useAttach';
 import { Sizes, Messages, ListType } from '@shared/types/definitions';
 import { delay } from '@shared/helpers';
+import { CloudArrowDownIcon } from '@heroicons/vue/24/solid';
+import { ButtonVariants } from '@ui/components/base/base-ui-button/definitions';
 
 // inject composables
 const useAsyncComponent = inject<IAsyncComponent>('UseAsyncComponent') as IAsyncComponent;
@@ -114,6 +125,7 @@ const userSendForm = await create({ component: 'widgets/user-send-form/UserSendF
 const messagesList = await create({ component: 'components/base/base-ui-list/BaseUiList' });
 const userMessage = await create({ component: 'components/user-message/UserMessage' });
 const userAttach = await create({ component: 'components/user-attach-info/UserAttachInfo' });
+const userActionButton = await create({ component: 'components/base/base-ui-button/BaseUiButton' });
 
 // check item list type [message, attach]
 const factoryItemType = (type: string) => (type === ListType.MESSAGE ? userMessage : userAttach);
