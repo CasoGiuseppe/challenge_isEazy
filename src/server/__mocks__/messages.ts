@@ -1,5 +1,6 @@
 export default [
   {
+    id: '10fb7d5b-8564-41c5-b373-d5d3e1d03545',
     user: 'STUDENT',
     picture: 'https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles',
     item: {
@@ -8,6 +9,7 @@ export default [
     }
   },
   {
+    id: '90d115de-5472-4898-b872-0e821faf29cb',
     user: 'TEACHER',
     picture: 'https://api.dicebear.com/7.x/bottts/svg?seed=Ginger',
     item: {
@@ -16,6 +18,7 @@ export default [
     }
   },
   {
+    id: '7ddeefea-4788-4e62-9956-ec3cb4ac7831',
     user: 'STUDENT',
     picture:'https://api.dicebear.com/7.x/adventurer/svg?seed=Cuddles',
     item: {

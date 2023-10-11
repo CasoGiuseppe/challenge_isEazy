@@ -1,6 +1,6 @@
 import { ListType } from '@shared/types/definitions';
 export interface IMessageState {
-  id: string;
+  id?: UniqueId;
   user: string;
   type?: ListType;
   item: ITextType | IAttachType | {};

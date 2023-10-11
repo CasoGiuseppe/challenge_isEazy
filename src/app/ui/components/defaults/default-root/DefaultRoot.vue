@@ -51,7 +51,9 @@
               </template>
             </messagesList>
           </template>
-          <template #footer><userSendForm :disabled="!items" /></template>
+          <template #footer
+            ><userSendForm :disabled="!items" @createMessage="attachMessage"
+          /></template>
         </userMessages>
       </template>
       <template #title>Comments</template>
@@ -104,8 +106,25 @@ const userMessage = await create({ component: 'components/user-message/UserMessa
 const open = ref<boolean>(true);
 
 // get user messages method to download from API
-const { getUsersMessages, isLoading, items } = useMessages;
+const { getUsersMessages, createMessage, isLoading, items } = useMessages;
 
 // handle messages load
 const getMessages = async () => await getUsersMessages();
+
+// handle attach new message to db
+const attachMessage = async () => {
+  const { id, picture } = getUser.value;
+  await createMessage({
+    body: {
+      user: id,
+      picture,
+      item: {
+        text: 'ciccio',
+        date: new Date()
+      }
+    }
+  });
+
+  await getMessages();
+};
 </script>

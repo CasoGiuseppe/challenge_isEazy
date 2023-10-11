@@ -11,8 +11,9 @@ export default function useMessagesDetais(
   store: MessageStore,
   client: IHttpRequestService
 ): IMessagesDetails {
-  const { saveMessage } = store;
+  const { saveMessage, getMessages } = store;
   const isLoading = ref<boolean>(false);
+  const isSaving = ref<boolean>(false);
 
   const getUsersMessages = async (): Promise<void> => {
     try {
@@ -36,11 +37,16 @@ export default function useMessagesDetais(
     }
   };
 
-  const createMessage = async (): Promise<void> => {
+  const createMessage = async ({ body }: { body: IMessageState }): Promise<void> => {
     try {
-      const body = { name: 'ciccio'}
-      const xxx = await client.post(`${import.meta.env.VITE_APP_API_NAMESPACE}/messages/create`, body);
-      console.log(xxx)
+      const postedMessage = await client.post<IMessageState[]>(
+        `${import.meta.env.VITE_APP_API_NAMESPACE}/messages/create`,
+        body
+      );
+
+      sortByDate({ array: postedMessage })
+        .map((node) => MessageViewModel.createMessageViewModel(node).viewMessage)
+        .forEach((item: IMessageState) => saveMessage(item));
     } catch (e) {
       /* empty */
     }
@@ -49,6 +55,7 @@ export default function useMessagesDetais(
   return {
     items: storeToRefs(store).getMessages,
     isLoading,
+    isSaving,
     getUsersMessages,
     createMessage
   };

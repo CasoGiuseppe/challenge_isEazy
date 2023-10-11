@@ -1,7 +1,7 @@
 import { Server, Response } from 'miragejs';
 import USER from '@/server/__mocks__/users';
 import MESSAGES from '@/server/__mocks__/messages';
-import { randomTiming } from '@shared/helpers';
+import { randomTiming, uuid } from '@shared/helpers';
 
 const mockServer = new Server({
   seeds(server) {
@@ -26,7 +26,7 @@ const mockServer = new Server({
     // post message
     this.post('/messages/create', (schema, request) => {
       const message = JSON.parse(request.requestBody);
-      console.log([...schema.db.messages, message])
+      message.id = uuid()
       return [...schema.db.messages, message];
     }, { timing: randomTiming(1500, 4000) })
   },

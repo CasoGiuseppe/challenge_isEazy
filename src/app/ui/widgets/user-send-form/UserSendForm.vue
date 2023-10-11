@@ -3,7 +3,7 @@
     <form
       :id="id"
       class="user-send-form__submit"
-      @submit.prevent="sendForm"
+      @submit.prevent="createNewMessage"
       aria-description="Form to send message or upload file"
       novalidate
     >
@@ -71,6 +71,9 @@ const { create } = useAsyncComponent();
 const userSendInput = await create({ component: 'components/base/base-ui-input/BaseUiInput' });
 const userSendButton = await create({ component: 'components/base/base-ui-button/BaseUiButton' });
 
-const sendForm = () => console.log('send');
+// define custom events
+const customEmits = defineEmits(['createMessage', 'attach']);
+
+const createNewMessage = () => customEmits('createMessage');
 </script>
 <style lang="scss" src="./UserSendForm.scss" scoped />

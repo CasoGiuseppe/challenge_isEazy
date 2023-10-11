@@ -1,13 +1,14 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 import type { IMessageState } from "@/server/types/messages";
+import { unique } from '@shared/helpers';
 
 export const messagesStore = defineStore('messagesStore', () => {
   const state = ref<IMessageState[] | []>([]);
 
   const saveMessage = (message: IMessageState): void => {
     const current = state.value;
-    state.value = [...current, message];
+    state.value = unique({ array: [...current, message]})
   };
 
   const getMessages = computed(() => {
