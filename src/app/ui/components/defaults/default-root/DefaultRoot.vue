@@ -16,7 +16,7 @@
 
     <component v-if="isSuccess" :is="dialog" :open="open">
       <template #content>
-        <userMessages @mounted="getMessages">
+        <userMessages @mounted="fillAggragator">
           <template #content>
             <messagesList :list="items" :loader="isLoading" max-height="50vh" id="messagesList">
               <template
@@ -94,6 +94,7 @@ const useAsyncComponent = inject<IAsyncComponent>('UseAsyncComponent') as IAsync
 const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
 const useMessages = inject<IMessagesDetails>('UseMessages') as IMessagesDetails;
 const useObserver = inject<IObserver>('UseObserver') as IObserver;
+const useAggregator = inject<any>('UseAggregator') as any;
 
 // get create method to load lazy component
 const { create } = useAsyncComponent;
@@ -117,17 +118,14 @@ const factoryItemType = (type: string) => (type === ListType.MESSAGE ? userMessa
 // set refs to dynamic values
 const open = ref<boolean>(true);
 
-// get user messages method to download from API
-const { getUsersMessages, createMessage, isLoading, isSaving, items } = useMessages;
-
-// handle messages load
+// handle messages
+const { getUsersMessages, createMessage, isSaving } = useMessages;
 const getMessages = async () => await getUsersMessages();
-
-// handle attach new message to db
 const attachMessage = async ({ message }: { message: string }) => {
   const { id, picture } = getUser.value;
   await createMessage({
     body: {
+      id,
       user: id,
       picture,
       item: {
@@ -140,9 +138,11 @@ const attachMessage = async ({ message }: { message: string }) => {
   await getMessages();
 };
 
-// get init observer method to handle messages position bottom
-const { init } = useObserver;
+const { aggregateItems, items, isLoading } = useAggregator;
+const fillAggragator = () => aggregateItems({ collection: [getMessages] });
 
+// handle mutation observer to set list bottom position
+const { init } = useObserver;
 watch(
   () => items.value,
   () => {

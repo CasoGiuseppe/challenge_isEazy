@@ -1,10 +1,9 @@
-import type { IMessageState } from '@/server/types/messages';
 import type { Ref } from 'vue';
+import type { IMessageState } from '@/server/types/messages';
+import type { IMessagesStoreState } from '@shared/stores/messages/definitions';
 
 export interface IMessagesDetails {
-  items: any;
-  isLoading: Ref<boolean>;
   isSaving: Ref<boolean>;
-  getUsersMessages(): Promise<void>;
+  getUsersMessages(): Promise<IMessagesStoreState[]>;
   createMessage({ body }: { body: IMessageState }): Promise<void>;
 }

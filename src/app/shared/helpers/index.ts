@@ -14,4 +14,12 @@ export const uuid = () => {
     return v.toString(16);
   });
 };
+
 export const delay = (delay: number) => new Promise(resolve => setTimeout(resolve, delay));
+
+export const tranformDate = (date: string): string => {
+  const newDate = new Date(date);
+  const time = `${transformHour(newDate.getHours())}:${transformHour(newDate.getMinutes())}`;
+  return `${newDate.toLocaleDateString('it-IT')} - ${time}`;
+};
+export const transformHour = (time: number): string => time < 10 ? `0${time}` : `${time}`

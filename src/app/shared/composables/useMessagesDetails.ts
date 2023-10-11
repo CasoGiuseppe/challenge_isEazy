@@ -5,40 +5,25 @@ import type { IMessagesDetails } from './interfaces/useMessagesDetails';
 import type { IHttpRequestService } from '@shared/providers/http/http.interface';
 import type { IMessageState } from '@/server/types/messages';
 import { MessageViewModel } from './views-model/messagesDetails.view';
-import { sortByDate } from '../helpers';
 import type { IMessagesStoreState } from '@shared/stores/messages/definitions';
 
 export default function useMessagesDetais(
   store: MessageStore,
   client: IHttpRequestService
 ): IMessagesDetails {
-  const { saveMessage } = store;
-  const isLoading = ref<boolean>(false);
   const isSaving = ref<boolean>(false);
 
-  const getUsersMessages = async (): Promise<void> => {
+  const getUsersMessages = async (): Promise<IMessagesStoreState[]> => {
     try {
-      // 1. set loading state
-      isLoading.value = true;
-
-      // 2. get from API messages list
+      // 1. get from API messages list
       const result = await client.get<IMessageState[]>(
         `${import.meta.env.VITE_APP_API_NAMESPACE}/messages`
       );
 
-      // 3. add type key to detect item typology
-      // 4. save local store with recovery messages
-      sortByDate({ array: result })
-        .map((node) => MessageViewModel.createMessageViewModel(node).viewMessage)
-        .forEach((item: IMessagesStoreState) => {
-          console.log(item)
-          saveMessage(item)
-        });
+      // 2. return array of message instance for viwemodel
+      return result.map((node) => MessageViewModel.createMessageViewModel(node).viewMessage);
     } catch (e) {
       throw new Error(e as string);
-    } finally {
-      // 5. restore loading state
-      isLoading.value = false;
     }
   };
 
@@ -52,9 +37,9 @@ export default function useMessagesDetais(
         body
       );
 
-      sortByDate({ array: postedMessage })
-        .map((node) => MessageViewModel.createMessageViewModel(node).viewMessage)
-        .forEach((item: IMessagesStoreState) => saveMessage(item));
+      // sortByDate({ array: postedMessage })
+      //   .map((node) => MessageViewModel.createMessageViewModel(node).viewMessage)
+      //   .forEach((item: IMessagesStoreState) => saveMessage(item));
     } catch (e) {
       /* empty */
     } finally {
@@ -64,8 +49,6 @@ export default function useMessagesDetais(
   };
 
   return {
-    items: storeToRefs(store).getMessages,
-    isLoading,
     isSaving,
     getUsersMessages,
     createMessage
