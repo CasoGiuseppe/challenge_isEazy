@@ -1,13 +1,15 @@
 import { Server, Response } from 'miragejs';
 import USER from '@/server/__mocks__/users';
 import MESSAGES from '@/server/__mocks__/messages';
+import ATTACHES from '@/server/__mocks__/attaches';
 import { randomTiming, uuid } from '@shared/helpers';
 
 const mockServer = new Server({
   seeds(server) {
     server.db.loadData({
       users: USER,
-      messages: MESSAGES
+      messages: MESSAGES,
+      attaches: ATTACHES
     });
   },
 
@@ -29,6 +31,9 @@ const mockServer = new Server({
       message.id = uuid()
       return [...schema.db.messages, message];
     }, { timing: randomTiming(1500, 4000) })
+
+    // get attaches
+    this.get(`/user`, (schema) => schema.db.attaches, { timing: randomTiming(1500, 4000) });
   },
 });
 
