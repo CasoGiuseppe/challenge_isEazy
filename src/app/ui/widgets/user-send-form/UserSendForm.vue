@@ -11,9 +11,11 @@
         :is="userSendInput"
         :disabled="disabled"
         :type="Fields.TEXTAREA"
+        :modelValue="messageAreaText"
         class="user-send-form__input"
         id="user-send-input"
         placeholder="Write here your message"
+        @update:modelValue="setNewMessage"
       />
       <component
         :is="userSendButton"
@@ -41,7 +43,7 @@
   </section>
 </template>
 <script setup lang="ts">
-import { type PropType } from 'vue';
+import { ref, type PropType } from 'vue';
 import { Roles, Sizes, Fields } from '@shared/types/definitions';
 import { ButtonVariants } from '@ui/components/base/base-ui-button/definitions';
 import { PaperAirplaneIcon, PaperClipIcon } from '@heroicons/vue/24/solid';
@@ -71,9 +73,14 @@ const { create } = useAsyncComponent();
 const userSendInput = await create({ component: 'components/base/base-ui-input/BaseUiInput' });
 const userSendButton = await create({ component: 'components/base/base-ui-button/BaseUiButton' });
 
-// define custom events
-const customEmits = defineEmits(['createMessage', 'attach']);
+// define text area v model
+const messageAreaText = ref<string>();
 
-const createNewMessage = () => customEmits('createMessage');
+// set new text message content
+const setNewMessage = (value: string) => (messageAreaText.value = value);
+
+// define and launch custom events
+const customEmits = defineEmits(['createMessage', 'attach']);
+const createNewMessage = () => customEmits('createMessage', { message: messageAreaText.value });
 </script>
 <style lang="scss" src="./UserSendForm.scss" scoped />

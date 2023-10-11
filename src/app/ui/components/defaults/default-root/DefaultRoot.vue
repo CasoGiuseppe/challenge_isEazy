@@ -112,14 +112,14 @@ const { getUsersMessages, createMessage, isLoading, items } = useMessages;
 const getMessages = async () => await getUsersMessages();
 
 // handle attach new message to db
-const attachMessage = async () => {
+const attachMessage = async ({ message }: { message: string }) => {
   const { id, picture } = getUser.value;
   await createMessage({
     body: {
       user: id,
       picture,
       item: {
-        text: 'ciccio',
+        text: message,
         date: new Date()
       }
     }
