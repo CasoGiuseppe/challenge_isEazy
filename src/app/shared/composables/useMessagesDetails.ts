@@ -11,7 +11,7 @@ export default function useMessagesDetais(
   store: MessageStore,
   client: IHttpRequestService
 ): IMessagesDetails {
-  const { saveMessage, getMessages } = store;
+  const { saveMessage } = store;
   const isLoading = ref<boolean>(false);
   const isSaving = ref<boolean>(false);
 
