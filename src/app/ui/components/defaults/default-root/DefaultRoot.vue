@@ -145,10 +145,9 @@ const attachMessage = async ({ message }: { message: string }) => {
 };
 
 const { aggregateItems, items, isLoading, isSaving } = useAggregator;
-const fillAggragator = async () => await aggregateItems({ collection: [{ fn: getUsersMessages }] });
-
 const { getUsersAttaches } = useUploadAttach;
-await getUsersAttaches();
+const fillAggragator = async () =>
+  await aggregateItems({ collection: [{ fn: getUsersMessages }, { fn: getUsersAttaches }] });
 
 // handle mutation observer to set list bottom position
 const { init: mutationStart } = useObserver;

@@ -1,3 +1,5 @@
+import type { IUploadAttachStoreState } from "@shared/stores/attaches/definitions";
+
 export interface IAttaches {
-  getUsersAttaches(): Promise<void>;
+  getUsersAttaches(): Promise<IUploadAttachStoreState[]>;
 }

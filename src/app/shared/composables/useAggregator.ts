@@ -23,7 +23,7 @@ export default function useAggregator(store: MessageStore): IAggregator {
       );
 
       // 3. sort promises result and save on store
-      sortByDate({ array: await aggregatorCollection[0] }).forEach((item: IMessagesStoreState) =>
+      sortByDate({ array: await aggregatorCollection.flat() }).forEach((item: IMessagesStoreState) =>
         saveMessage(AggregatorViewModel.createAggregatorViewModel(item).viewAggregator)
       );
     } catch (e) {
