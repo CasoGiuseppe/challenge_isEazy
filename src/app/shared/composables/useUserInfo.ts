@@ -36,6 +36,7 @@ export default function useUserInfo(store: UserStore, client: IHttpRequestServic
         password
       });
 
+      console.log(id, name, surname, picture, email);
       // 3. set local store with logged user params
       saveUser(UserViewModel.createUserViewModel({id, name, surname, picture, email}).viewUser);
 

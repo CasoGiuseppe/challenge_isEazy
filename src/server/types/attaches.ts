@@ -1,6 +1,6 @@
-export interface IMessageState {
-  item: IAttachType | {};
-  id?: UniqueId ;
+export interface IAttachState {
+  id: UniqueId ;
+  item: IAttachType;
 }
 
 export interface IAttachType {
