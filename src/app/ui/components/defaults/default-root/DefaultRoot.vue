@@ -18,7 +18,7 @@
       <template #content>
         <userMessages @mounted="getMessages">
           <template #content>
-            <messagesList :list="items" :loader="isLoading">
+            <messagesList :list="items" :loader="isLoading" max-height="50vh">
               <template
                 v-if="items"
                 #properties="{

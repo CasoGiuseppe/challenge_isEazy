@@ -1,6 +1,7 @@
 .base-ui-list {
   --from-animation: 25%;
   --to-animation: -250%;
+  --max-height: none;
 
   @include create-animation(
     $name: 'appear-message',
@@ -8,8 +9,9 @@
     $to: translateY(var(--to-animation))
   );
 
-  @apply flex flex-col p-md items-center;
-
+  @apply flex flex-col p-md items-center overflow-auto;
+  max-height: var(--max-height);
+  
   &__items {
     @apply flex flex-col gap-md w-full;
   }

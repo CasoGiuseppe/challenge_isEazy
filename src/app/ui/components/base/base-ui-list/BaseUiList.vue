@@ -1,5 +1,5 @@
 <template>
-  <section :id="id" class="base-ui-list">
+  <section :id="id" :style="{ '--max-height': maxHeight }" class="base-ui-list">
     <!-- @slot Slot to handle loading state -->
     <slot name="loader" />
     <TransitionGroup
@@ -34,6 +34,14 @@ const { id, list } = defineProps({
   list: {
     type: Array as PropType<Array<Record<string, any>>>,
     default: () => undefined
+  },
+
+  /**
+   * Set elements for list items
+   */
+  maxHeight: {
+    type: String as PropType<string>,
+    default: 'none'
   }
 });
 </script>

@@ -91,8 +91,8 @@ const setNewMessage = (value: string) => (messageAreaText.value = value);
 // define and launch custom events
 const customEmits = defineEmits(['createMessage', 'attach']);
 const createNewMessage = () => {
-  messageAreaText.value = '';
   customEmits('createMessage', { message: messageAreaText.value });
+  messageAreaText.value = '';
 };
 </script>
 <style lang="scss" src="./UserSendForm.scss" scoped />
