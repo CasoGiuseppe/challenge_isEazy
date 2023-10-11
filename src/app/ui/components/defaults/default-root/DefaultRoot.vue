@@ -18,7 +18,7 @@
       <template #content>
         <userMessages @mounted="getMessages">
           <template #content>
-            <messagesList :list="items" :loader="isLoading" max-height="50vh">
+            <messagesList :list="items" :loader="isLoading" max-height="50vh" id="messagesList">
               <template
                 v-if="items"
                 #properties="{
@@ -75,17 +75,20 @@
   </section>
 </template>
 <script setup lang="ts">
-import { inject, ref } from 'vue';
+import { inject, ref, watch } from 'vue';
 import UserDefaultLoader from '@ui/components/defaults/default-loader/DefaultLoader.vue';
 import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncComponent';
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
 import type { IMessagesDetails } from '@shared/composables/interfaces/useMessagesDetails';
+import type { IObserver } from '@shared/composables/interfaces/useObserver';
 import { Sizes, Messages } from '@shared/types/definitions';
+import { delay } from '@shared/helpers';
 
 // inject composables
 const useAsyncComponent = inject<IAsyncComponent>('UseAsyncComponent') as IAsyncComponent;
 const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
 const useMessages = inject<IMessagesDetails>('UseMessages') as IMessagesDetails;
+const useObserver = inject<IObserver>('UseObserver') as IObserver;
 
 // get create method to load lazy component
 const { create } = useAsyncComponent;
@@ -127,4 +130,21 @@ const attachMessage = async ({ message }: { message: string }) => {
 
   await getMessages();
 };
+
+// get init observer method to handle messages position bottom
+const { init } = useObserver;
+
+watch(
+  () => items.value,
+  () => {
+    const messagesList = document.querySelector('#messagesList') as Element;
+    init({
+      trigger: messagesList,
+      action: async () => {
+        await delay(20);
+        messagesList.scrollTo(0, messagesList.scrollHeight);
+      }
+    });
+  }
+);
 </script>

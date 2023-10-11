@@ -14,3 +14,4 @@ export const uuid = () => {
     return v.toString(16);
   });
 };
+export const delay = (delay: number) => new Promise(resolve => setTimeout(resolve, delay));
