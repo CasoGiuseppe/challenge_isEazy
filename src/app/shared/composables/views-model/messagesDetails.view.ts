@@ -10,22 +10,21 @@ const tranformDate = (node: ITextType | IAttachType): string => {
 const transformHour = (time: number): string => time < 10 ? `0${time}` : `${time}`
 export class MessageViewModel {
   private constructor(
-    public readonly id: string,
-    public readonly picture: string | undefined,
+    public readonly item: ITextType | IAttachType | {},
+    public readonly picture: string,
     public readonly user: string,
-    public readonly item: ITextType | IAttachType | {}
+    public readonly id?: UniqueId,
   ) {}
 
   static createMessageViewModel(userMessage: IMessageState) {
-    const { id, picture, user, item } = userMessage;
-    return new MessageViewModel(id, picture, user, item);
+    const { item, picture, user, id } = userMessage;
+    return new MessageViewModel( item, picture, user, id);
   }
 
   get viewMessage() {
     return {
       id: this.id,
-      picture: this.picture,
-      user: this.user,
+      ...(isTextMessage(this.item)) ? { picture: this.picture, user:  this.user} : null,
       item: { ...this.item, date: tranformDate(this.item as ITextType | IAttachType) },
       type: isTextMessage(this.item) ? ListType.MESSAGE : ListType.ATTACH
     };

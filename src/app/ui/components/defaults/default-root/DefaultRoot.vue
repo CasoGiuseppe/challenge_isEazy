@@ -26,12 +26,14 @@
                     item: {
                       user,
                       picture,
-                      item: { text, date }
+                      type,
+                      item: { text, date, version, title, info }
                     }
                   }
                 }"
               >
-                <userMessage
+                <component
+                  :is="factoryItemType(type)"
                   :id="user"
                   :type="getUser.id === user ? Messages.SEND : Messages.RECEIVE"
                 >
@@ -42,7 +44,10 @@
                   </template>
                   <template #message>{{ text }}</template>
                   <template #date>{{ date }}</template>
-                </userMessage>
+                  <template #version>{{ version }}</template>
+                  <template #title>{{ title }}</template>
+                  <template #typing> {{ info }}</template>
+                </component>
               </template>
               <template v-else #loader>
                 <UserDefaultLoader>
@@ -81,7 +86,7 @@ import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncCom
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
 import type { IMessagesDetails } from '@shared/composables/interfaces/useMessagesDetails';
 import type { IObserver } from '@shared/composables/interfaces/useObserver';
-import { Sizes, Messages } from '@shared/types/definitions';
+import { Sizes, Messages, ListType } from '@shared/types/definitions';
 import { delay } from '@shared/helpers';
 
 // inject composables
@@ -104,6 +109,10 @@ const userMessages = await create({ component: 'layouts/user-message-window/User
 const userSendForm = await create({ component: 'widgets/user-send-form/UserSendForm' });
 const messagesList = await create({ component: 'components/base/base-ui-list/BaseUiList' });
 const userMessage = await create({ component: 'components/user-message/UserMessage' });
+const userAttach = await create({ component: 'components/user-attach-info/UserAttachInfo' });
+
+// check item list type [message, attach]
+const factoryItemType = (type: string) => (type === ListType.MESSAGE ? userMessage : userAttach);
 
 // set refs to dynamic values
 const open = ref<boolean>(true);
@@ -141,8 +150,9 @@ watch(
     init({
       trigger: messagesList,
       action: async () => {
-        await delay(20);
-        messagesList.scrollTo(0, messagesList.scrollHeight);
+        messagesList.scrollTop = messagesList.scrollHeight;
+        await delay(50);
+        messagesList.scrollTo(10, messagesList.scrollHeight);
       }
     });
   }

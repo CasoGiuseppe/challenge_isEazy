@@ -1,10 +1,10 @@
 import { ListType } from '@shared/types/definitions';
 export interface IMessageState {
-  id?: UniqueId;
-  user: string;
-  type?: ListType;
   item: ITextType | IAttachType | {};
-  picture?: string
+  id?: UniqueId ;
+  user: string ;
+  type?: ListType ;
+  picture: string 
 }
 
 export interface ITextType {

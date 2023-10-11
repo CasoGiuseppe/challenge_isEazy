@@ -9,7 +9,7 @@
     $to: translateY(var(--to-animation))
   );
 
-  @apply flex flex-col p-md items-center overflow-auto;
+  @apply flex flex-col p-md items-center overflow-auto scroll-smooth;
   max-height: var(--max-height);
   
   &__items {

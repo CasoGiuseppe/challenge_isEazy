@@ -29,7 +29,7 @@ export default function useMessagesDetais(
       // 4. save local store with recovery messages
       sortByDate({ array: result })
         .map((node) => MessageViewModel.createMessageViewModel(node).viewMessage)
-        .forEach((item: IMessageState) => saveMessage(item));
+        .forEach((item: IMessageState | any) => saveMessage(item));
     } catch (e) {
       /* empty */
     } finally {
@@ -50,7 +50,7 @@ export default function useMessagesDetais(
 
       sortByDate({ array: postedMessage })
         .map((node) => MessageViewModel.createMessageViewModel(node).viewMessage)
-        .forEach((item: IMessageState) => saveMessage(item));
+        .forEach((item: IMessageState | any) => saveMessage(item));
     } catch (e) {
       /* empty */
     } finally {
