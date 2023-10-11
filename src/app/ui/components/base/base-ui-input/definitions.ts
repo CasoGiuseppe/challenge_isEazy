@@ -7,4 +7,6 @@ export interface Props {
   modelValue: String;
   placeholder: String;
   disabled: Boolean;
+  hidden?: Boolean;
+  accept?: String
 }

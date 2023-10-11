@@ -65,9 +65,14 @@
               </template>
             </messagesList>
           </template>
-          <template #footer
-            ><userSendForm :disabled="!items" :saving="isSaving" @createMessage="attachMessage"
-          /></template>
+          <template #footer>
+            <userSendForm
+              :disabled="!items"
+              :saving="isSaving"
+              @createMessage="attachMessage"
+              @attach="attachNewFile"
+            />
+          </template>
         </userMessages>
       </template>
       <template #title>Comments</template>
@@ -176,4 +181,8 @@ watch(
     });
   }
 );
+
+// user attach new file
+const attachNewFile = ({ name, size, type }: { name: string; size: number; type: string }) =>
+  console.log(name, size, type);
 </script>

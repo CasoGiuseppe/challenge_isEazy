@@ -63,4 +63,8 @@
       @apply w-[100%] text-gray-300;
     }
   }
+
+  &--is-hidden {
+    display: none;
+  }
 }

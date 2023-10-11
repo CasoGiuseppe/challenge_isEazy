@@ -1,5 +1,5 @@
 <template>
-  <fieldset class="base-ui-field">
+  <fieldset :class="['base-ui-field', hidden ? 'base-ui-field--is-hidden' : null]">
     <label v-if="slotLabel" class="base-ui-field__label" :for="id"><slot name="label" /></label>
     <component
       :aria-placeholder="placeholder"
@@ -13,12 +13,16 @@
       :required="required"
       :placeholder="placeholder"
       :disabled="disabled"
+      :accept="accept ?? null"
+      :aria-hidden="hidden"
       data-testID="ui-input"
       autocomplete="one-time-code"
       class="base-ui-field__user-input"
       pattern=".{4,}"
       aria-describedby="ui-error"
       @input="updateValue"
+      @change="changeValue"
+      @click="clickValue"
     />
     <button
       data-testID="ui-reset"
@@ -91,6 +95,19 @@ const { id, type, input, required, modelValue, placeholder } = defineProps({
   disabled: {
     type: Boolean as PropType<boolean>,
     default: false
+  },
+  /**
+   * Handle hidden state
+   */
+  hidden: {
+    type: Boolean as PropType<boolean>,
+    default: false
+  },
+  /**
+   * Set accepted file
+   */
+  accept: {
+    type: String as PropType<string>
   }
 });
 
@@ -98,9 +115,11 @@ const slots = useSlots();
 const slotError = computed(() => !!slots['error'] && slots?.error?.()[0].children !== '');
 const slotLabel = computed(() => !!slots['label']);
 
-const customEmits = defineEmits(['update:modelValue', 'reset']);
+const customEmits = defineEmits(['update:modelValue', 'reset', 'change', 'click']);
 const updateValue = ({ target: { value } }: { target: { value: string } }) =>
   customEmits('update:modelValue', value);
 const resetInputValue = () => customEmits('reset');
+const changeValue = ({ target }: { target: HTMLInputElement }) => customEmits('change', { target });
+const clickValue = () => customEmits('click');
 </script>
 <style lang="scss" src="./BaseUiInput.scss" scoped />

@@ -7,6 +7,17 @@
       aria-description="Form to send message or upload file"
       novalidate
     >
+      <!-- input hidden to use as file dialog -->
+      <component
+        id="fileDialog"
+        :is="userSendInput"
+        :input="Types.FILE"
+        hidden
+        accept="image/*,.pdf,.doc,.docx"
+        @change="createFileList"
+      />
+      <!-- // -->
+
       <component
         :is="userSendInput"
         :type="Fields.TEXTAREA"
@@ -38,6 +49,7 @@
       id="user-send-upload"
       class="user-send-form__action"
       label="Upload a new document version"
+      @submit="openFileDialog"
     >
       <PaperClipIcon />Upload a new document version
     </component>
@@ -45,7 +57,7 @@
 </template>
 <script setup lang="ts">
 import { ref, type PropType } from 'vue';
-import { Roles, Sizes, Fields } from '@shared/types/definitions';
+import { Roles, Sizes, Fields, Types } from '@shared/types/definitions';
 import { ButtonVariants } from '@ui/components/base/base-ui-button/definitions';
 import { PaperAirplaneIcon, PaperClipIcon } from '@heroicons/vue/24/solid';
 import useAsyncComponent from '@shared/composables/useAsyncComponent';
@@ -81,7 +93,7 @@ const { create } = useAsyncComponent();
 const userSendInput = await create({ component: 'components/base/base-ui-input/BaseUiInput' });
 const userSendButton = await create({ component: 'components/base/base-ui-button/BaseUiButton' });
 
-// define text area v model
+// define text area v-model
 const messageAreaText = ref<string>();
 
 // set new text message content
@@ -92,6 +104,14 @@ const customEmits = defineEmits(['createMessage', 'attach']);
 const createNewMessage = () => {
   customEmits('createMessage', { message: messageAreaText.value });
   messageAreaText.value = '';
+};
+
+// handle user selected file
+const openFileDialog = () => document.getElementById('fileDialog')?.click();
+
+const createFileList = async ({ target: { files } }: { target: { files: FileList } }) => {
+  const { name, size, type } = files[0];
+  customEmits('attach', { name, size, type });
 };
 </script>
 <style lang="scss" src="./UserSendForm.scss" scoped />
