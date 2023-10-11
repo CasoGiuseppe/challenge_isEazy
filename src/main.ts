@@ -23,7 +23,9 @@ import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncCom
 import useObserver from '@shared/composables/useObserver';
 import type { IObserver } from '@shared/composables/interfaces/useObserver';
 import useUploadAttach from '@shared/composables/useUploadAttach';
-import useAggregator from './app/shared/composables/useAggregator';
+import type { IAttaches } from '@shared/composables/interfaces/useAttach';
+import useAggregator from '@shared/composables/useAggregator';
+import type { IAggregator } from '@shared/composables/interfaces/useAggregator';
 
 // import services
 import { HTTPService } from '@shared/providers/http/http.service';
@@ -32,7 +34,7 @@ const UseUserInfo = useUserInfo(useUserStore, new HTTPService());
 const UseMessages = useMessages(new HTTPService());
 const UseAsyncComponent = userAsyncComponent();
 const UseObserver = useObserver();
-const UseUploadAttach = useUploadAttach(useAttachStore, new HTTPService())
+const UseUploadAttach = useUploadAttach(new HTTPService())
 const UseAggregator = useAggregator(useMessageStore);
 
 // create lazy APP
@@ -47,5 +49,5 @@ app.provide<IUserInfo>('UseUserInfo', UseUserInfo);
 app.provide<IMessagesDetails>('UseMessages', UseMessages);
 app.provide<IAsyncComponent>('UseAsyncComponent', UseAsyncComponent);
 app.provide<IObserver>('UseObserver', UseObserver);
-app.provide<any>('UseUploadAttach', UseUploadAttach);
-app.provide<any>('UseAggregator', UseAggregator);
+app.provide<IAttaches>('UseUploadAttach', UseUploadAttach);
+app.provide<IAggregator>('UseAggregator', UseAggregator);

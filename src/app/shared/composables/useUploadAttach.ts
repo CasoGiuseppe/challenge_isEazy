@@ -1,14 +1,9 @@
 import type { IAttachState } from '@/server/types/attaches';
 import type { IHttpRequestService } from '@shared/providers/http/http.interface';
-import type { AttachStore } from '@shared/stores/attaches';
 import type { IAttaches } from './interfaces/useAttach';
+import { UploadAttachViewModel } from './views-model/uploadAttach.view';
 
-export default function useUploadAttachexport(
-  store: AttachStore,
-  client: IHttpRequestService
-): IAttaches {
-  const { saveAttach } = store;
-
+export default function useUploadAttachexport(client: IHttpRequestService): IAttaches {
   const getUsersAttaches = async (): Promise<void> => {
     try {
       // 2. get from API attaches list
@@ -16,13 +11,13 @@ export default function useUploadAttachexport(
         `${import.meta.env.VITE_APP_API_NAMESPACE}/attaches`
       );
 
-      console.log(result);
-    } catch(e) {
+      console.log(result.map((node) => UploadAttachViewModel.createUploadAttachViewModel(node).viewUploadAttach));
+    } catch (e) {
       throw new Error(e as string);
     }
-  }
+  };
 
   return {
     getUsersAttaches
-  }
+  };
 }

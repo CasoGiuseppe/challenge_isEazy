@@ -4,7 +4,8 @@ export default [
     item: {
       version: "1",
       title: 'Pariatur dolor sunt sunt veniam et.',
-      info: 'info',
+      type: 'PDF',
+      size: '3.8MB',
       url: 'http://fakeurl.com',
       date: new Date("2023-06-24T23:24:00")
     }

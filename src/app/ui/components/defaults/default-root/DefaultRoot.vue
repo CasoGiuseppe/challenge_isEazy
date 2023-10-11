@@ -86,6 +86,8 @@ import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncCom
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
 import type { IMessagesDetails } from '@shared/composables/interfaces/useMessagesDetails';
 import type { IObserver } from '@shared/composables/interfaces/useObserver';
+import type { IAggregator } from '@shared/composables/interfaces/useAggregator';
+import type { IAttaches } from '@shared/composables/interfaces/useAttach';
 import { Sizes, Messages, ListType } from '@shared/types/definitions';
 import { delay } from '@shared/helpers';
 
@@ -94,7 +96,8 @@ const useAsyncComponent = inject<IAsyncComponent>('UseAsyncComponent') as IAsync
 const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
 const useMessages = inject<IMessagesDetails>('UseMessages') as IMessagesDetails;
 const useObserver = inject<IObserver>('UseObserver') as IObserver;
-const useAggregator = inject<any>('UseAggregator') as any;
+const useAggregator = inject<IAggregator>('UseAggregator') as IAggregator;
+const useUploadAttach = inject<IAttaches>('UseUploadAttach') as IAttaches;
 
 // get create method to load lazy component
 const { create } = useAsyncComponent;
@@ -143,6 +146,9 @@ const attachMessage = async ({ message }: { message: string }) => {
 
 const { aggregateItems, items, isLoading, isSaving } = useAggregator;
 const fillAggragator = async () => await aggregateItems({ collection: [{ fn: getUsersMessages }] });
+
+const { getUsersAttaches } = useUploadAttach;
+await getUsersAttaches();
 
 // handle mutation observer to set list bottom position
 const { init: mutationStart } = useObserver;
