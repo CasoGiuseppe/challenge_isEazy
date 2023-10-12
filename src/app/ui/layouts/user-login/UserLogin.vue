@@ -52,8 +52,8 @@ import { Fields, Types, Roles } from '@shared/types/definitions';
 import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncComponent';
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
 
-const emailPlaceholder = `example: ${import.meta.env.VITE_APP_LOGIN_EMAIL}`;
-const pwdPlaceholder = `example: ${import.meta.env.VITE_APP_LOGIN_PASSWORD}`;
+const emailPlaceholder = `example: name@isEazy.com`;
+const pwdPlaceholder = `example: isEazy`;
 
 // ref values for email and login
 const email = ref<string>();
@@ -87,9 +87,10 @@ const activeUserButton = computed(() =>
 // form submit action
 const sendLogin = async (): Promise<void> => {
   try {
+    if (!email.value || !password.value) return;
     await signIn({ email: email.value, password: password.value });
   } catch (error) {
-    /* empty */
+    throw new Error(error as string);
   }
 };
 </script>

@@ -43,7 +43,7 @@ export default function useUserInfo(store: UserStore, client: IHttpRequestServic
       isSuccess.value = true;
     } catch (e) {
       // 4. handle error
-      hasError.value = { state: true, message: 'Username or pawword incorrects' };
+      hasError.value = { state: true, message: 'Username or password incorrects' };
       return;
     } finally {
       // 5. reset loading state
