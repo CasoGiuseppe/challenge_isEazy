@@ -3,7 +3,7 @@ import UserIdentity from '@ui/components/user-identity/UserIdentity.vue';
 import BaseUiPicture from '@ui/components/base/base-ui-picture/BaseUiPicture.vue';
 
 const meta = {
-  title: 'User Identity',
+  title: 'User/User Identity',
   component: UserIdentity,
   tags: ['autodocs'],
   argTypes: {

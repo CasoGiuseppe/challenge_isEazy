@@ -5,7 +5,7 @@ import { CloudArrowDownIcon } from '@heroicons/vue/24/solid';
 import { action } from '@storybook/addon-actions'
 
 const meta = {
-  title: 'User Attach Info',
+  title: 'User/User Attach Info',
   component: UserAttachInfo,
   tags: ['autodocs'],
   argTypes: {
