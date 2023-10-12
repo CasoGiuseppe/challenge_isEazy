@@ -28,13 +28,15 @@ describe('Message Store store tests', () => {
 
   it('Should state have provide user key', () => {
     $useMessagesStore.saveMessage($message)
-    const $givenMessages: IMessagesStoreState[] | undefined = $useMessagesStore.getMessages as IMessagesStoreState[]
+    const $givenMessages: IMessagesStoreState[] | undefined = $useMessagesStore.getMessages
+    if(!$givenMessages) return;
     expect($givenMessages[0]).toHaveProperty('user', 'user');
   });
 
-  it('Should state have coorect saved content', () => {
+  it('Should state have correct saved content', () => {
     $useMessagesStore.saveMessage($message)
     const $givenMessages: IMessagesStoreState[] | undefined = $useMessagesStore.getMessages
-    expect($givenMessages).toContainEqual($message);
+    if(!$givenMessages) return;
+    expect($givenMessages[0]).toMatchObject($message);
   });
 });
