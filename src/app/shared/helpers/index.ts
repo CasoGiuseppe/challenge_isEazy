@@ -23,3 +23,11 @@ export const tranformDate = (date: string): string => {
   return `${newDate.toLocaleDateString('it-IT')} - ${time}`;
 };
 export const transformHour = (time: number): string => time < 10 ? `0${time}` : `${time}`
+export const convertBytes = (bytes: number, seperator:string = "") => {
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+  if (bytes == 0) return 'n/a'
+  const transformation = Math.floor(Math.log(bytes) / Math.log(1024))
+  const i = parseInt(transformation.toString(), 10)
+  if (i === 0) return `${bytes}${seperator}${sizes[i]}`
+  return `${(bytes / (1024 ** i)).toFixed(1)}${seperator}${sizes[i]}`
+}

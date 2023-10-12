@@ -20,6 +20,8 @@ export default function useAggregator(store: MessageStore): IAggregator {
         collection.map(async (getter) => await getter.fn(getter.params ?? null))
       );
 
+      if(!aggregatorCollection) return;
+
       // 3. sort promises result and save on store
       sortByDate({ array: await aggregatorCollection.flat() }).forEach((item: IMessagesStoreState) =>
         saveMessage(AggregatorViewModel.createAggregatorViewModel(item).viewAggregator)

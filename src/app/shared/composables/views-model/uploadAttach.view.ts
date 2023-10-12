@@ -1,5 +1,6 @@
 import type { IAttachState, IAttachType } from "@/server/types/attaches";
 import type { IUploadAttachStoreState } from "@shared/stores/attaches/definitions";
+import { convertBytes } from "@shared/helpers";
 
 export class UploadAttachViewModel {
   private constructor(
@@ -16,7 +17,7 @@ export class UploadAttachViewModel {
     const { size, type, version, ...rest} = this.item
     return {
       id: this.id,
-      item: {...rest, version: `Version ${version}`, info: `Documento/${type} (${size})`}
+      item: {...rest, version: `Version ${version}`, info: `${type} (${convertBytes(size as number)})`}
     };
   }
 }

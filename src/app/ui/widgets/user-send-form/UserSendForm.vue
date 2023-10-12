@@ -100,7 +100,7 @@ const messageAreaText = ref<string>();
 const setNewMessage = (value: string) => (messageAreaText.value = value);
 
 // define and launch custom events
-const customEmits = defineEmits(['createMessage', 'attach']);
+const customEmits = defineEmits(['createMessage', 'uploadFile']);
 const createNewMessage = () => {
   customEmits('createMessage', { message: messageAreaText.value });
   messageAreaText.value = '';
@@ -110,8 +110,8 @@ const createNewMessage = () => {
 const openFileDialog = () => document.getElementById('fileDialog')?.click();
 
 const createFileList = async ({ target: { files } }: { target: { files: FileList } }) => {
-  const { name, size, type } = files[0];
-  customEmits('attach', { name, size, type });
+  const { name, size, type, lastModified } = files[0];
+  customEmits('uploadFile', { name, size, type, lastModified });
 };
 </script>
 <style lang="scss" src="./UserSendForm.scss" scoped />

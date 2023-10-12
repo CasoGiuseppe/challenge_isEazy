@@ -7,7 +7,13 @@ export interface IAttachType {
   version: number,
   title: string,
   type: string,
-  size: string,
-  url: string,
+  size: number,
+  date: Date
+}
+
+export interface IAttachFile {
+  name: string,
+  size: number,
+  type: string,
   date: Date
 }

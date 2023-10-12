@@ -70,7 +70,7 @@
               :disabled="!items || isLoading"
               :saving="isSaving"
               @createMessage="attachMessage"
-              @attach="attachNewFile"
+              @uploadFile="attachNewFile"
             />
           </template>
         </userMessages>
@@ -162,7 +162,7 @@ const attachMessage = async ({ message }: { message: string }) => {
 };
 
 const { aggregateItems, items, isLoading } = useAggregator;
-const { getUsersAttaches } = useUploadAttach;
+const { getUsersAttaches, uploadFile } = useUploadAttach;
 const fillAggragator = async () =>
   await aggregateItems({ collection: [{ fn: getUsersMessages }, { fn: getUsersAttaches }] });
 
@@ -183,6 +183,25 @@ watch(
 );
 
 // user attach new file
-const attachNewFile = ({ name, size, type }: { name: string; size: number; type: string }) =>
-  console.log(name, size, type);
+const attachNewFile = async ({
+  name,
+  size,
+  type,
+  lastModified
+}: {
+  name: string;
+  size: number;
+  type: string;
+  lastModified: number;
+}) => {
+  const body = { name, size, type, date: new Date(lastModified) };
+  await aggregateItems({
+    collection: [
+      {
+        fn: uploadFile,
+        params: { body }
+      }
+    ]
+  });
+};
 </script>

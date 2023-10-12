@@ -6,7 +6,6 @@ export interface IUploadAttachStoreState {
 export interface IUploadAttachItemStore {
   version: string,
   title: string,
-  info: string
-  url: string,
+  info: string,
   date: Date
 }
