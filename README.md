@@ -1,40 +1,54 @@
-# Required System
+# Challenge isEazy
 
-```sh
-node version: 20.8.0
-```
+## IMPORTANT
 
-```sh
-npm version: 10.1.0
-```
+Para utilizar las variables de entorno es importante renombrar el archivo `.env.to.rename` a `.env`
 
-# Users
+## Required System
 
-As student:
-email: giuseppe@isEazy.com
-pwd: isEazy
+| Packages       | Vesions |
+| -------------- | ------- |
+| Node           | 20.8.0  |
+| npm            | 10.1.0  |
+| vue            | ^3.3.4  |
+| pinia          | ^2.1.6  |
+| miragejs       | ^0.1.47 |
+| storybook/vue3 | ^7.4.6  |
+| tailwindcss    | ^3.3.3  |
 
-As Teacher:
-email: marco@isEazy.com
-pwd: isEazy
+## Login Users
 
-# challenge isEazy
+Para acceder a la sección de los comentarios es posible hacer login con los siguientes usuarios
 
-This project was made to
+| Email               | Password | Role    |
+| ------------------- | -------- | ------- |
+| giuseppe@isEazy.com | isEazy   | Student |
+| marco@isEazy.com    | isEazy   | Teacher |
 
-# component documentation
+## Component documentation
 
-storybook need node > 16
+Para documentar los componente se ha utilizado [`Storybook`](https://storybook.js.org/).
+La librería para funcionar correctamente necesita de la versión de Node > 16.
+
+Para lanzar en local storybook hay que utilizar el siguiente comando:
 
 ```sh
 npm run storybook
 ```
 
-Build
+## Server mock
 
-```sh
-npm run build-storybook
-```
+Para simular el funcionamento de servicios API se ha utilizado [`miragejs`](https://miragejs.com/)
+
+| path             | type |                                 |
+| ---------------- | ---- | ------------------------------- |
+| /user            | GET  | return a logged user            |
+| /messages        | GET  | return a list of messages       |
+| /messages/create | POST | Write a new provided message    |
+| /attaches        | GET  | return a list of attachments    |
+| /attaches/create | POST | Write a new provided attachment |
+
+# VUE Default documentation
 
 ## Recommended IDE Setup
 
