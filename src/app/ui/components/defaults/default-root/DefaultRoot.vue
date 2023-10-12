@@ -67,7 +67,7 @@
           </template>
           <template #footer>
             <userSendForm
-              :disabled="!items"
+              :disabled="!items || isLoading"
               :saving="isSaving"
               @createMessage="attachMessage"
               @attach="attachNewFile"
@@ -139,7 +139,7 @@ const factoryItemType = (type: string) => (type === ListType.MESSAGE ? userMessa
 const open = ref<boolean>(true);
 
 // handle messages
-const { getUsersMessages, createMessage } = useMessages;
+const { getUsersMessages, createMessage, isSaving } = useMessages;
 const attachMessage = async ({ message }: { message: string }) => {
   const { id, picture } = getUser.value;
   const body = {
@@ -161,7 +161,7 @@ const attachMessage = async ({ message }: { message: string }) => {
   });
 };
 
-const { aggregateItems, items, isLoading, isSaving } = useAggregator;
+const { aggregateItems, items, isLoading } = useAggregator;
 const { getUsersAttaches } = useUploadAttach;
 const fillAggragator = async () =>
   await aggregateItems({ collection: [{ fn: getUsersMessages }, { fn: getUsersAttaches }] });

@@ -22,7 +22,7 @@
         :is="userSendInput"
         :type="Fields.TEXTAREA"
         :modelValue="messageAreaText"
-        :disabled="saving || disabled"
+        :disabled="disabled"
         class="user-send-form__input"
         id="user-send-input"
         placeholder="Write here your message"
@@ -45,7 +45,7 @@
     <component
       :is="userSendButton"
       :role="Roles.FILE"
-      :disabled="disabled || saving"
+      :disabled="disabled"
       id="user-send-upload"
       class="user-send-form__action"
       label="Upload a new document version"
