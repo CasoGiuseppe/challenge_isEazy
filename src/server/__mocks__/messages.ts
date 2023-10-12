@@ -18,30 +18,12 @@ export default [
     }
   },
   {
-    id: '7ddeefea-4788-4e62-9956-ec3cb4ac7831',
-    user: 'TEACHER',
-    picture:`${import.meta.env.VITE_APP_LOGIN_PICTURE_TEACHER}`,
-    item: {
-      text: "Est incididunt excepteur qui consequat labore fugiat fugiat aute dolor exercitation deserunt proident.",
-      date: new Date("2022-06-25T03:24:00")
-    }
-  },
-  {
     id: '10fb7d5b-8564-41c5-b373-d5d8e1d03545',
     user: 'STUDENT',
     picture: `${import.meta.env.VITE_APP_LOGIN_PICTURE_STUDENT}`,
     item: {
       text: "Enim consectetur est velit labore id commodo.",
       date: new Date("2022-12-17T11:24:00")
-    }
-  },
-  {
-    id: '10fb7d5b-8564-41ki-b373-d5d8e1d03545',
-    user: 'STUDENT',
-    picture: `${import.meta.env.VITE_APP_LOGIN_PICTURE_STUDENT}`,
-    item: {
-      text: "Enim consectetur est velit labore id commodo.",
-      date: new Date("2023-09-15T12:00:00")
     }
   },
 ]
