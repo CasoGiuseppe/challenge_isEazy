@@ -1,9 +1,5 @@
 # Challenge isEazy
 
-## IMPORTANT
-
-Para utilizar las variables de entorno es importante renombrar el archivo `.env.to.rename` a `.env`
-
 ## Required System
 
 | Packages       | Vesions |
