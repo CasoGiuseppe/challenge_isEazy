@@ -4,7 +4,7 @@ import BaseUiButton from '@ui/components/base/base-ui-button/BaseUiButton.vue';
 import { XMarkIcon } from '@heroicons/vue/24/solid';
 
 const meta = {
-  title: 'User dialog',
+  title: 'User Dialog',
   component: UserDialog,
   tags: ['autodocs'],
   argTypes: {
