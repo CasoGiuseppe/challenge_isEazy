@@ -52,12 +52,12 @@ import { Fields, Types, Roles } from '@shared/types/definitions';
 import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncComponent';
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
 
-const emailPlaceholder = `${import.meta.env.VITE_APP_LOGIN_EMAIL}`;
-const pwdPlaceholder = `${import.meta.env.VITE_APP_LOGIN_PASSWORD}`;
+const emailPlaceholder = `example: ${import.meta.env.VITE_APP_LOGIN_EMAIL}`;
+const pwdPlaceholder = `example: ${import.meta.env.VITE_APP_LOGIN_PASSWORD}`;
 
 // ref values for email and login
-const email = ref<string>('giuseppe@isEazy.com');
-const password = ref<string>('isEazy');
+const email = ref<string>();
+const password = ref<string>();
 
 // inject composables
 const useAsyncComponent = inject<IAsyncComponent>('UseAsyncComponent') as IAsyncComponent;
