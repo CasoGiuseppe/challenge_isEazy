@@ -1,9 +1,9 @@
 import type { Ref } from "vue";
-import type { IUploadAttachStoreState } from "@shared/stores/attaches/definitions";
-import type { IAttachFile } from "@/server/types/attaches";
+import type { IUploadAttachStoreState } from "@shared/stores/attachments/definitions";
+import type { IAttachFile } from "@/server/types/attachments";
 
-export interface IAttaches {
+export interface IAttachments {
   isUpload: Ref<boolean>;
-  getUsersAttaches(): Promise<IUploadAttachStoreState[]>;
+  getUsersAttachments(): Promise<IUploadAttachStoreState[]>;
   uploadFile({ body }: { body: IAttachFile }): Promise<IUploadAttachStoreState[]>
 }

@@ -36,13 +36,13 @@ npm run storybook
 
 Para simular el funcionamento de servicios API se ha utilizado [`miragejs`](https://miragejs.com/)
 
-| path             | type |                                 |
-| ---------------- | ---- | ------------------------------- |
-| /user            | GET  | return a logged user            |
-| /messages        | GET  | return a list of messages       |
-| /messages/create | POST | Write a new provided message    |
-| /attaches        | GET  | return a list of attachments    |
-| /attaches/create | POST | Write a new provided attachment |
+| path                | type |                                 |
+| ------------------- | ---- | ------------------------------- |
+| /user               | GET  | return a logged user            |
+| /messages           | GET  | return a list of messages       |
+| /messages/create    | POST | Write a new provided message    |
+| /attachments        | GET  | return a list of attachments    |
+| /attachments/create | POST | Write a new provided attachment |
 
 # VUE Default documentation
 

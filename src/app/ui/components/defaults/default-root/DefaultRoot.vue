@@ -102,7 +102,7 @@ import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
 import type { IMessagesDetails } from '@shared/composables/interfaces/useMessagesDetails';
 import type { IObserver } from '@shared/composables/interfaces/useObserver';
 import type { IAggregator } from '@shared/composables/interfaces/useAggregator';
-import type { IAttaches } from '@shared/composables/interfaces/useAttach';
+import type { IAttachments } from '@shared/composables/interfaces/useAttach';
 import { Sizes, Messages, ListType } from '@shared/types/definitions';
 import { delay } from '@shared/helpers';
 import { CloudArrowDownIcon } from '@heroicons/vue/24/solid';
@@ -122,7 +122,7 @@ const useInfoUserState = inject<IUserInfo>(useUserInfoKey) as IUserInfo;
 const useMessages = inject<IMessagesDetails>(useMessagesKey) as IMessagesDetails;
 const useObserver = inject<IObserver>(useObserverKey) as IObserver;
 const useAggregator = inject<IAggregator>(useAggregatorKey) as IAggregator;
-const useUploadAttach = inject<IAttaches>(useUploadAttachKey) as IAttaches;
+const useUploadAttach = inject<IAttachments>(useUploadAttachKey) as IAttachments;
 
 // get create method to load lazy component
 const { create } = useAsyncComponent;
@@ -171,9 +171,9 @@ const attachMessage = async ({ message }: { message: string }) => {
 };
 
 const { aggregateItems, items, isLoading } = useAggregator;
-const { getUsersAttaches, uploadFile, isUpload } = useUploadAttach;
+const { getUsersAttachments, uploadFile, isUpload } = useUploadAttach;
 const fillAggragator = async () =>
-  await aggregateItems({ collection: [{ fn: getUsersMessages }, { fn: getUsersAttaches }] });
+  await aggregateItems({ collection: [{ fn: getUsersMessages }, { fn: getUsersAttachments }] });
 
 // handle mutation observer to set list bottom position
 const { init: mutationStart } = useObserver;

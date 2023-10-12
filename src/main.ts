@@ -22,7 +22,7 @@ import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncCom
 import useObserver from '@shared/composables/useObserver';
 import type { IObserver } from '@shared/composables/interfaces/useObserver';
 import useUploadAttach from '@shared/composables/useUploadAttach';
-import type { IAttaches } from '@shared/composables/interfaces/useAttach';
+import type { IAttachments } from '@shared/composables/interfaces/useAttach';
 import useAggregator from '@shared/composables/useAggregator';
 import type { IAggregator } from '@shared/composables/interfaces/useAggregator';
 
@@ -58,5 +58,5 @@ app.provide<IUserInfo>(useUserInfoKey, UseUserInfo);
 app.provide<IMessagesDetails>(useMessagesKey, UseMessages);
 app.provide<IAsyncComponent>(useAsyncComponentKey, UseAsyncComponent);
 app.provide<IObserver>(useObserverKey, UseObserver);
-app.provide<IAttaches>(useUploadAttachKey, UseUploadAttach);
+app.provide<IAttachments>(useUploadAttachKey, UseUploadAttach);
 app.provide<IAggregator>(useAggregatorKey, UseAggregator);

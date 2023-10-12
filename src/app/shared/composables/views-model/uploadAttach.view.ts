@@ -1,5 +1,5 @@
-import type { IAttachState, IAttachType } from "@/server/types/attaches";
-import type { IUploadAttachStoreState } from "@shared/stores/attaches/definitions";
+import type { IAttachState, IAttachType } from "@/server/types/attachments";
+import type { IUploadAttachStoreState } from "@shared/stores/attachments/definitions";
 import { convertBytes } from "@shared/helpers";
 
 export class UploadAttachViewModel {

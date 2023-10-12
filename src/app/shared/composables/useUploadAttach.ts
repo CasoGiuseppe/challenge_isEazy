@@ -1,18 +1,18 @@
 import { ref } from 'vue';
-import type { IAttachFile, IAttachState } from '@/server/types/attaches';
+import type { IAttachFile, IAttachState } from '@/server/types/attachments';
 import type { IHttpRequestService } from '@shared/providers/http/http.interface';
-import type { IUploadAttachStoreState } from '@shared/stores/attaches/definitions';
-import type { IAttaches } from './interfaces/useAttach';
+import type { IUploadAttachStoreState } from '@shared/stores/attachments/definitions';
+import type { IAttachments } from './interfaces/useAttach';
 import { UploadAttachViewModel } from './views-model/uploadAttach.view';
 
-export default function useUploadAttachexport(client: IHttpRequestService): IAttaches {
+export default function useUploadAttachexport(client: IHttpRequestService): IAttachments {
   const isUpload = ref<boolean>(false);
 
-  const getUsersAttaches = async (): Promise<IUploadAttachStoreState[]> => {
+  const getUsersAttachments = async (): Promise<IUploadAttachStoreState[]> => {
     try {
-      // 2. get from API attaches list
+      // 2. get from API attachments list
       const result = await client.get<IAttachState[]>(
-        `${import.meta.env.VITE_APP_API_NAMESPACE}/attaches`
+        `${import.meta.env.VITE_APP_API_NAMESPACE}/attachments`
       );
 
       return result.map(
@@ -34,11 +34,11 @@ export default function useUploadAttachexport(client: IHttpRequestService): IAtt
       const { name, size, type, date } = body;
       // 1. post new file in db
       const uploadFile = await client.post<IAttachState[]>(
-        `${import.meta.env.VITE_APP_API_NAMESPACE}/attaches/create`,
+        `${import.meta.env.VITE_APP_API_NAMESPACE}/attachments/create`,
         { item: { title: name, size, type, date } }
       );
 
-      // 2. return array of attaches instance for viwemodel
+      // 2. return array of attachments instance for viwemodel
       return uploadFile.map(
         (node) => UploadAttachViewModel.createUploadAttachViewModel(node).viewUploadAttach
       );
@@ -51,7 +51,7 @@ export default function useUploadAttachexport(client: IHttpRequestService): IAtt
 
   return {
     isUpload,
-    getUsersAttaches,
+    getUsersAttachments,
     uploadFile
   };
 }

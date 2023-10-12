@@ -1,7 +1,7 @@
 import { Server, Response } from 'miragejs';
 import USER from '@/server/__mocks__/users';
 import MESSAGES from '@/server/__mocks__/messages';
-import ATTACHES from '@/server/__mocks__/attaches';
+import ATTACHMENTS from '@/server/__mocks__/attachments';
 import { randomTiming, uuid } from '@shared/helpers';
 
 const mockServer = new Server({
@@ -9,7 +9,7 @@ const mockServer = new Server({
     server.db.loadData({
       users: USER,
       messages: MESSAGES,
-      attaches: ATTACHES
+      attachments: ATTACHMENTS
     });
   },
 
@@ -45,17 +45,17 @@ const mockServer = new Server({
       { timing: randomTiming(1500, 4000) }
     );
 
-    // get attaches
-    this.get(`/attaches`, (schema) => schema.db.attaches, { timing: randomTiming(1500, 4000) });
+    // get attachments
+    this.get(`/attachments`, (schema) => schema.db.attachments, { timing: randomTiming(1500, 4000) });
 
-    // post attach
+    // post attachment
     this.post(
-      '/attaches/create',
+      '/attachments/create',
       (schema, request) => {
         const attach = JSON.parse(request.requestBody);
         attach.id = uuid();
-        attach.item.version = schema.db.attaches.length + 1;
-        return [...schema.db.attaches, attach];
+        attach.item.version = schema.db.attachments.length + 1;
+        return [...schema.db.attachments, attach];
       },
       { timing: randomTiming(1500, 4000) }
     );

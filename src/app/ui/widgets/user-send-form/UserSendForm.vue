@@ -63,7 +63,7 @@ import { ButtonVariants } from '@ui/components/base/base-ui-button/definitions';
 import { PaperAirplaneIcon, PaperClipIcon } from '@heroicons/vue/24/solid';
 import useAsyncComponent from '@shared/composables/useAsyncComponent';
 
-const { id, disabled } = defineProps({
+const { id, disabled, saving, upload } = defineProps({
   /**
    * Set the unique id of the form
    */

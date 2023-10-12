@@ -15,7 +15,7 @@ export default function useAggregator(store: MessageStore): IAggregator {
       // 1. set loading state on true to display spinner
       isLoading.value = true;
 
-      // 2. promise all methods to get list items [ messages, attaches ]
+      // 2. promise all methods to get list items [ messages, attachments ]
       const aggregatorCollection = await Promise.all(
         collection.map(async (getter) => await getter.fn(getter.params ?? null))
       );
