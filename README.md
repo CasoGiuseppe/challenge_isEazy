@@ -8,6 +8,16 @@ node version: 20.8.0
 npm version: 10.1.0
 ```
 
+# Users
+
+As student:
+email: giuseppe@isEazy.com
+pwd: isEazy
+
+As Teacher:
+email: marco@isEazy.com
+pwd: isEazy
+
 # challenge isEazy
 
 This project was made to

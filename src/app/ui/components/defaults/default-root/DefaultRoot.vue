@@ -87,8 +87,8 @@
               />
             </userPicture>
           </template>
-          <template #name>{{ `${getUser.completeName}` }}</template>
-          <template #email>{{ getUser.email }}</template>
+          <template #name>{{ `Hi! ${getUser.completeName}` }}</template>
+          <template #role>{{ `Your're logged as ${getUser.id}` }}</template>
         </userIdentity>
       </template>
     </component>
