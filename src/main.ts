@@ -29,11 +29,21 @@ import type { IAggregator } from '@shared/composables/interfaces/useAggregator';
 // import services
 import { HTTPService } from '@shared/providers/http/http.service';
 
+// symbols
+import {
+  useAggregatorKey,
+  useAsyncComponentKey,
+  useMessagesKey,
+  useObserverKey,
+  useUploadAttachKey,
+  useUserInfoKey
+} from '@shared/types/symbols';
+
 const UseUserInfo = useUserInfo(useUserStore, new HTTPService());
 const UseMessages = useMessages(new HTTPService());
 const UseAsyncComponent = userAsyncComponent();
 const UseObserver = useObserver();
-const UseUploadAttach = useUploadAttach(new HTTPService())
+const UseUploadAttach = useUploadAttach(new HTTPService());
 const UseAggregator = useAggregator(useMessageStore);
 
 // create lazy APP
@@ -42,11 +52,11 @@ const app = createApp(defineAsyncComponent(() => import('@ui/App.vue')));
 app.use(pinia);
 app.use(router);
 
-router.isReady().then(() => app.mount("#app"));
+router.isReady().then(() => app.mount('#app'));
 
-app.provide<IUserInfo>('UseUserInfo', UseUserInfo);
-app.provide<IMessagesDetails>('UseMessages', UseMessages);
-app.provide<IAsyncComponent>('UseAsyncComponent', UseAsyncComponent);
-app.provide<IObserver>('UseObserver', UseObserver);
-app.provide<IAttaches>('UseUploadAttach', UseUploadAttach);
-app.provide<IAggregator>('UseAggregator', UseAggregator);
+app.provide<IUserInfo>(useUserInfoKey, UseUserInfo);
+app.provide<IMessagesDetails>(useMessagesKey, UseMessages);
+app.provide<IAsyncComponent>(useAsyncComponentKey, UseAsyncComponent);
+app.provide<IObserver>(useObserverKey, UseObserver);
+app.provide<IAttaches>(useUploadAttachKey, UseUploadAttach);
+app.provide<IAggregator>(useAggregatorKey, UseAggregator);

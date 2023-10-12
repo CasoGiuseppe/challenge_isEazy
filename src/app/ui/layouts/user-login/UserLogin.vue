@@ -51,6 +51,7 @@ import { inject, useSlots, computed, ref } from 'vue';
 import { Fields, Types, Roles } from '@shared/types/definitions';
 import type { IAsyncComponent } from '@shared/composables/interfaces/useAsyncComponent';
 import type { IUserInfo } from '@shared/composables/interfaces/useUserInfo';
+import { useAsyncComponentKey, useUserInfoKey } from '@shared/types/symbols';
 
 const emailPlaceholder = `example: name@isEazy.com`;
 const pwdPlaceholder = `example: isEazy`;
@@ -60,8 +61,8 @@ const email = ref<string>();
 const password = ref<string>();
 
 // inject composables
-const useAsyncComponent = inject<IAsyncComponent>('UseAsyncComponent') as IAsyncComponent;
-const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
+const useAsyncComponent = inject<IAsyncComponent>(useAsyncComponentKey) as IAsyncComponent;
+const useInfoUserState = inject<IUserInfo>(useUserInfoKey) as IUserInfo;
 
 // get create method to load lazy component
 const { create } = useAsyncComponent;

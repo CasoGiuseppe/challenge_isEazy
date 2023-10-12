@@ -107,14 +107,22 @@ import { Sizes, Messages, ListType } from '@shared/types/definitions';
 import { delay } from '@shared/helpers';
 import { CloudArrowDownIcon } from '@heroicons/vue/24/solid';
 import { ButtonVariants } from '@ui/components/base/base-ui-button/definitions';
+import {
+  useAggregatorKey,
+  useAsyncComponentKey,
+  useMessagesKey,
+  useObserverKey,
+  useUploadAttachKey,
+  useUserInfoKey
+} from '@shared/types/symbols';
 
 // inject composables
-const useAsyncComponent = inject<IAsyncComponent>('UseAsyncComponent') as IAsyncComponent;
-const useInfoUserState = inject<IUserInfo>('UseUserInfo') as IUserInfo;
-const useMessages = inject<IMessagesDetails>('UseMessages') as IMessagesDetails;
-const useObserver = inject<IObserver>('UseObserver') as IObserver;
-const useAggregator = inject<IAggregator>('UseAggregator') as IAggregator;
-const useUploadAttach = inject<IAttaches>('UseUploadAttach') as IAttaches;
+const useAsyncComponent = inject<IAsyncComponent>(useAsyncComponentKey) as IAsyncComponent;
+const useInfoUserState = inject<IUserInfo>(useUserInfoKey) as IUserInfo;
+const useMessages = inject<IMessagesDetails>(useMessagesKey) as IMessagesDetails;
+const useObserver = inject<IObserver>(useObserverKey) as IObserver;
+const useAggregator = inject<IAggregator>(useAggregatorKey) as IAggregator;
+const useUploadAttach = inject<IAttaches>(useUploadAttachKey) as IAttaches;
 
 // get create method to load lazy component
 const { create } = useAsyncComponent;
