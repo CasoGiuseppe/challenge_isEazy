@@ -69,6 +69,7 @@
             <userSendForm
               :disabled="!items || isLoading"
               :saving="isSaving"
+              :upload="isUpload"
               @createMessage="attachMessage"
               @uploadFile="attachNewFile"
             />
@@ -162,7 +163,7 @@ const attachMessage = async ({ message }: { message: string }) => {
 };
 
 const { aggregateItems, items, isLoading } = useAggregator;
-const { getUsersAttaches, uploadFile } = useUploadAttach;
+const { getUsersAttaches, uploadFile, isUpload } = useUploadAttach;
 const fillAggragator = async () =>
   await aggregateItems({ collection: [{ fn: getUsersMessages }, { fn: getUsersAttaches }] });
 

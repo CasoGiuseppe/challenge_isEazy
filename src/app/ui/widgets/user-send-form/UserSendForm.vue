@@ -46,6 +46,7 @@
       :is="userSendButton"
       :role="Roles.FILE"
       :disabled="disabled"
+      :loading="upload"
       id="user-send-upload"
       class="user-send-form__action"
       label="Upload a new document version"
@@ -74,6 +75,14 @@ const { id, disabled } = defineProps({
    * Handle saving state
    */
   saving: {
+    type: Boolean as PropType<boolean>,
+    default: false
+  },
+
+  /**
+   * Handle upload state
+   */
+  upload: {
     type: Boolean as PropType<boolean>,
     default: false
   },
