@@ -25,6 +25,6 @@
   }
 
   &__footer {
-    @apply border-t-[1px] border-gray-300;
+    @apply border-t-[1px] border-gray-300 sticky bottom-none;
   }
 }

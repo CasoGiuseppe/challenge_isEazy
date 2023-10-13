@@ -10,7 +10,7 @@
   );
 
   @apply flex flex-col p-md items-center justify-center overflow-auto scroll-smooth;
-  height: var(--max-height);
+  height: max(10vh, var(--max-height));
   
   &__items {
     @apply flex flex-col gap-md w-full;
